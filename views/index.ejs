@@ -12,7 +12,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./assets/styles.css"/> 
     <link rel="stylesheet" href="./styles/barra.css"/>
-
 </head>
 <!--Se incluye la clase font que indica la fuente de texto a utilizar.-->
 <!--La clase m indica el tamaño del margen-->
@@ -47,55 +46,51 @@
                 <a href="#">
                     <i class="bx bxs-grid-alt"></i><!--Estas clases importan iconos de ionicons-->
                     <span class="nav-item">Barra</span>
-            </a>
+                </a>
             <span class="tooltip">Barra</span>
             </li>
             <li>
                 <a href="#">
                     <i class="bx bx-home"></i>
                     <span class="nav-item">Inicio</span>
-            </a>
+                </a>
             <span class="tooltip">Inicio</span>
             </li>
             <li>
                 <a href="#">
                     <i class="bx bxs-car"></i>
                     <span class="nav-item">Panel</span>
-            </a>
+                </a>
             <span class="tooltip">Panel</span>
             </li>
             <li>
                 <a href="#">
                     <i class="bx bxs-user"></i>
                     <span class="nav-item">Cuenta</span>
-            </a>
+                </a>
             <span class="tooltip">Cuenta</span>
             </li>
             <li>
                 <a href="#">
                     <i class="bx bx-notepad"></i>
                     <span class="nav-item">Foro</span>
-            </a>
+                </a>
             <span class="tooltip">Foro</span>
             </li>
             <li>
                 <a href="#">
                     <i class="bx bx-cog"></i>
                     <span class="nav-item">Ayuda</span>
-            </a>
+                </a>
             <span class="tooltip">Ayuda</span>
             </li>
             <li>
                 <a href="#">
                     <i class="bx bx-log-out"></i>
                     <span class="nav-item">Logout</span>
-            </a>
+                </a>
             <span class="tooltip">Logout</span>
             </li>
-            
-
-
-
         </ul>
     </div>
     <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
@@ -126,27 +121,22 @@
                             <!-- Se utiliza la etiquete input para permitir una entrada de datos por parte del usuario--><!---->
                             <!--Se declaran IDs a los distinto datos entrantes, ya sean registrados o por registrar-->  
                             <h1 class=" mb-5">Registrarse</h1>
-                            <label for="nombre_u"  class="block text-xl text-white">Nombre</label>
-                            <input type="text" id="nombre_u" class="rounded-md shadow-lg px-4 py-2 mt-4 ">
+                            <label for="nombre_u" class="block text-xl text-white">Nombre</label>
+                            <input type="text" id="nombre_u" name="nombre_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
 
-                            <label for="apellido_u"  class="block text-xl mt-4 text-white">Apellido</label>
-                            <input type="text" id="apellido_u" class="rounded-md shadow-lg px-4 py-2 mt-4 ">
+                            <label for="apellido_u" class="block text-xl mt-4 text-white">Apellido</label>
+                            <input type="text" id="apellido_u" name="apellido_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
 
-                            <label for="correo_u"  class="block text-xl mt-4 text-white">Email</label>
-                            <input type="text" id="correo_u" class="rounded-md shadow-lg px-4 py-2 mt-4 ">
+                            <label for="correo_u" class="block text-xl mt-4 text-white">Email</label>
+                            <input type="text" id="correo_u" name="correo_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
 
-                            <label for="usuario"  class="block text-xl mt-4 text-white">Nombre de usuario</label>
-                            <input type="text" id="usuario" class="rounded-md shadow-lg px-4 py-2 mt-4 ">
+                            <label for="contraseña_u" class="block text-xl mt-4 text-white">Contraseña</label>
+                            <input type="text" id="contraseña_u" name="contraseña_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
 
-                            <label for="contraseña_u"  class="block text-xl mt-4 text-white">Contraseña</label>
-                            <input type="text" id="contraseña_u" class="rounded-md shadow-lg px-4 py-2 mt-4 ">
-                            
                             <label for="iniciar"  class="block  text-xl mt-4"></label>
-                            <button type="submit" class=" bg-slate-500  rounded-md px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Registrarse</button>
-                    
+                            <button type="submit" class="bg-slate-500 rounded-md px-10 py-3 duration-700 hover-bg-slate-400 shadow-lg mt-4">Registrarse</button>
                         </form>
                     </div>
-              
             </div>
              <!-- Se inicia un formato de form en el que incluiremos entradas de datos por parte del usuario. Para el apartado iniciar sesión-->
             <!-- Se utilizan las etiquetas label para asociar un elemento de formulario con un texto -->
@@ -161,21 +151,13 @@
                     <button type="submit" class=" bg-slate-500  rounded-md px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4"> Iniciar</button>
             </div>
         </div>
-
     </div>
-   
-    
- 
-
-    
 </body>
 <!--Se crea un script en el cual se le establecen distintas propiedades y comportamientos a la barra lateral de la página-->
 <script>
     let btn = document.querySelector('#btn')
     let sidebar = document.querySelector('.sidebar')
-
     btn.onclick = function (){
-        sidebar.classList.toggle('active')
-    };
+        sidebar.classList.toggle('active')};
 </script>
 </html> 
