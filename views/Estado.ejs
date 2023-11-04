@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+<!--en head se incluyen dependencias del archivo. Como lo son los archivos de estilos, fuentes de texto u otros.-->
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailwindCSS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/Car-Minder/assets/styles.css"/> 
+    <link rel="stylesheet" href="/Car-Minder/styles/barra.css"/>
+</head>
+<!--Se incluye la clase font que indica la fuente de texto a utilizar.-->
+<!--La clase m indica el tamaño del margen-->
+<!--La clase p indica el padding -->
+<!--box-border da un limite a los elementos dentro-->
+<body class="font-Gabarito  m-0 p-0 box-border">
+    <!--Se declara la clase sidebar cuyas propiedades y clases internas se establecen en el archivo barra.css-->
+    <!--Se utilizan div para agrupar contenidos y separarlos de otros-->
+    <div class="sidebar ">
+        <div class="top">
+            <div class="logo">>
+                    <i class="bx bxs-car-mechanic">
+                    </i>
+                    <span>CarMinder</span>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <div class="user">
+            <!--Se añade una imagen para mostrarse junto a la barra lateral-->
+            <!--Se utiliza la clase w para dar un ancho maximo-->
+            <img src="imagenes/kokomi.jpg" class="user-img w-14 rounded-full border-sky-950">
+            <div>
+                <!--Aqui se mostrara el nombre del usuario y el usuario-->
+                <p class="bold">Clint B</p>
+                <p>Admin</p>
+            </div>
+        </div>
+        <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
+        <ul>
+            <li>
+                <!--Se utiliza la etiqueta a junto a href para indicar un redireccionamiento a la sección indicada-->
+                <a href="#">
+                    <i class="bx bxs-grid-alt"></i><!--Estas clases importan iconos de ionicons-->
+                    <span class="nav-item">Barra</span>
+            </a>
+            <span class="tooltip">Barra</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-home"></i>
+                    <span class="nav-item">Inicio</span>
+            </a>
+            <span class="tooltip">Inicio</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-car"></i>
+                    <span class="nav-item">Panel</span>
+            </a>
+            <span class="tooltip">Panel</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-user"></i>
+                    <span class="nav-item">Cuenta</span>
+            </a>
+            <span class="tooltip">Cuenta</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-notepad"></i>
+                    <span class="nav-item">Foro</span>
+            </a>
+            <span class="tooltip">Foro</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="nav-item">Ayuda</span>
+            </a>
+            <span class="tooltip">Ayuda</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+            </a>
+            <span class="tooltip">Logout</span>
+            </li>
+            
+
+
+
+        </ul>
+    </div>
+    <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
+    <div class="main-content mt-8 mx-auto container"><!-- Se asigna la clase main-content que incluye propiedades en css para la misma. Se incluye la clase duration que añade una transición al contenido -->
+        <div class=" bg-slate-500 mx-60 mb-60 flex-auto object-center  "><!-- Aquí se inician los formularios que solicitarán información al usuario, las cuales pasaran a la base de datos.  Cuentan con sus respectivas clases para el estilo de la pantalla, margenes padding y flex-->
+            <h1 class="text-4xl">Estado</h1>
+            
+            </div>
+      
+        </div><!--Se cierra el div-->
+        <!--Se crea una nueva clase en la que se muestra la imagen del vehículo seleccionado acompañado de una breve descripción-->
+        <div class=" flex  lg:mx-0 md:mx-0 mx-auto  mt-6  w-72 shadow-black/70 shadow-lg  px-5 duration-500 bg-blue-700/40 rounded text-black py-2">
+            <div class=" flex-auto text-center  ">
+                <img id="auto" src="imagenes/Vehiculos automotrices/Tsuru.jpg" class="w-72 mt-6 mb-3 object-center flex-auto" >
+                <h1 class=" bg-sky-700 mb-5 text-2xl bold">Tsuru Tuneado</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate debitis incidunt suscipit consequatur laudantium temporibus autem at impedit quam dolorem neque sunt sed, odit eligendi iste atque a et praesentium.
+                Voluptatibus, ullam saepe voluptates facilis minus repellat, aliquam voluptatum laudantium delectus, officiis dolorum explicabo accusamus! Nulla nemo modi illum ducimus enim animi voluptate vero error. Rem in sint alias voluptatibus.</p>
+            </div>
+
+        </div>
+    
+
+    </div>
+   
+    
+ 
+
+    
+</body>
+<!--Se crea un script en el cual se le establecen distintas propiedades y comportamientos a la barra lateral de la página-->
+<script>
+    let btn = document.querySelector('#btn')
+    let sidebar = document.querySelector('.sidebar')
+
+    btn.onclick = function (){
+        sidebar.classList.toggle('active')
+        
+        
+        
+    };
+</script>
+
+</html>

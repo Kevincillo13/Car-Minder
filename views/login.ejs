@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailwindCSS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/Car-Minder/assets/styles.css"/> 
+    <link rel="stylesheet" href="/Car-Minder/styles/barra.css"/>
+</head>
+<body class="font-Gabarito bg-sky-100">
+    <header class="bg-gradient-to-t from-sky-600 to-sky-500 flex-auto shadow-xl"  >
+        <nav class="flex justify-between items-center w-[92%] mx-auto">
+            <div>
+                <a href="index.html"><img class="w-16 rounded-full border-2 shadow-xl border-sky-700" src="imagenes/kokomi.jpg"></a>
+            </div>
+            <div class="nav-links duration-500 md:static absolute md:min-h-fit min-h-[20vh] left-0 top-[-100%] md:w-auto w-full flex items-center  ">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8 md:bg-gradient-to-b md:from-transparent md:to-transparent w-full   items-center py-10  bg-gradient-to-b from-sky-600 to-sky-700">
+                    <li>
+                        <a class=" hover:text-sky-400 md:hover:text-cyan-200 " href="index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a class= "hover:text-sky-400 md:hover:text-cyan-200" href="panel.html">Panel</a>
+                    </li>
+                    <li>
+                        <a class= "hover:text-sky-400 md:hover:text-cyan-200" href="Cuenta.html">Cuenta</a>
+                    </li>
+                    <li>
+                        <a class= "hover:text-sky-400 md:hover:text-cyan-200" href="Ayuda.html">Ayuda</a>
+                    </li>
+                    <li>
+                        <a class= "hover:text-sky-400 md:hover:text-cyan-200" href="Foro.html">Foro</a>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="bg-sky-100 text-sky-900 px-5 py-2 rounded-full hover:bg-[#0891b2]" onclick="window.location.href='login.html'">Iniciar sesión</button>
+                <button class="bg-sky-100 text-sky-900 px-5 py-2 rounded-full hover:bg-[#0891b2]" onclick="window.location.href='registro.html'">Unete</button>
+                <button>
+                    <ion-icon onclick="onToggleMenu(this)" class="text-3xl cursor-pointer md:hidden" name="menu"></ion-icon>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        const navLinks = document.querySelector('.nav-links')
+        function onToggleMenu(e){
+            e.name = e.name === 'menu' ? 'close' :'menu'
+            navLinks.classList.toggle('top-[9%]')
+            
+        }
+    </script>
+    <div class="container">
+        <div>
+            
+        </div>
+    </div>
+    <section class="flex justify-between flex-auto mt-12 px-10 mx-auto bg-gradient-to-t from-sky-200 to-sky-300 ">
+        <article>
+            <h2 class="text-center">Aquí se inicia sesión</h2>
+        </article>
+    </section>
+
+    <footer class=" flex-auto bg-gradient-to-t min-w-full from-sky-600 to-sky-500">
+        <nav class="flex justify-between object-bottom items-center mx-auto">g</nav>
+
+    </footer>
+</body>
+</html>
