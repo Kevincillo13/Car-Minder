@@ -1,0 +1,24 @@
+{
+  "name": "car-minder",
+  "version": "1.0.0",
+  "description": "",
+
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-tail": "set NODE_ENV=production && tailwindcss build -i styles/tailwindcss.css -o assets/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "nodemon": "^3.0.1",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
+  }
+}
