@@ -114,42 +114,19 @@
         <div class=" sm:w-[70%] md:w-[70%] lg:w-[70%]   text-xl bold container  mt-12 md:flex mx-auto  bg-black  duration-500  rounded-md text-center ">
             <!-- Se añaden clases para establecer un limite al area, usando las clases sm-md-lg que declaran ciertas propiedades segun el tamaño de la pantalla. Se declaran colores de fondo con la clase bg.
             Rounded: Establece bordes redondos.     Text-"": Establece la alineación del texto.     mx-auto: Da un margen en el eje X segun el espacio disponible -->
-            <div class=" text-center  bg-blue-300 flex-auto px-10"><!--Se declara la clase px para dar un padding en el eje X -->
-                    <div class="">
-                        <!-- Se inicia un formato de form en el que incluiremos entradas de datos por parte del usuario. Para el apartado registro-->
-                        <form class="bg-blue-300 py-5" method="post" action="/register">
-                            <!-- Se utilizan las etiquetas label para asociar un elemento de formulario con un texto -->
-                            <!-- Se utiliza la etiquete input para permitir una entrada de datos por parte del usuario--><!---->
-                            <!--Se declaran IDs a los distinto datos entrantes, ya sean registrados o por registrar-->  
-                            <h1 class=" mb-5">Registrarse</h1>
-                            <label for="nombre_u" class="block text-xl text-white">Nombre</label>
-                            <input type="text" id="nombre_u" name="nombre_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
-
-                            <label for="apellido_u" class="block text-xl mt-4 text-white">Apellido</label>
-                            <input type="text" id="apellido_u" name="apellido_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
-
-                            <label for="correo_u" class="block text-xl mt-4 text-white">Email</label>
-                            <input type="text" id="correo_u" name="correo_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
-
-                            <label for="contraseña_u" class="block text-xl mt-4 text-white">Contraseña</label>
-                            <input type="text" id="contraseña_u" name="contraseña_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
-
-                            <label for="iniciar"  class="block  text-xl mt-4"></label>
-                            <button type="submit" class="bg-slate-500 rounded-md px-10 py-3 duration-700 hover-bg-slate-400 shadow-lg mt-4">Registrarse</button>
-                        </form>
-                    </div>
-            </div>
-             <!-- Se inicia un formato de form en el que incluiremos entradas de datos por parte del usuario. Para el apartado iniciar sesión-->
+            <!-- Se inicia un formato de form en el que incluiremos entradas de datos por parte del usuario. Para el apartado iniciar sesión-->
             <!-- Se utilizan las etiquetas label para asociar un elemento de formulario con un texto -->
             <!-- Se utiliza la etiquete input para permitir una entrada de datos por parte del usuario-->
             <div class=" bg-emerald-600 px-10 align-middle py-28 flex-auto ">
-                <h1 class=" bg-emerald-600 text-center py-5">Iniciar sesión</h1>
-                    <label for="username"  class="block text-xl text-white">Usuario</label>
-                    <input type="text" id="username" class="rounded-md shadow-lg px-4 py-2 mt-4 ">
-                    <label for="password"  class="block text-xl mt-4 text-white">Contraseña</label>
-                    <input type="text" id="password" class="rounded-md px-4 py-2 shadow-lg mt-4">
-                    <label for="iniciar"  class="block  text-xl mt-4"></label>
-                    <button type="submit" class=" bg-slate-500  rounded-md px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4"> Iniciar</button>
+                <form method="POST" action="/login">
+                    <h2 class=" bg-emerald-600 text-center py-5">Iniciar sesión</h2>
+                    <label for="correo" class="block text-xl text-white">Correo electrónico</label>
+                    <input type="text" id="correo" name="correo" class="rounded-md shadow-lg px-4 py-2 mt-4">
+                    <label for="contrasena" class="block text-xl mt-4 text-white">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena" class="rounded-md px-4 py-2 shadow-lg mt-4">
+                    <button type="submit" class="bg-slate-500 rounded-md px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
+                </form>
+                  
             </div>
         </div>
     </div>

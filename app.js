@@ -37,34 +37,76 @@ db.connect((err)=>{
 app.get("/Car-Minder",(req,res)=>{
     res.render("index",{})
 })
+app.get("/register",(req,res)=>{
+    res.render("register",{})
+})
+app.get("/foro",(req,res)=>{
+    res.render("Foro",{})
+})
+app.get("/estado",(req,res)=>{
+    res.render("Estado",{})
+})
+app.get("/cuenta",(req,res)=>{
+    res.render("cuenta",{})
+})
+app.get("/barra2",(req,res)=>{
+    res.render("barra2",{})
+})
+app.get("/agregarCoche",(req,res)=>{
+    res.render("agregarCoche",{})
+})
 
     //Register
-    app.post("/register", (req, res) => {
-        const { nombre_u, correo_u, contraseña_u } = req.body;
-      
-        // Verificar si el correo electrónico ya existe en la base de datos
-        const queryCheck = "SELECT * FROM usuarios WHERE correo_u = ?";
-        db.query(queryCheck, [correo_u], (err, results) => {
-            if (err) {
-            console.error("Error al verificar el correo electrónico: ", err);
-            res.status(500).send('<script>alert("Error al verificar el correo electrónico"); window.location="/Car-Minder";</script>');
-            } else if (results.length > 0) {
-            // El correo electrónico ya está en uso
-            res.status(400).send('<script>alert("El correo electrónico ya está en uso. Por favor, elija otro."); window.location="/Car-Minder";</script>');
-            } else {
-            // El correo electrónico no está en uso, procede con la inserción
-            const query = "INSERT INTO usuarios (nombre_u, contraseña_u, correo_u, created_at, active) VALUES (?, ?, ?, NOW(), 1)";
-            db.query(query, [nombre_u, contraseña_u, correo_u], (err, result) => {
-                if (err) {
-                console.error("Error al registrar usuario: ", err);
-                res.status(500).send('<script>alert("Error al registrar al usuario"); window.location="/Car-Minder";</script>');
-                } else {
-                console.log("Usuario registrado con éxito");
-      
-                // Muestra una alerta en el navegador del cliente
-                res.send('<script>alert("Usuario registrado con éxito"); window.location="/Car-Minder";</script>');
-                }
-            });
-            }
+app.post("/register", (req, res) => {
+    const { nombre_u, correo_u, contraseña_u } = req.body;   
+    // Verificar si el correo electrónico ya existe en la base de datos
+const queryCheck = "SELECT * FROM usuarios WHERE correo_u = ?";
+    db.query(queryCheck, [correo_u], (err, results) => {
+        if (err) {
+        console.error("Error al verificar el correo electrónico: ", err);
+        res.status(500).send('<script>alert("Error al verificar el correo electrónico"); window.location="/Car-Minder";</script>');
+        } else if (results.length > 0) {
+    // El correo electrónico ya está en uso
+        res.status(400).send('<script>alert("El correo electrónico ya está en uso. Por favor, elija otro."); window.location="/Car-Minder";</script>');
+        } else {
+    // El correo electrónico no está en uso, procede con la inserción
+const query = "INSERT INTO usuarios (nombre_u, contraseña_u, correo_u, created_at, active) VALUES (?, ?, ?, NOW(), 1)";
+    db.query(query, [nombre_u, contraseña_u, correo_u], (err, result) => {
+        if (err) {
+        console.error("Error al registrar usuario: ", err);
+        res.status(500).send('<script>alert("Error al registrar al usuario"); window.location="/Car-Minder";</script>');
+        } else {
+        console.log("Usuario registrado con éxito");
+      // Muestra una alerta en el navegador del cliente
+        res.send('<script>alert("Usuario registrado con éxito"); window.location="/Car-Minder";</script>');
+        }
         });
+    }
     });
+});
+
+    //Login
+app.post("/login", (req, res) => {
+    const { correo, contraseña } = req.body;
+    const query = "SELECT * FROM usuarios WHERE correo_u = ?";
+    db.query(query, [correo], (err, results) => {
+        if (err) {
+        console.error("Error al verificar las credenciales: ", err);
+        res.status(500).send('<script>alert("Error al verificar las credenciales"); window.location="/Car-Minder";</script>');
+        } else if (results.length === 1) {
+    // Comprobar si la contraseña coincide
+    const user = results[0];
+        if (user.contraseña_u === contraseña) {
+    // Las credenciales son correctas
+    // Redirige al usuario a la página después de iniciar sesión
+        res.redirect("/agregarCoche");
+        } else {
+    // Contraseña incorrecta
+        res.status(400).send('<script>alert("Contraseña incorrecta"); window.location="/Car-Minder";</script>');
+        }
+        } else {
+    // El correo no se encuentra en la base de datos
+        res.status(400).send('<script>alert("Correo no registrado"); window.location="/Car-Minder";</script>');
+        }
+    });
+});
