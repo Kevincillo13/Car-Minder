@@ -55,6 +55,9 @@ app.get("/barra2",(req,res)=>{
 app.get("/agregarCoche",(req,res)=>{
     res.render("agregarCoche",{})
 })
+app.get("/panel",(req,res)=>{
+    res.render("panel",{})
+})
 
     //Register
 app.post("/register", (req, res) => {
