@@ -4,13 +4,12 @@
 <!--en head se incluyen dependencias del archivo. Como lo son los archivos de estilos, fuentes de texto u otros.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarMinder</title>
+    <title>Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="/assets/barra.css">
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <!--Se incluye la clase font que indica la fuente de texto a utilizar.-->
@@ -20,79 +19,6 @@
 <body class="font-Gabarito  m-0 p-0 box-border">
     <!--Se declara la clase sidebar cuyas propiedades y clases internas se establecen en el archivo barra.css-->
     <!--Se utilizan div para agrupar contenidos y separarlos de otros-->
-    <div class="sidebar">
-        <div class="top">
-            <div class="logo">>
-                    <i class="bx bxs-car-mechanic">
-                    </i>
-                    <span>CarMinder</span>
-            </div>
-            <i class="bx bx-menu" id="btn"></i>
-        </div>
-        <div class="user">
-            <!--Se añade una imagen para mostrarse junto a la barra lateral-->
-            <!--Se utiliza la clase w para dar un ancho maximo-->
-            <img src="/assets/imagenes/kokomi.jpg" class="user-img w-14 rounded-full border-sky-950">
-            <div>
-                <!--Aqui se mostrara el nombre del usuario y el usuario-->
-                <p class="bold">Clint B</p>
-                <p>Admin</p>
-            </div>
-        </div>
-        <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
-        <ul>
-            <li>
-                <!--Se utiliza la etiqueta a junto a href para indicar un redireccionamiento a la sección indicada-->
-                <a href="#">
-                    <i class="bx bxs-grid-alt"></i><!--Estas clases importan iconos de ionicons-->
-                    <span class="nav-item">barra</span>
-                </a>
-            <span class="tooltip">barra</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-home"></i>
-                    <span class="nav-item">Inicio</span>
-                </a>
-            <span class="tooltip">Inicio</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bxs-car"></i>
-                    <span class="nav-item">Panel</span>
-                </a>
-            <span class="tooltip">Panel</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bxs-user"></i>
-                    <span class="nav-item">Cuenta</span>
-                </a>
-            <span class="tooltip">Cuenta</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-notepad"></i>
-                    <span class="nav-item">Foro</span>
-                </a>
-            <span class="tooltip">Foro</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-cog"></i>
-                    <span class="nav-item">Ayuda</span>
-                </a>
-            <span class="tooltip">Ayuda</span>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="bx bx-log-out"></i>
-                    <span class="nav-item">Logout</span>
-                </a>
-            <span class="tooltip">Logout</span>
-            </li>
-        </ul>
-    </div>
     <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
     <div class="main-content duration-500"><!-- Se asigna la clase main-content que incluye propiedades en css para la misma. Se incluye la clase duration que añade una transición al contenido -->
         <div>
@@ -124,6 +50,7 @@
                     <label for="contrasena" class="block text-xl mt-4 text-white">Contraseña</label>
                     <input type="password" id="contrasena" name="contrasena" class="rounded-md px-4 py-2 shadow-lg mt-4">
                     <button type="submit" class="bg-slate-500 rounded-md px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
+                    <p><a href="register">¿No tienes una cuenta? Registrate</a></p>
                 </form>
                   
             </div>

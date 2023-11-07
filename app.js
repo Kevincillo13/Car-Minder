@@ -34,8 +34,8 @@ db.connect((err)=>{
 })
 
     // Paginas 
-app.get("/Car-Minder",(req,res)=>{
-    res.render("index",{})
+app.get("/login",(req,res)=>{
+    res.render("login",{})
 })
 app.get("/register",(req,res)=>{
     res.render("register",{})
@@ -48,9 +48,6 @@ app.get("/estado",(req,res)=>{
 })
 app.get("/cuenta",(req,res)=>{
     res.render("cuenta",{})
-})
-app.get("/barra2",(req,res)=>{
-    res.render("barra2",{})
 })
 app.get("/agregarCoche",(req,res)=>{
     res.render("agregarCoche",{})
