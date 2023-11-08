@@ -1,6 +1,9 @@
     //Declarar variables constantes
 const express= require("express");
+const session = require("express-session");
+const secret = "carmensemeperdiolacadenita";
 const mysql = require("mysql2");
+const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app= express(); 
@@ -10,6 +13,11 @@ app.set("view engine", "ejs"),
 app.set("views", path.join(__dirname, "views"));
 app.use("/assets",express.static("assets"));
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.listen (3000, (req,res)=> {
     console.log("Corriendo en el puerto 3000")
