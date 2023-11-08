@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+<!--en head se incluyen dependencias del archivo. Como lo son los archivos de estilos, fuentes de texto u otros.-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/assets/barra.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="font-Gabarito">
+    <div class="sidebar" style="height: 150%;">
+        <div class="top">
+            <div class="logo">>
+                    <i class="bx bxs-car-mechanic">
+                    </i>
+                    <span>CarMinder</span>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <div class="user">
+            <!--Se añade una imagen para mostrarse junto a la barra lateral-->
+            <!--Se utiliza la clase w para dar un ancho maximo-->
+            <img src="/assets/imagenes/kokomi.jpg" class="user-img w-14 rounded-full border-sky-950">
+            <div>
+                <!--Aqui se mostrara el nombre del usuario y el usuario-->
+                <p class="bold">Clint B</p>
+                <p>Admin</p>
+            </div>
+        </div>
+        <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
+        <ul>
+            </li>
+            <li>
+                <a href="inicio">
+                    <i class="bx bxs-car"></i>
+                    <span class="nav-item">Inicio</span>
+            </a>
+            <span class="tooltip">Inicio</span>
+            </li>
+            
+            <li>
+                <a href="Foro">
+                    <i class="bx bx-notepad"></i>
+                    <span class="nav-item">Foro</span>
+            </a>
+            <span class="tooltip">Foro</span>
+            </li>
+            <li>
+                <a href="Configuracion">
+                    <i class="bx bx-cog"></i>
+                    <span class="nav-item">Ayuda</span>
+            </a>
+            <span class="tooltip">Ayuda</span>
+            </li>
+            <li>
+                <a href="login">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+            </a>
+            <span class="tooltip">Logout</span>
+            </li>
+        </ul>
+    </div>
+    <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
+    <div class="main-content flex-auto duration-500">
+        <div> <h1 class=" flex-auto container mx-10 text-3xl text-center duration-500 bg-slate-950/50 rounded- text-black bold py-2">Aquí van tus coches</h1>
+            <button class="bg-sky-950 m-4 flex left-0 rounded-md text-center p-2 text-white hover:bg-sky-800">Agregar coche</button>
+        </div>
+        <div class="flex ">
+            <div class="flex justify-between m-4">
+                <div class="bg-white rounded-lg shadow-lg p-4 h-50 w-72">
+                    <img src="imagenes/Tuning-7-1.jpg" alt="Imagen" class="w-50 mx-auto rounded-xl">
+                    <a href="#" class="block w-full bg-sky-700 hover:bg-sky-950 text-white text-center py-2 mt-4 rounded-full duration-500">Tsuru Tuneado</a>
+                </div>
+            </div>
+            <div class="flex justify-between m-4">
+                <div class="bg-white rounded-lg shadow-lg p-4 h-50 w-72 ml-4">
+                    <img src="imagenes/aea11a7b4a5e9565d9e29553b552595c.jpg" alt="Imagen" class="w-50 mx-auto rounded-xl">
+                    <a href="#" class="block w-full bg-sky-700 hover:bg-sky-950 text-white text-center py-2 mt-4 rounded-full duration-500">March Tuneado</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let btn = document.querySelector('#btn')
+        let sidebar = document.querySelector('.sidebar')
+    
+        btn.onclick = function (){
+            sidebar.classList.toggle('active')
+        };
+    </script>
+</body>
+</html> 

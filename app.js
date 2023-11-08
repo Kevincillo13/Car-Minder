@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app= express(); 
+const validator = require('validator');
 
     //Configuraciones
 app.set("view engine", "ejs"),
@@ -60,8 +61,8 @@ app.get("/configuracion",(req,res)=>{
 app.get("/agregarCoche",(req,res)=>{
     res.render("agregarCoche",{})
 })
-app.get("/panel",(req,res)=>{
-    res.render("panel",{})
+app.get("/inicio",(req,res)=>{
+    res.render("inicio",{})
 })
 
     //Register
