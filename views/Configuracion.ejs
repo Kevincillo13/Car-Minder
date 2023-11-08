@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailwindCSS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/styles.css"/> 
+    <link rel="stylesheet" href="/assets/barra.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body class="font-Gabarito">
+    <div class="sidebar" style="height: 150%;">
+        <div class="top">
+            <div class="logo">>
+                    <i class="bx bxs-car-mechanic">
+                    </i>
+                    <span>CarMinder</span>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <div class="user">
+            <!--Se añade una imagen para mostrarse junto a la barra lateral-->
+            <!--Se utiliza la clase w para dar un ancho maximo-->
+            <img src="/assets/imagenes/kokomi.jpg" class="user-img w-14 rounded-full border-sky-950">
+            <div>
+                <!--Aqui se mostrara el nombre del usuario y el usuario-->
+                <p class="bold">Clint B</p>
+                <p>Admin</p>
+            </div>
+        </div>
+        <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
+        <ul>
+            <li>
+                <!--Se utiliza la etiqueta a junto a href para indicar un redireccionamiento a la sección indicada-->
+                <a href="#">
+                    <i class="bx bxs-grid-alt"></i><!--Estas clases importan iconos de ionicons-->
+                    <span class="nav-item">Barra</span>
+            </a>
+            <span class="tooltip">Barra</span>
+            </li>
+            <li>
+                <a href="Cuenta.html">
+                    <i class="bx bx-home"></i>
+                    <span class="nav-item">Inicio</span>
+            </a>
+            <span class="tooltip">Inicio</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-car"></i>
+                    <span class="nav-item">Panel</span>
+            </a>
+            <span class="tooltip">Panel</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-user"></i>
+                    <span class="nav-item">Cuenta</span>
+            </a>
+            <span class="tooltip">Cuenta</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-notepad"></i>
+                    <span class="nav-item">Foro</span>
+            </a>
+            <span class="tooltip">Foro</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="nav-item">Ayuda</span>
+            </a>
+            <span class="tooltip">Ayuda</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+            </a>
+            <span class="tooltip">Logout</span>
+            </li>
+            
+
+
+
+        </ul>
+    </div>
+
+
+<body>
+    
+</body>
+<script>
+    let btn = document.querySelector('#btn')
+    let sidebar = document.querySelector('.sidebar')
+    btn.onclick = function (){
+        sidebar.classList.toggle('active')};
+</script>
+</html>
