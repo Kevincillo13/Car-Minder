@@ -568,14 +568,6 @@ video {
   }
 }
 
-.invisible {
-  visibility: hidden;
-}
-
-.fixed {
-  position: fixed;
-}
-
 .absolute {
   position: absolute;
 }
@@ -584,20 +576,12 @@ video {
   left: 0px;
 }
 
-.right-0 {
-  right: 0px;
-}
-
 .top-\[-100\%\] {
   top: -100%;
 }
 
 .top-\[9\%\] {
   top: 9%;
-}
-
-.float-left {
-  float: left;
 }
 
 .m-0 {
@@ -631,6 +615,10 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
 .mb-3 {
   margin-bottom: 0.75rem;
 }
@@ -643,10 +631,6 @@ video {
   margin-bottom: 15rem;
 }
 
-.mb-8 {
-  margin-bottom: 2rem;
-}
-
 .ml-4 {
   margin-left: 1rem;
 }
@@ -657,6 +641,10 @@ video {
 
 .mt-14 {
   margin-top: 3.5rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .mt-4 {
@@ -683,20 +671,8 @@ video {
   display: flex;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
-.h-screen {
-  height: 100vh;
-}
-
 .min-h-\[20vh\] {
   min-height: 20vh;
-}
-
-.w-12 {
-  width: 3rem;
 }
 
 .w-14 {
@@ -864,10 +840,6 @@ video {
   --tw-gradient-to: #0369a1 var(--tw-gradient-to-position);
 }
 
-.fill-white {
-  fill: #fff;
-}
-
 .object-bottom {
   -o-object-position: bottom;
      object-position: bottom;
@@ -930,14 +902,6 @@ video {
   padding-bottom: 1.25rem;
 }
 
-.pl-2 {
-  padding-left: 0.5rem;
-}
-
-.pt-3 {
-  padding-top: 0.75rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -992,6 +956,10 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .shadow-lg {
@@ -1065,11 +1033,6 @@ video {
   color: rgb(56 189 248 / var(--tw-text-opacity));
 }
 
-.focus\:outline-none:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
 @media (min-width: 640px) {
   .sm\:w-\[70\%\] {
     width: 70%;
@@ -1140,21 +1103,9 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:visible {
-    visibility: visible;
-  }
-
   .lg\:mx-0 {
     margin-left: 0px;
     margin-right: 0px;
-  }
-
-  .lg\:hidden {
-    display: none;
-  }
-
-  .lg\:w-64 {
-    width: 16rem;
   }
 
   .lg\:w-\[70\%\] {
