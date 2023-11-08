@@ -92,7 +92,7 @@ app.post("/login", (req, res) => {
     db.query(query, [correo], (err, results) => {
         if (err) {
         console.error("Error al verificar las credenciales: ", err);
-        res.status(500).send('<script>alert("Error al verificar las credenciales"); window.location="/Car-Minder";</script>');
+        res.status(500).send('<script>alert("Error al verificar las credenciales"); window.location="/login";</script>');
         } else if (results.length === 1) {
     // Comprobar si la contraseña coincide
     const user = results[0];
@@ -102,11 +102,11 @@ app.post("/login", (req, res) => {
         res.redirect("/agregarCoche");
         } else {
     // Contraseña incorrecta
-        res.status(400).send('<script>alert("Contraseña incorrecta"); window.location="/Car-Minder";</script>');
+        res.status(400).send('<script>alert("Contraseña incorrecta"); window.location="/login";</script>');
         }
         } else {
     // El correo no se encuentra en la base de datos
-        res.status(400).send('<script>alert("Correo no registrado"); window.location="/Car-Minder";</script>');
+        res.status(400).send('<script>alert("Correo no registrado"); window.location="/login";</script>');
         }
     });
 });
