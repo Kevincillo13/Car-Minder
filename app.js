@@ -46,8 +46,8 @@ app.get("/foro",(req,res)=>{
 app.get("/estado",(req,res)=>{
     res.render("Estado",{})
 })
-app.get("/cuenta",(req,res)=>{
-    res.render("cuenta",{})
+app.get("/configuracion",(req,res)=>{
+    res.render("configuracion",{})
 })
 app.get("/agregarCoche",(req,res)=>{
     res.render("agregarCoche",{})
