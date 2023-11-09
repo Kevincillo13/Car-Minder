@@ -44,3 +44,58 @@
 
 </body>
 </html>
+
+<script>
+    // Obtener referencias a los campos del formulario
+    const nombreInput = document.getElementById('nombre_u');
+    const apellidoInput = document.getElementById('apellido_u');
+    const correoInput = document.getElementById('correo_u');
+    const contraseñaInput = document.getElementById('contraseña_u');
+    const formulario = document.querySelector('form');
+  
+    formulario.addEventListener('submit', function (event) {
+      if (!validarCampos()) {
+        event.preventDefault(); // Evitar el envío del formulario si la validación falla
+      }
+    });
+  
+    function validarCampos() {
+      // Valida que el campo de nombre no esté vacío
+      if (nombreInput.value.trim() === '') {
+        alert('Por favor, ingrese su nombre.');
+        return false;
+      }
+  
+      // Valida que el campo de apellido no esté vacío
+      if (apellidoInput.value.trim() === '') {
+        alert('Por favor, ingrese su apellido.');
+        return false;
+      }
+  
+      // Valida que el campo de correo sea un correo electrónico válido
+      if (!validarCorreo(correoInput.value)) {
+        alert('Por favor, ingrese un correo electrónico válido.');
+        return false;
+      }
+  
+      // Valida que la contraseña no esté vacía y cumpla con tus criterios (longitud máxima, etc.)
+      if (!validarContraseña(contraseñaInput.value)) {
+        alert('Por favor, ingrese una contraseña válida.');
+        return false;
+      }
+  
+      return true; // Todos los campos son válidos
+    }
+  
+    function validarCorreo(correo) {
+      // Utiliza una expresión regular para verificar si es un correo electrónico válido
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+    }
+  
+    function validarContraseña(contraseña) {
+      // Agrega tus criterios de validación de contraseña aquí
+      // Por ejemplo, si deseas verificar una longitud máxima:
+      return contraseña.length <= 50;
+    }
+  </script>
+  
