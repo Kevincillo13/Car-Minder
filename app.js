@@ -67,19 +67,19 @@ app.get("/inicio",(req,res)=>{
 
 // Registro de usuario
 app.post("/register", (req, res) => {
-    const { correo_u, contraseña_u } = req.body;
+    const { nombre_u, correo_u, contraseña_u } = req.body;
     bcrypt.hash(contraseña_u, 10, (err, hash) => {
         if (err) {
             console.error("Error al encriptar la contraseña: ", err);
             res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
         } else {
-            const query = "INSERT INTO usuarios (correo_u, contraseña_u) VALUES (?, ?)";
-            db.query(query, [correo_u, hash], (err, results) => {
+            const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u, active) VALUES (?, ?, ?, 1)";
+            db.query(query, [nombre_u, correo_u, hash], (err, results) => {
                 if (err) {
                     console.error("Error al registrar el usuario: ", err);
                     res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
                 } else {
-                    res.redirect("/login");
+                    res.send('<script>alert("Usuario registrado con éxito"); window.location="/login";</script>');
                 }
             });
         }
