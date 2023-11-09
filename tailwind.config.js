@@ -7,6 +7,9 @@ module.exports = {
       fontFamily: {
         "Gabarito": ['Gabarito','sans-serif']
       },
+      backgroundImage: {
+        'logster': 'url(/assets/imagenes/logster.jpg)'
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -21,7 +24,8 @@ module.exports = {
         gray: colors.coolGray,
         slate: colors.blueGray,
 
-  }
+  },
+      
     },
   },
   plugins: [],

@@ -1,78 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+ <head>
+<!--en head se incluyen dependencias del archivo. Como lo son los archivos de estilos, fuentes de texto u otros.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro</title>
+    <title>Panel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./assets/styles.css"/> 
-    <link rel="stylesheet" href="./styles/barra.css"/>
-    <link rel="stylesheet" href="./styles/tailwindcss.css">
+    <link rel="stylesheet" href="/assets/barra.css">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
-<body class="font-Gabarito bg-sky-100">
-    <header class="bg-gradient-to-t from-sky-600 to-sky-500 flex-auto shadow-xl"  >
-        <nav class="flex justify-between items-center w-[92%] mx-auto">
-            <div>
-                <a href="index.html"><img class="w-16 rounded-full border-2 shadow-xl border-sky-700" src="imagenes/kokomi.jpg"></a>
+<body class="font-Gabarito">
+    <div class="sidebar">
+        <div class="top">
+            <div class="logo">>
+                    <i class="bx bxs-car-mechanic">
+                    </i>
+                    <span>CarMinder</span>
             </div>
-            <div class="nav-links duration-500 md:static absolute md:min-h-fit min-h-[20vh] left-0 top-[-100%] md:w-auto w-full flex items-center  ">
-                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8 md:bg-gradient-to-b md:from-transparent md:to-transparent w-full   items-center py-10  bg-gradient-to-b from-sky-600 to-sky-700">
-                    <li>
-                        <a class=" hover:text-sky-400 md:hover:text-cyan-200 " href="index.html">Inicio</a>
-                    </li>
-                    <li>
-                        <a class= "hover:text-sky-400 md:hover:text-cyan-200" href="panel.html">Panel</a>
-                    </li>
-                    <li>
-                        <a class= "hover:text-sky-400 md:hover:text-cyan-200" href="Cuenta.html">Cuenta</a>
-                    </li>
-                    <li>
-                        <a class= "hover:text-sky-400 md:hover:text-cyan-200" href="Ayuda.html">Ayuda</a>
-                    </li>
-                    <li>
-                        <a class= "hover:text-sky-400 md:hover:text-cyan-200" href="Foro.html">Foro</a>
-                    </li>
-
-
-                </ul>
-
-
-            </div>
-            <div class="flex items-center gap-6">
-                <button class="bg-sky-100 text-sky-900 px-5 py-2 rounded-full hover:bg-[#0891b2]" onclick="window.location.href='login.html'">iniciar sesión</button>
-                <button class="bg-sky-100 m-5 text-sky-900 px-5 py-2 rounded-full hover:bg-[#0891b2]" onclick="window.location.href='registro.html'">Unete</button>
-                <button>
-                    <ion-icon onclick="onToggleMenu(this)" class="text-3xl cursor-pointer md:hidden" name="menu"></ion-icon>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <script>
-        const navLinks = document.querySelector('.nav-links')
-        function onToggleMenu(e){
-            e.name = e.name === 'menu' ? 'close' :'menu'
-            navLinks.classList.toggle('top-[9%]')
-            
-        }
-    </script>
-    <div class="container">
-        <div>
-            
+            <i class="bx bx-menu" id="btn"></i>
         </div>
+        <div class="user">
+            <!--Se añade una imagen para mostrarse junto a la barra lateral-->
+            <!--Se utiliza la clase w para dar un ancho maximo-->
+            <img src="/assets/imagenes/kokomi.jpg" class="user-img w-14 rounded-full border-sky-950">
+            <div>
+                <!--Aqui se mostrara el nombre del usuario y el usuario-->
+                <p class="bold">Clint B</p>
+                <p>Admin</p>
+            </div>
+        </div>
+        <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
+        <ul>
+            <li>
+                <!--Se utiliza la etiqueta a junto a href para indicar un redireccionamiento a la sección indicada-->
+                <a href="#">
+                    <i class="bx bxs-grid-alt"></i><!--Estas clases importan iconos de ionicons-->
+                    <span class="nav-item">Barra</span>
+            </a>
+            <span class="tooltip">Barra</span>
+            </li>
+            <li>
+                <a href="Inicio">
+                    <i class="bx bx-home"></i>
+                    <span class="nav-item">Inicio</span>
+            </a>
+            <span class="tooltip">Inicio</span>
+            </li>
+            <li>
+                <a href="panel">
+                    <i class="bx bxs-car"></i>
+                    <span class="nav-item">Panel</span>
+            </a>
+            <span class="tooltip">Panel</span>
+            </li>
+            <li>
+                <a href="">
+                    <i class="bx bxs-user">pensando</i>
+                    <span class="nav-item">pensando</span>
+            </a>
+            <span class="tooltip"></span>
+            </li>
+            <li>
+                <a href="Foro">
+                    <i class="bx bx-notepad"></i>
+                    <span class="nav-item">Foro</span>
+            </a>
+            <span class="tooltip">Foro</span>
+            </li>
+            <li>
+                <a href="configuracion">
+                    <i class="bx bx-cog"></i>
+                    <span class="nav-item">Configuracion</span>
+            </a>
+            <span class="tooltip">Configuracion</span>
+            </li>
+            <li>
+                <a href="">
+                    <i class="bx bx-log-out"></i>
+                    <span class="nav-item">Logout</span>
+            </a>
+            <span class="tooltip">Logout</span>
+            </li>
+        </ul>
     </div>
-    <section class="flex justify-between flex-auto w-[80%] mt-12 px-10 mx-auto bg-gradient-to-t from-sky-200 to-sky-300 ">
-        <article>
-            <h2 class="text-center">Este es el foro</h2>
-        </article>
-    </section>
-
-    <footer class=" object-bottom bg-gradient-to-t from-sky-600 to-sky-500 flex-auto">
-        
-    </footer>
+    <script>
+        let btn = document.querySelector('#btn')
+        let sidebar = document.querySelector('.sidebar')
+    
+        btn.onclick = function (){
+            sidebar.classList.toggle('active')
+        };
+    </script>
 </body>
 </html>
