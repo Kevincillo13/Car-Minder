@@ -33,6 +33,7 @@
         width: 100%;
         margin-bottom: 1%;
         transition: ease 0.5s;
+        background: #082f49;
     }
     .actit h2{
         text-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
@@ -41,11 +42,7 @@
         text-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
         
     }
-    .actit:hover{
-        transition: ease 0.5s;
-        background: #082f49;
 
-    }
     .acbox1{
         float: left;
         border: solid 1px;
@@ -157,13 +154,10 @@
         width: 100%;
         margin-bottom: 1%;
         transition: ease 0.5s;
+        background: #082f49;
         
     }
-    .actit:hover{
-        transition: ease 0.5s;
-        background: #082f49;
 
-    }
     .acbox1{
 
         border: solid 1px;
