@@ -12,6 +12,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/assets/barra.css">
     <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/logster.css">
 </head>
 <body class="font-Gabarito">
     <div class="sidebar">
@@ -65,23 +66,28 @@
             </li>
         </ul>
     </div>
-    <div class="main-content flex-auto duration-500">
-        <div> <h1 class=" flex-auto container mx-10 text-3xl text-center duration-500 bg-slate-950/50 rounded- text-black bold py-2">Este es el foro</h1>
-        </div>
-        <div class="container flex-auto pt-2 my-4">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-semibold text-white mb-8 pt-2 bg-sky-800 text-center">Nueva Publicación</h2>
-                <form>
-                    <div class="mb-4">
-                        <label for="contenido" class="block text-gray-700 text-base font-medium font-semibold mb-2">¿Qué piensas?</label>
-                        <textarea id="contenido" name="contenido" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300" rows="4"></textarea>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="px-4 py-2 bg-sky-700 text-white rounded hover:bg-sky-950">Publicar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+
+    <div class="main-content  flex-auto duration-500">
+        <h1 class="text-center pt-6 text-6xl">Noticias</h1>
+        
+        <section class="bg-gray-200 p-6 rounded-lg shadow-lg container mx-auto flex-auto py-5 my-4">
+            <article class="bg-gray-200 p-6 rounded-lg shadow-lg container mx-auto flex-auto pt-2 my-4">
+                <h2 class="text-2xl">Fundación de Toyota </h2>
+                <p class="mt-6">Toyota Motor Corporation fue fundada en septiembre de 1933 cuando Toyoda Automatic Loom creó una nueva división dedicada a la producción de automóviles bajo la dirección del hijo del fundador, Kiichiro Toyoda. El primer motor tipo A se produjo en 1934 y fue empleado por primera vez en mayo de 1935 en el modelo A1. Toyota Motor Co. fue establecida como una empresa independiente en 1937.</p>
+                <img src="/assets/imagenes/Foro/1940.jpg" class=" forimg">
+                <p class="">Con el inicio de la Segunda Guerra Mundial la compañía se centró en producir camiones para el ejército japonés. Debido a la escasez de suministros en el país asiático, los camiones militares fueron fabricados lo más simple posible. Por citar un ejemplo, sólo tenían una luz en el centro del capó. Por suerte para Toyota, la guerra acabó poco antes de un bombardeo aliado programado en las fábricas de la compañía en Aichi. La producción comercial se retomó en 1947.</p>
+            </article>
+            <article class="bg-gray-200 p-6 rounded-lg shadow-lg container mx-auto flex-auto pt-2 my-12">
+                <h2 class="text-2xl">El Vocho</h2>
+                <p class="mt-6">Toyota Motor Corporation fue fundada en septiembre de 1933 cuando Toyoda Automatic Loom creó una nueva división dedicada a la producción de automóviles bajo la dirección del hijo del fundador, Kiichiro Toyoda. El primer motor tipo A se produjo en 1934 y fue empleado por primera vez en mayo de 1935 en el modelo A1. Toyota Motor Co. fue establecida como una empresa independiente en 1937.</p>
+                <img src="/assets/imagenes/Foro/vocho.jpg" class=" forimg">
+                <p class="">Su llegada a México se dio en el año de 1954, y se presentó como Volkswagen sedán, algo un tanto curioso porque el modelo no tiene nada que ver con ese tipo de carrocería, siendo mas fiel a las líneas de una carrocería tipo coupé, por el diseño y su configuración de dos puertas.
+
+                    Es bien sabido que a los mexicanos nos gusta poner apodos o sobrenombres cortos para facilitar nuestra comunicación, y con un modelo tan exitoso y de gusto tan popular, esto no iba a dejar esperar, siendo Vocho la contracción elegida para referirse al recién desempacado Volkswagen Beetle.
+                    
+                    Otras teorías apuntan que el nombre Vocho se deriva de la palabra “Boche”, que utilizaban los franceses durante la primera y segunda guerra mundial. Esta palabra se usaba para referirse a los alemanes, y tenía la connotación de asno, por lo que era un término despectivo que se dio a conocer entre los aliados que en ese momento eran la URSS, Francia, Inglaterra y por supuesto Estados Unidos.</p>
+            </article>
+        </section>
     </div>
     <script>
         let btn = document.querySelector('#btn')

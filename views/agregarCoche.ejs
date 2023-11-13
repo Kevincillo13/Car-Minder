@@ -12,6 +12,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/assets/barra.css">
     <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/agregarCoche.css">
 </head>
 <!--Se incluye la clase font que indica la fuente de texto a utilizar.-->
 <!--La clase m indica el tamaño del margen-->
@@ -71,48 +72,50 @@
             </li>
         </ul>
     </div>
-    </div>
-    <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
-    <div class="main-content container justify-between md:flex lg:flex-auto flex-auto  duration-500"><!-- Se asigna la clase main-content que incluye propiedades en css para la misma. Se incluye la clase duration que añade una transición al contenido -->
-        <div class="flex lg:flex-auto"><!-- Aquí se inician los formularios que solicitarán información al usuario, las cuales pasaran a la base de datos.  Cuentan con sus respectivas clases para el estilo de la pantalla, margenes padding y flex-->
-            <div class=" shadow-black/70 shadow-lg   flex-auto mt-6 px-10 duration-500  bg-blue-700/40 rounded text-black py-2">
-                <h1 class=" bg-sky-700 text-center text-2xl bold">Añadir un auto</h1>
-                <form method="post" class="" id="agregar_auto" class="text-left ">
+    <div class="main-content">
+        <div class="cocont">
+            <div class="actit">
+                <h1>Agregar coche</h1>
+                <h2>Completa el formulario y registra un nuevo auto a tu panel</h2>
+            </div>
+            <!--Se inicia el primer contenedor de la página. Se incluye el formulario para añadir un nuevo auto-->
+            <div class="acbox1 acbox1h">
+                <form method="post" class="" id="agregar_auto">
                     <br>
                     <!--Se inician formularios que muestran opciones predefinidas al usuario-->
-                    <label for="preferencia"><h3>Seleccione la marca del vehículo</h3>
-                        <select class="rounded-md" name="marca" id="preferencia">
+                    <label for="preferencia" class="aclabel"><h3>Seleccione la marca del vehículo</h3>
+                        <select name="marca" class="sel" id="preferencia">
                             <option value="Opción 1">Ford</option>
                             <option value="Opción 2">Chevrolet</option>
                             <option value="Opción 3">Toyota</option>
                             <option value="Opción 3">Honda</option>
                         </select>
                     </label><br>
-                    <label for="preferencia"><h3 class="mt-6">Seleccione el modelo de su vehículo</h3>
-                        <select class="rounded-md" name="modelo" id="preferencia">
+                    <label for="preferencia"><h3 >Seleccione el modelo de su vehículo</h3>
+                        <select  name="modelo" class="sel" id="preferencia">
                             <option value="Opción 1">Tsuru </option>
                             <option value="Opción 2">Opción 2</option>
                             <option value="Opción 3">Opción 3</option>
                         </select>
                     </label><br>
             
-                    <label for="preferencia"><h3 class="mt-6">¿Cuál es el kilometraje actual del coche?</h3>
-                        <select class="rounded-md" name="kilometraje" id="preferencia">
+                    <label for="preferencia"><h3>¿Cuál es el kilometraje actual del coche?</h3>
+                        <select  name="kilometraje" class="sel" id="preferencia">
                             <option value="Opción 1">Menos de 10,000 km</option>
                             <option value="Opción 2">10,000-50,000 km</option>
                             <option value="Opción 3">Más de 100,000 km</option>
                         </select>
                     </label><br>
-                    <label for="preferencia"><h3 class="mt-6">¿Cuándo fue la última vez que se realizó el mantenimiento?</h3>
-                        <select class="rounded-md" name="mantenimiento" id="preferencia">
+                    <label for="preferencia"><h3 >¿Cuándo fue la última vez que se realizó el mantenimiento?</h3>
+                        <select  name="mantenimiento" class="sel" id="preferencia">
                             <option value="Opción 1">Hace menos de un mes</option>
                             <option value="Opción 2">Hace 1-6 meses</option>
                             <option value="Opción 3">Hace 6-12 meses</option>
                             <option value="Opción 3">Hace más de un año</option>
                         </select>
                     </label><br>
-                    <label for="preferencia"><h3 class="mt-6">¿Qué tipo de combustible utiliza tu coche?</h3>
-                        <select class="rounded-md" name="combustible" id="preferencia">
+                    <label for="preferencia"><h3>¿Qué tipo de combustible utiliza tu coche?</h3>
+                        <select name="combustible" class="sel" id="preferencia">
                             <option value="Opción 1">Gasolina</option>
                             <option value="Opción 2">Diésel</option>
                             <option value="Opción 3">Eléctrico</option>
@@ -120,26 +123,17 @@
 
                         </select>
                     </label><br>
-                    <label for="preferencia"><h3 class="mt-6">¿Cuándo fue la última vez que cambiaste el aceite?
+                    <label for="preferencia"><h3>¿Cuándo fue la última vez que cambiaste el aceite?
                     </h3>
-                        <select class="rounded-md" name="aceite" id="preferencia">
+                        <select name="aceite" class="sel" id="preferencia">
                             <option value="Opción 1">Hace menos de un mes</option>
                             <option value="Opción 2">Hace 1-3 meses</option>
                             <option value="Opción 3">Hace más de 3 meses</option>
                             
                         </select>
                     </label><br>
-                    <label for="preferencia"><h3 class="mt-6">¿Cuándo fue la última vez que revisaste los frenos?</h3>
-                        <select class="rounded-md" name="frenos" id="preferencia">
-                            <option value="Opción 1">Hace menos de un mes</option>
-                            <option value="Opción 2">Hace 1-3 meses</option>
-                            <option value="Opción 3">Hace más de 3 meses</option>
-                            
-
-                        </select>
-                    </label><br>
-                    <label for="preferencia"><h3 class="mt-6"> ¿Cuándo fue la última vez que revisaste el líquido refrigerante?</h3>
-                        <select class="rounded-md" name="refrigerante" id="preferencia">
+                    <label for="preferencia"><h3>¿Cuándo fue la última vez que revisaste los frenos?</h3>
+                        <select class="sel" name="frenos" id="preferencia">
                             <option value="Opción 1">Hace menos de un mes</option>
                             <option value="Opción 2">Hace 1-3 meses</option>
                             <option value="Opción 3">Hace más de 3 meses</option>
@@ -147,36 +141,37 @@
 
                         </select>
                     </label><br>
-                    <div class=" mt-14 text-center">
-                        <button type="submit" class="rounded-md text-2xl shadow-sm hover:bg-slate-500 duration-500 shadow-black bg-white px-5 flex-auto object-center">Enviar</button>
+                    <label for="preferencia"><h3> ¿Cuándo fue la última vez que revisaste el líquido refrigerante?</h3>
+                        <select class="sel" name="refrigerante" id="preferencia">
+                            <option value="Opción 1">Hace menos de un mes</option>
+                            <option value="Opción 2">Hace 1-3 meses</option>
+                            <option value="Opción 3">Hace más de 3 meses</option>
+                            
+
+                        </select>
+                    </label><br>
+                    <div class="buttondiv">
+                        <button type="submit" class="buttonag">Agregar</button>
                     </div>
                     
                 </form>
-            
 
-            
-            
             </div>
-      
-        </div><!--Se cierra el div-->
-        <!--Se crea una nueva clase en la que se muestra la imagen del vehículo seleccionado acompañado de una breve descripción-->
-        <div class=" flex  lg:mx-0 md:mx-0 mx-auto  mt-6  w-72 shadow-black/70 shadow-lg  px-5 duration-500 bg-blue-700/40 rounded text-black py-2">
-            <div class=" flex-auto text-center  ">
-                <img id="auto" src="imagenes/Vehiculos automotrices/Tsuru.jpg" class="w-72 mt-6 mb-3 object-center flex-auto" >
-                <h1 class=" bg-sky-700 mb-5 text-2xl bold">Tsuru Tuneado</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate debitis incidunt suscipit consequatur laudantium temporibus autem at impedit quam dolorem neque sunt sed, odit eligendi iste atque a et praesentium.
-                Voluptatibus, ullam saepe voluptates facilis minus repellat, aliquam voluptatum laudantium delectus, officiis dolorum explicabo accusamus! Nulla nemo modi illum ducimus enim animi voluptate vero error. Rem in sint alias voluptatibus.</p>
+            <!--Se inicia el segundo contenedor. Se incluyen ciertos datos-->
+            <div class="acbox2 acbox2h">
+                <div>
+                    <img id="auto"  style="border-radius: 4px;" src="/assets/imagenes/Vehiculos automotrices/Tsuru.jpg">
+                    <h1>Tsuru Tuneado</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate debitis incidunt suscipit consequatur laudantium temporibus autem at impedit quam dolorem neque sunt sed, odit eligendi iste atque a et praesentium.
+                    Voluptatibus, ullam saepe voluptates facilis minus repellat, aliquam voluptatum laudantium delectus, officiis dolorum explicabo accusamus! Nulla nemo modi illum ducimus enim animi voluptate vero error. Rem in sint alias voluptatibus.</p>
+                </div>
+
             </div>
 
         </div>
-    
 
     </div>
-   
-    
- 
 
-    
 </body>
 <!--Se crea un script en el cual se le establecen distintas propiedades y comportamientos a la barra lateral de la página-->
 <script>
