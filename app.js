@@ -1,30 +1,29 @@
-    //Declarar variables constantes
-const express= require("express");
+const express = require("express");
 const session = require("express-session");
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const secret = "carmensemeperdiolacadenita";
 const mysql = require("mysql2");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const path = require("path");
-const app= express(); 
+const app = express();
 const validator = require('validator');
 
-    //Configuraciones
+// Configuraciones
 app.set("view engine", "ejs"),
 app.set("views", path.join(__dirname, "views"));
-app.use("/assets",express.static("assets"));
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use("/assets", express.static("assets"));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     secret: secret,
     resave: false,
     saveUninitialized: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.listen (3000, (req,res)=> {
-    console.log("Corriendo en el puerto 3000")
-})
-
-    //Conexion a base de datos
+// Conexion a base de datos
 const db = mysql.createConnection({
     host: "localhost",
     port: "3308",
@@ -33,37 +32,104 @@ const db = mysql.createConnection({
     database: "carminder"
 });
 
-db.connect((err)=>{
-    if (err){
+db.connect((err) => {
+    if (err) {
         console.log("Error al conectar a la base de datos: " + err.stack);
-    } 
-    else{
+    } else {
         console.log("Conexión exitosa a la base de datos");
     }
-})
+});
 
-    // Paginas 
-app.get("/login",(req,res)=>{
-    res.render("login",{})
-})
-app.get("/register",(req,res)=>{
-    res.render("register",{})
-})
-app.get("/foro",(req,res)=>{
-    res.render("Foro",{})
-})
-app.get("/estado",(req,res)=>{
-    res.render("Estado",{})
-})
-app.get("/configuracion",(req,res)=>{
-    res.render("configuracion",{})
-})
-app.get("/agregarCoche",(req,res)=>{
-    res.render("agregarCoche",{})
-})
-app.get("/inicio",(req,res)=>{
-    res.render("inicio",{})
-})
+// Configuración de Passport para trabajar con sesiones
+passport.serializeUser((user, done) => {
+    done(null, user.id_usuario); // Utilizar el ID del usuario en la sesión
+});
+
+passport.deserializeUser((id, done) => {
+    // Obtener detalles del usuario desde la base de datos usando el ID
+    const query = "SELECT * FROM usuarios WHERE id_usuario = ?";
+    db.query(query, [id], (err, results) => {
+        if (err) {
+            console.error("Error al buscar el usuario: ", err);
+            return done(err);
+        }
+
+        if (results.length === 0) {
+            console.log("Usuario no encontrado");
+            return done(null, false, { message: 'Usuario no encontrado' });
+        }
+
+        const usuario = results[0];
+        return done(null, usuario);
+    });
+});
+
+    // Configuración de Passport para la estrategia local de autenticación
+passport.use(new LocalStrategy(
+    { usernameField: 'correo_u', passwordField: 'contraseña_u' },
+    (correo_u, contraseña_u, done) => {
+        console.log(`Intento de inicio de sesión para el correo: ${correo_u}`);
+        
+    // Buscar el usuario en la base de datos por correo
+const query = "SELECT * FROM usuarios WHERE correo_u = ?";
+    db.query(query, [correo_u], (err, results) => {
+    if (err) {
+        console.error("Error al buscar el usuario: ", err);
+        return done(err);
+    }
+    if (results.length === 0) {
+        console.log("Usuario no encontrado");
+        return done(null, false, { message: 'Usuario no encontrado' });
+    }
+const usuario = results[0];
+
+    // Comparar contraseñas
+bcrypt.compare(contraseña_u, usuario.contraseña_u, (err, result) => {
+    if (err) {
+        console.error("Error al comparar contraseñas: ", err);
+        return done(err);
+    }
+    if (result) {
+        console.log("Inicio de sesión exitoso");
+        return done(null, usuario);
+    } else {
+        console.log("Contraseña incorrecta");
+        return done(null, false, { message: 'Contraseña incorrecta' });
+    }
+});
+    });
+    }
+));
+
+// Rutas
+app.get("/login", (req, res) => {
+    res.render("login", {})
+});
+
+app.get("/register", (req, res) => {
+    res.render("register", {})
+});
+
+app.get("/foro", (req, res) => {
+    res.render("Foro", {})
+});
+
+app.get("/estado", (req, res) => {
+    res.render("Estado", {})
+});
+
+app.get("/configuracion", (req, res) => {
+    res.render("configuracion", {})
+});
+
+app.get("/agregarCoche", (req, res) => {
+    res.render("agregarCoche", {})
+});
+
+app.get("/inicio", ensureAuthenticated, (req, res) => {
+    console.log(req.user); // Agrega este log para verificar el usuario autenticado
+    res.render("inicio", {});
+});
 
 // Registro de usuario
 app.post("/register", (req, res) => {
@@ -87,25 +153,31 @@ app.post("/register", (req, res) => {
 });
 
 // Inicio de sesión
-app.post("/login", (req, res) => {
-    const { correo_u, contraseña_u } = req.body;
-    const query = "SELECT * FROM usuarios WHERE correo_u = ?";
-    db.query(query, [correo_u], (err, results) => {
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/inicio',
+    failureRedirect: '/login?error=1'
+}));
+
+// Ruta para cerrar sesión
+app.get('/cerrar-sesion', (req, res) => {
+    req.logout((err) => {
         if (err) {
-            console.error("Error al buscar el usuario: ", err);
-            res.status(500).send('<script>alert("Error al iniciar sesión"); window.location="/login";</script>');
-        } else if (results.length > 0) {
-            const usuario = results[0];
-            bcrypt.compare(contraseña_u, usuario.contraseña_u, (err, result) => {
-                if (result) {
-                    req.session.userId = usuario.id_usuario;
-                    res.redirect("/inicio");
-                } else {
-                    res.status(400).send('<script>alert("Contraseña incorrecta"); window.location="/login";</script>');
-                }
-            });
-        } else {
-            res.status(400).send('<script>alert("Usuario no encontrado"); window.location="/login";</script>');
+            console.error("Error al cerrar sesión:", err);
+            return next(err);
         }
+        console.log("Sesión cerrada con éxito");
+        res.redirect('/login');
     });
+});
+
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login'); // Redirigir a la página de inicio de sesión si no está autenticado
+}
+
+// Iniciar el servidor
+app.listen(3000, () => {
+    console.log("Corriendo en el puerto 3000");
 });

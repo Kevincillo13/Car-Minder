@@ -66,9 +66,16 @@
 </body>
 <!--Se crea un script en el cual se le establecen distintas propiedades y comportamientos a la barra lateral de la página-->
 <script>
-    let btn = document.querySelector('#btn')
-    let sidebar = document.querySelector('.sidebar')
-    btn.onclick = function (){
-        sidebar.classList.toggle('active')};
+    document.addEventListener("DOMContentLoaded", function() {
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+
+        if (btn) {
+            btn.onclick = function() {
+                sidebar.classList.toggle('active');
+            };
+        }
+    });
 </script>
+
 </html> 
