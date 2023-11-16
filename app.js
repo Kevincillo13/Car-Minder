@@ -111,35 +111,37 @@ app.get("/register", (req, res) => {
 });
 
 app.get("/foro", (req, res) => {
-    res.render("Foro", {})
+    res.render("Foro", { user: req.user });
 });
 
-app.get("/estado", (req, res) => {
-    res.render("Estado", {})
+app.get("/estado", ensureAuthenticated, (req, res) => {
+    res.render("Estado", { user: req.user });
 });
 
-app.get("/configuracion", (req, res) => {
-    res.render("configuracion", {})
+app.get("/configuracion", ensureAuthenticated, (req, res) => {
+    res.render("configuracion", { user: req.user });
 });
 
-app.get("/agregarCoche", (req, res) => {
-    res.render("agregarCoche", {})
+app.get("/agregarCoche", ensureAuthenticated, (req, res) => {
+    res.render("agregarCoche", { user: req.user });
 });
 
 // En tu ruta de inicio, donde obtienes los coches para mostrar en la página principal
 app.get("/inicio", ensureAuthenticated, (req, res) => {
-    const userId = req.user.id_usuario; // Obtén el ID del usuario autenticado
+    const userId = req.user.id_usuario;
     const query = "SELECT * FROM carros_usuarios WHERE id_usuario = ?";
+    
     db.query(query, [userId], (err, results) => {
         if (err) {
             console.error("Error al obtener coches del usuario: ", err);
             res.status(500).send("Error al obtener coches del usuario");
         } else {
-            // Renderiza la página de inicio y pasa los coches del usuario
-            res.render("inicio", { coches: results });
+            // Renderiza la página de inicio y pasa los coches del usuario y la información del usuario
+            res.render("inicio", { coches: results, user: req.user });
         }
     });
 });
+
 
 // Registro de usuario
 app.post("/register", (req, res) => {
