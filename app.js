@@ -189,7 +189,30 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/login'); // Redirigir a la página de inicio de sesión si no está autenticado
 }
 
+//AgregarCoche
+app.post('/agregarCoche', ensureAuthenticated, async (req, res) => {
+    try {
+        const userId = req.user.id_usuario;
+        const { marca, modelo, km_actual, uc_llantas, uc_aceite, uc_frenos, uc_liquido_frenos, uc_aceite_direccion, uc_filtro_aire, uc_bujias, uc_correas, uc_filtro_combustible, uc_suspension, uc_liquido_transmision} = req.body;
+
+        // Generar la ruta de la imagen
+        const ruta_imagen = `/assets/imagenes/Vehiculos automotrices/${marca} ${modelo}.jpg`;
+
+        // Insertar datos en la base de datos
+        const query = "INSERT INTO carros_usuarios (id_usuario, marca, modelo, km_actual, uc_llantas, uc_aceite, uc_frenos, uc_liquido_frenos, uc_aceite_direccion, uc_filtro_aire, uc_bujias, uc_correas, uc_filtro_combustible, uc_suspension, uc_liquido_transmision, ruta_imagen, fecha_registro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+        await db.query(query, [userId, marca, modelo, km_actual, uc_llantas, uc_aceite, uc_frenos, uc_liquido_frenos, uc_aceite_direccion, uc_filtro_aire, uc_bujias, uc_correas, uc_filtro_combustible, uc_suspension, uc_liquido_transmision, ruta_imagen]);
+
+        // Redireccionar a la página de inicio después de agregar el coche
+        res.redirect('/inicio');
+    } catch (error) {
+        console.error('Error al procesar el formulario de agregar coche:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
 // Iniciar el servidor
 app.listen(3000, () => {
     console.log("Corriendo en el puerto 3000");
 });
+
+
