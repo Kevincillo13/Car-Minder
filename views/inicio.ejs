@@ -71,20 +71,20 @@
         <div> <h1 class=" flex-auto container mx-10 text-3xl text-center duration-500 bg-slate-950/50 rounded- text-black bold py-2">Aquí van tus coches</h1>
             <a href="agregarCoche"> <button class="bg-sky-950 m-4 flex left-0 rounded-md text-center p-2 text-white hover:bg-sky-800">Agregar coche</button></a>
         </div>
-        <div class="flex ">
-            <div class="flex justify-between m-4">
-                <div class="bg-white rounded-lg shadow-lg p-4 h-50 w-72">
-                    <img src="/assets/imagenes/Vehiculos automotrices/Nissan-Tsuru-11-1024x768.jpg" alt="Imagen" class="w-50 mx-auto rounded-xl">
-                    <a href="#" class="block w-full bg-sky-700 hover:bg-sky-950 text-white text-center py-2 mt-4 rounded-full duration-500">Tsuru Tuneado</a>
+        <div class="flex">
+            <% coches.forEach(coche => { %>
+                <div class="flex justify-between m-4">
+                    <div class="bg-white rounded-lg shadow-lg p-4 h-50 w-72">
+                        <% if (coche.ruta_imagen) { %>
+                            <img src="<%= coche.ruta_imagen %>" alt="Imagen del coche" class="w-50 mx-auto rounded-xl">
+                        <% } else { %>
+                            <p>Imagen no disponible</p>
+                        <% } %>
+                        <a href="#" class="block w-full bg-sky-700 hover:bg-sky-950 text-white text-center py-2 mt-4 rounded-full duration-500"><%= coche.nombre %></a>
+                    </div>
                 </div>
-            </div>
-            <div class="flex justify-between m-4">
-                <div class="bg-white rounded-lg shadow-lg p-4 h-50 w-72 ml-4">
-                    <img src="/assets/imagenes/Vehiculos automotrices/maxresdefault (1).jpg" alt="Imagen" class="w-50 mx-auto rounded-xl">
-                    <a href="#" class="block w-full bg-sky-700 hover:bg-sky-950 text-white text-center bottom-5 py-2 mt-4 rounded-full duration-500">March Tuneado</a>
-                </div>
-            </div>
-        </div>
+            <% }); %>
+        </div>        
     </div>
 
     <script>

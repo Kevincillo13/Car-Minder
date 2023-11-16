@@ -126,9 +126,19 @@ app.get("/agregarCoche", (req, res) => {
     res.render("agregarCoche", {})
 });
 
+// En tu ruta de inicio, donde obtienes los coches para mostrar en la página principal
 app.get("/inicio", ensureAuthenticated, (req, res) => {
-    console.log(req.user); // Agrega este log para verificar el usuario autenticado
-    res.render("inicio", {});
+    const userId = req.user.id_usuario; // Obtén el ID del usuario autenticado
+    const query = "SELECT * FROM carros_usuarios WHERE id_usuario = ?";
+    db.query(query, [userId], (err, results) => {
+        if (err) {
+            console.error("Error al obtener coches del usuario: ", err);
+            res.status(500).send("Error al obtener coches del usuario");
+        } else {
+            // Renderiza la página de inicio y pasa los coches del usuario
+            res.render("inicio", { coches: results });
+        }
+    });
 });
 
 // Registro de usuario
@@ -139,7 +149,7 @@ app.post("/register", (req, res) => {
             console.error("Error al encriptar la contraseña: ", err);
             res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
         } else {
-            const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u, active) VALUES (?, ?, ?, 1)";
+            const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u,created_at , active) VALUES (?, ?, ?,NOW() , 1)";
             db.query(query, [nombre_u, correo_u, hash], (err, results) => {
                 if (err) {
                     console.error("Error al registrar el usuario: ", err);
