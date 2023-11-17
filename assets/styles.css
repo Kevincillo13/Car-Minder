@@ -568,10 +568,6 @@ video {
   }
 }
 
-.bottom-5 {
-  bottom: 1.25rem;
-}
-
 .left-0 {
   left: 0px;
 }
@@ -610,10 +606,6 @@ video {
 
 .mb-5 {
   margin-bottom: 1.25rem;
-}
-
-.ml-4 {
-  margin-left: 1rem;
 }
 
 .mt-12 {

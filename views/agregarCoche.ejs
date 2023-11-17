@@ -249,48 +249,83 @@
         btn.onclick = function (){
             sidebar.classList.toggle('active')
         };
-
+    
         document.getElementById("marca").addEventListener("change", function () {
             // Limpiar las opciones actuales
             while (modeloSelect.firstChild) {
                 modeloSelect.removeChild(modeloSelect.firstChild);
             }
-
+    
             // Obtener el valor seleccionado de la marca
             let marca = this.value;
-
-            // Obtener las opciones correspondientes al modelo de la marca seleccionada
-            let modelos = obtenerModelos(marca);
-
-            // Llenar las nuevas opciones
-            modelos.forEach(function (modelo) {
-                let option = document.createElement("option");
-                option.value = modelo;
-                option.text = modelo;
-                modeloSelect.appendChild(option);
-            });
-
-            // Actualizar la imagen y la información del auto
-            autoImage.src = `/assets/imagenes/Vehiculos automotrices/${marca} ${modeloSelect.value}.jpg`;
-            document.querySelector(".acbox2h h1").innerText = `${marca} ${modeloSelect.value}`;
+    
+            // Mostrar la imagen y la información del coche solo si se selecciona una marca
+            if (marca) {
+                // Mostrar modelos correspondientes a la marca
+                cargarModelos(marca);
+    
+                // Actualizar la imagen y la información del auto
+                autoImage.src = `/assets/imagenes/Vehiculos automotrices/${marca} ${modeloSelect.value}.jpg`;
+                document.querySelector(".acbox2h h1").innerText = `${marca} ${modeloSelect.value}`;
+                document.querySelector(".acbox2h p").innerText = "Información adicional del coche...";
+            } else {
+                // Limpiar la imagen y la información del coche si no se selecciona ninguna marca
+                autoImage.src = "";
+                document.querySelector(".acbox2h h1").innerText = "";
+                document.querySelector(".acbox2h p").innerText = "";
+            }
+        });
+    
+        document.getElementById("modelo").addEventListener("change", function () {
+            // Actualizar la imagen y la información del auto cuando se selecciona un modelo
+            autoImage.src = `/assets/imagenes/Vehiculos automotrices/${document.getElementById("marca").value} ${this.value}.jpg`;
+            document.querySelector(".acbox2h h1").innerText = `${document.getElementById("marca").value} ${this.value}`;
             document.querySelector(".acbox2h p").innerText = "Información adicional del coche...";
         });
-
-        // Función de ejemplo para obtener modelos según la marca
-        function obtenerModelos(marca) {
-            // Lógica para obtener modelos según la marca
-            // Reemplaza esto con tu propia lógica
-            if (marca === "Ford") {
-                return ["Modelo1", "Modelo2", "Modelo3"];
-            } else if (marca === "Nissan") {
-                return ["ModeloA", "ModeloB", "ModeloC"];
-            } else {
-                return [];
+    
+        // Función para cargar modelos según la marca
+        function cargarModelos(marca) {
+            switch (marca) {
+                case "Ford":
+                    agregarModelo("Ranger");
+                    agregarModelo("Figo");
+                    agregarModelo("Escape");
+                    agregarModelo("Focus");
+                    agregarModelo("Mustang");
+                    agregarModelo("Fusion");
+                    agregarModelo("Explorer");
+                    agregarModelo("Fiesta");
+                    agregarModelo("Edge");
+                    agregarModelo("Expedition");
+                    break;
+                case "Nissan":
+                    agregarModelo("Sentra");
+                    agregarModelo("Tsuru");
+                    agregarModelo("Platina");
+                    agregarModelo("Versa");
+                    agregarModelo("Altima");
+                    agregarModelo("March");
+                    agregarModelo("Tiida");
+                    agregarModelo("Aprio");
+                    agregarModelo("X-Trail");
+                    agregarModelo("NP 300");
+                    break;
+                // Agrega más casos según las marcas que tengas
             }
         }
-
+    
+        // Función para agregar un modelo al select
+        function agregarModelo(modelo) {
+            let option = document.createElement("option");
+            option.value = modelo;
+            option.text = modelo;
+            modeloSelect.appendChild(option);
+        }
+    
         // Trigger change event para inicializar las opciones de modelos
         document.getElementById("marca").dispatchEvent(new Event("change"));
     </script>
-</body>
-</html>
+    
+    </body>
+    </html>
+    
