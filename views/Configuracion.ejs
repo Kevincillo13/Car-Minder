@@ -78,8 +78,8 @@
                 <div class="cuenta">
                     <i class='bx bx-user-circle bx-lg cuentad'></i>
                     <div class="">
-                        <h2>Nombre</h2>
-                        <h3>Aquí va el nombre de usuario</h3>
+                        <h2>Nombre:</h2>
+                        <h3><%= user.nombre_u %></h3>
                         <button id="butnom" class="buttonc">Modificar nombre</button>
                         <div id="nomcont" class="oculto">
                             <form>
@@ -89,8 +89,8 @@
                             </form>
 
                         </div>
-                        <h2>@Email</h2>
-                        <h3>Aquí va el Email</h3>
+                        <h2>Correo electrónico:</h2>
+                        <h3><%= user.correo_u %></h3>
                         <button id="butema" class="buttonc">Modificar correo</button>
                         <div id="corcont" class="oculto">
                             <form>
@@ -148,43 +148,31 @@
     
 </body>
 <script>
-    let btn = document.querySelector('#btn')
-    let sidebar = document.querySelector('.sidebar')
-    btn.onclick = function (){
-        sidebar.classList.toggle('active')};
+    let btn = document.querySelector('#btn');
+    let sidebar = document.querySelector('.sidebar');
+    btn.onclick = function () {
+        sidebar.classList.toggle('active');
+    };
+
+    document.getElementById('butnom').addEventListener('click', function () {
+        var butnom = document.getElementById('nomcont');
+        butnom.classList.toggle('mostrado');
+    });
+
+    document.getElementById('butema').addEventListener('click', function () {
+        var butema = document.getElementById('corcont');
+        butema.classList.toggle('mostrado');
+    });
+
+    document.getElementById('buttel').addEventListener('click', function () {
+        var buttel = document.getElementById('telcont');
+        buttel.classList.toggle('mostrado');
+    });
+
+    document.getElementById('delbut').addEventListener('click', function () {
+        var delbut = document.getElementById('delcont');
+        delbut.classList.toggle('mostrado');
+    });
 </script>
-<script>
-    document.getElementById('butnom').addEventListener('click', function() {
-    var butnom = document.getElementById('nomcont');
-    butnom.classList.toggle('mostrado');
-});
 
-
-</script>
-<script>
-    document.getElementById('butema').addEventListener('click', function() {
-    var butema = document.getElementById('corcont');
-    butema.classList.toggle('mostrado');
-});
-
-
-</script>
-<script>
-    document.getElementById('buttel').addEventListener('click', function() {
-    var buttel = document.getElementById('telcont');
-    buttel.classList.toggle('mostrado');
-});
-
-
-
-</script>
-<script>
-    document.getElementById('delbut').addEventListener('click', function() {
-    var delbut = document.getElementById('delcont');
-    delbut.classList.toggle('mostrado');
-});
-
-
-
-</script>
 </html>

@@ -145,24 +145,44 @@ app.get("/inicio", ensureAuthenticated, (req, res) => {
 
 // Registro de usuario
 app.post("/register", (req, res) => {
-    const { nombre_u, correo_u, contraseña_u } = req.body;
-    bcrypt.hash(contraseña_u, 10, (err, hash) => {
-        if (err) {
-            console.error("Error al encriptar la contraseña: ", err);
-            res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
-        } else {
-            const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u,created_at , active) VALUES (?, ?, ?,NOW() , 1)";
-            db.query(query, [nombre_u, correo_u, hash], (err, results) => {
-                if (err) {
-                    console.error("Error al registrar el usuario: ", err);
-                    res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
-                } else {
+    const { nombre_u, apellido_u, correo_u, contraseña_u } = req.body;
+
+    // Verificar si el correo ya está registrado
+    db.query('SELECT id_usuario FROM usuarios WHERE correo_u = ?', [correo_u], (error, results) => {
+        if (error) {
+            console.error("Error:", error);
+            return res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+        }
+
+        if (results.length > 0) {
+            // El correo ya está en uso
+            return res.status(400).send('<script>alert("El correo electrónico ya está registrado"); window.location="/register";</script>');
+        }
+
+        // Hash de la contraseña
+        bcrypt.hash(contraseña_u, 10, (hashError, hash) => {
+            if (hashError) {
+                console.error("Error al generar el hash:", hashError);
+                return res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+            }
+
+            // Si el correo no está registrado, proceder con la inserción
+            db.query('INSERT INTO usuarios (nombre_u, correo_u, contraseña_u) VALUES (?, ?, ?)',
+                [nombre_u + " " + apellido_u, correo_u, hash],
+                (insertError, results) => {
+                    if (insertError) {
+                        console.error("Error al insertar en la base de datos:", insertError);
+                        return res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+                    }
+
+                    // Registro exitoso
                     res.send('<script>alert("Usuario registrado con éxito"); window.location="/login";</script>');
                 }
-            });
-        }
+            );
+        });
     });
 });
+
 
 // Inicio de sesión
 app.post('/login', passport.authenticate('local', {
