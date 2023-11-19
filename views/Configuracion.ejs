@@ -127,9 +127,8 @@
                         <h3 style="margin-top: 15px;">Recuerda que no hay marcha atras al </h3>
                         <button id="delbut" class="buttonc">Eliminar cuenta</button>
                         <div id="delcont" class="oculto">
-                            <form>
+                            <form id="eliminarCuentaForm" action="/eliminar-cuenta" method="POST">
                                 <button class="sub" style="margin-bottom: 20px; padding-left: 4px;" type="submit">Aceptar</button>
-
                             </form>
                         </div>
                     </div>
@@ -140,33 +139,37 @@
 
     </div>
     
-</body>
-<script>
-    let btn = document.querySelector('#btn');
-    let sidebar = document.querySelector('.sidebar');
-    btn.onclick = function () {
-        sidebar.classList.toggle('active');
-    };
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+        btn.onclick = function () {
+            sidebar.classList.toggle('active');
+        };
+    
+        document.getElementById('butnom').addEventListener('click', function () {
+            var butnom = document.getElementById('nomcont');
+            butnom.classList.toggle('mostrado');
+        });
+    
+        document.getElementById('butema').addEventListener('click', function () {
+            var butema = document.getElementById('corcont');
+            butema.classList.toggle('mostrado');
+        });
+    
+        document.getElementById('buttel').addEventListener('click', function () {
+            var buttel = document.getElementById('telcont');
+            buttel.classList.toggle('mostrado');
+        });
+    
+        document.getElementById('delbut').addEventListener('click', function () {
+            var delbut = document.getElementById('delcont');
+            delbut.classList.toggle('mostrado');
+        });
 
-    document.getElementById('butnom').addEventListener('click', function () {
-        var butnom = document.getElementById('nomcont');
-        butnom.classList.toggle('mostrado');
-    });
-
-    document.getElementById('butema').addEventListener('click', function () {
-        var butema = document.getElementById('corcont');
-        butema.classList.toggle('mostrado');
-    });
-
-    document.getElementById('buttel').addEventListener('click', function () {
-        var buttel = document.getElementById('telcont');
-        buttel.classList.toggle('mostrado');
-    });
-
-    document.getElementById('delbut').addEventListener('click', function () {
+        function eliminarCuenta() {
         var delbut = document.getElementById('delcont');
         delbut.classList.toggle('mostrado');
-    });
-</script>
-
+    }
+    </script>
+</body>
 </html>
