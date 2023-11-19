@@ -11,13 +11,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./assets/styles.css"/> 
     <link rel="stylesheet" href="/assets/barra.css">
-    <link rel="stylesheet" href="/assets/styles.css">
     <link rel="stylesheet" href="/assets/general.css">
 </head>
 <body class="font-Gabarito">
     <div class="sidebar" style="height: 150%;">
         <div class="top">
-            <div class="logo">>
+            <div class="logo">
                     <i class="bx bxs-car-mechanic">
                     </i>
                     <span>CarMinder</span>
@@ -82,23 +81,19 @@
                         <h3><%= user.nombre_u %></h3>
                         <button id="butnom" class="buttonc">Modificar nombre</button>
                         <div id="nomcont" class="oculto">
-                            <form>
+                            <form id="updateNombreForm" action="/actualizar-nombre" method="POST">
                                 <input class="inp" type="text" id="nombre_u" name="nombre_u">
                                 <button class="sub" type="submit">Aceptar</button>
-
                             </form>
-
                         </div>
                         <h2>Correo electrónico:</h2>
                         <h3><%= user.correo_u %></h3>
                         <button id="butema" class="buttonc">Modificar correo</button>
                         <div id="corcont" class="oculto">
-                            <form>
+                            <form id="updateCorreoForm" action="/actualizar-correo" method="POST">
                                 <input class="inp" type="text" id="correo_u" name="correo_u">
                                 <button class="sub" type="submit">Aceptar</button>
-
                             </form>
-
                         </div>
                         <h2>Télefono</h2>
                         <h3>Aqui va el telefono</h3>
@@ -109,7 +104,6 @@
                                 <button class="sub" style="margin-bottom: 20px;" type="submit">Aceptar</button>
 
                             </form>
-
                         </div>
                     </div>
                 </div>

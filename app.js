@@ -233,6 +233,43 @@ app.post('/agregarCoche', ensureAuthenticated, (req, res) => {
     });
 });
 
+// Ruta para manejar la actualización de nombre
+app.post("/actualizar-nombre", ensureAuthenticated, (req, res) => {
+    const userId = req.user.id_usuario;
+    const { nombre_u } = req.body;
+
+    // Realiza la consulta de actualización en la base de datos
+    const query = "UPDATE usuarios SET nombre_u = ? WHERE id_usuario = ?";
+
+    db.query(query, [nombre_u, userId], (error, results) => {
+        if (error) {
+            console.error("Error al actualizar nombre:", error);
+            res.status(500).send('<script>alert("Error al actualizar nombre"); window.location="/configuracion";</script>');
+        } else {
+            // Actualización exitosa
+            res.send('<script>alert("Actualización exitosa"); window.location="/configuracion";</script>');
+        }
+    });
+});
+
+// Ruta para manejar la actualización de correo
+app.post("/actualizar-correo", ensureAuthenticated, (req, res) => {
+    const userId = req.user.id_usuario;
+    const { correo_u } = req.body;
+
+    // Realiza la consulta de actualización en la base de datos
+    const query = "UPDATE usuarios SET correo_u = ? WHERE id_usuario = ?";
+
+    db.query(query, [correo_u, userId], (error, results) => {
+        if (error) {
+            console.error("Error al actualizar correo:", error);
+            res.status(500).send('<script>alert("Error al actualizar correo"); window.location="/configuracion";</script>');
+        } else {
+            // Actualización exitosa
+            res.send('<script>alert("Actualización exitosa"); window.location="/configuracion";</script>');
+        }
+    });
+});
 
 // Iniciar el servidor
 app.listen(3000, () => {
