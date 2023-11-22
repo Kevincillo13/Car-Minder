@@ -11,13 +11,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./assets/styles.css"/> 
     <link rel="stylesheet" href="/assets/barra.css">
-    <link rel="stylesheet" href="/assets/styles.css">
     <link rel="stylesheet" href="/assets/general.css">
 </head>
 <body class="font-Gabarito">
     <div class="sidebar" style="height: 150%;">
         <div class="top">
-            <div class="logo">>
+            <div class="logo">
                     <i class="bx bxs-car-mechanic">
                     </i>
                     <span>CarMinder</span>
@@ -78,27 +77,23 @@
                 <div class="cuenta">
                     <i class='bx bx-user-circle bx-lg cuentad'></i>
                     <div class="">
-                        <h2>Nombre</h2>
-                        <h3>Aquí va el nombre de usuario</h3>
+                        <h2>Nombre:</h2>
+                        <h3><%= user.nombre_u %></h3>
                         <button id="butnom" class="buttonc">Modificar nombre</button>
                         <div id="nomcont" class="oculto">
-                            <form>
+                            <form id="updateNombreForm" action="/actualizar-nombre" method="POST">
                                 <input class="inp" type="text" id="nombre_u" name="nombre_u">
                                 <button class="sub" type="submit">Aceptar</button>
-
                             </form>
-
                         </div>
-                        <h2>@Email</h2>
-                        <h3>Aquí va el Email</h3>
+                        <h2>Correo electrónico:</h2>
+                        <h3><%= user.correo_u %></h3>
                         <button id="butema" class="buttonc">Modificar correo</button>
                         <div id="corcont" class="oculto">
-                            <form>
+                            <form id="updateCorreoForm" action="/actualizar-correo" method="POST">
                                 <input class="inp" type="text" id="correo_u" name="correo_u">
                                 <button class="sub" type="submit">Aceptar</button>
-
                             </form>
-
                         </div>
                         <h2>Télefono</h2>
                         <h3>Aqui va el telefono</h3>
@@ -109,7 +104,6 @@
                                 <button class="sub" style="margin-bottom: 20px;" type="submit">Aceptar</button>
 
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -133,9 +127,8 @@
                         <h3 style="margin-top: 15px;">Recuerda que no hay marcha atras al </h3>
                         <button id="delbut" class="buttonc">Eliminar cuenta</button>
                         <div id="delcont" class="oculto">
-                            <form>
+                            <form id="eliminarCuentaForm" action="/eliminar-cuenta" method="POST">
                                 <button class="sub" style="margin-bottom: 20px; padding-left: 4px;" type="submit">Aceptar</button>
-
                             </form>
                         </div>
                     </div>
@@ -146,45 +139,37 @@
 
     </div>
     
+    <script>
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
+        btn.onclick = function () {
+            sidebar.classList.toggle('active');
+        };
+    
+        document.getElementById('butnom').addEventListener('click', function () {
+            var butnom = document.getElementById('nomcont');
+            butnom.classList.toggle('mostrado');
+        });
+    
+        document.getElementById('butema').addEventListener('click', function () {
+            var butema = document.getElementById('corcont');
+            butema.classList.toggle('mostrado');
+        });
+    
+        document.getElementById('buttel').addEventListener('click', function () {
+            var buttel = document.getElementById('telcont');
+            buttel.classList.toggle('mostrado');
+        });
+    
+        document.getElementById('delbut').addEventListener('click', function () {
+            var delbut = document.getElementById('delcont');
+            delbut.classList.toggle('mostrado');
+        });
+
+        function eliminarCuenta() {
+        var delbut = document.getElementById('delcont');
+        delbut.classList.toggle('mostrado');
+    }
+    </script>
 </body>
-<script>
-    let btn = document.querySelector('#btn')
-    let sidebar = document.querySelector('.sidebar')
-    btn.onclick = function (){
-        sidebar.classList.toggle('active')};
-</script>
-<script>
-    document.getElementById('butnom').addEventListener('click', function() {
-    var butnom = document.getElementById('nomcont');
-    butnom.classList.toggle('mostrado');
-});
-
-
-</script>
-<script>
-    document.getElementById('butema').addEventListener('click', function() {
-    var butema = document.getElementById('corcont');
-    butema.classList.toggle('mostrado');
-});
-
-
-</script>
-<script>
-    document.getElementById('buttel').addEventListener('click', function() {
-    var buttel = document.getElementById('telcont');
-    buttel.classList.toggle('mostrado');
-});
-
-
-
-</script>
-<script>
-    document.getElementById('delbut').addEventListener('click', function() {
-    var delbut = document.getElementById('delcont');
-    delbut.classList.toggle('mostrado');
-});
-
-
-
-</script>
 </html>
