@@ -114,17 +114,8 @@ app.get("/foro", (req, res) => {
     res.render("Foro", { user: req.user });
 });
 
-app.get("/estado/:idCarro", ensureAuthenticated, (req, res) => {
-    const cocheId = req.params.idCarro;
-
-    obtenerInformacionDelCocheAlgunComo(cocheId, (err, coche) => {
-        if (err) {
-            // Manejar el error, por ejemplo, redirigir a una página de error
-            res.status(404).send("Coche no encontrado");
-        } else {
-            res.render("Estado", { user: req.user, coche: coche });
-        }
-    });
+app.get("/estado", ensureAuthenticated, (req, res) => {
+    res.render("Estado", { user: req.user });
 });
 
 app.get("/configuracion", ensureAuthenticated, (req, res) => {
@@ -154,44 +145,24 @@ app.get("/inicio", ensureAuthenticated, (req, res) => {
 
 // Registro de usuario
 app.post("/register", (req, res) => {
-    const { nombre_u, apellido_u, correo_u, contraseña_u } = req.body;
-
-    // Verificar si el correo ya está registrado
-    db.query('SELECT id_usuario FROM usuarios WHERE correo_u = ?', [correo_u], (error, results) => {
-        if (error) {
-            console.error("Error:", error);
-            return res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
-        }
-
-        if (results.length > 0) {
-            // El correo ya está en uso
-            return res.status(400).send('<script>alert("El correo electrónico ya está registrado"); window.location="/register";</script>');
-        }
-
-        // Hash de la contraseña
-        bcrypt.hash(contraseña_u, 10, (hashError, hash) => {
-            if (hashError) {
-                console.error("Error al generar el hash:", hashError);
-                return res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
-            }
-
-            // Si el correo no está registrado, proceder con la inserción
-            db.query('INSERT INTO usuarios (nombre_u, correo_u, contraseña_u, created_at, active) VALUES (?, ?, ?, NOW(), 1)',
-                [nombre_u + " " + apellido_u, correo_u, hash],
-                (insertError, results) => {
-                    if (insertError) {
-                        console.error("Error al insertar en la base de datos:", insertError);
-                        return res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
-                    }
-
-                    // Registro exitoso
+    const { nombre_u, correo_u, contraseña_u } = req.body;
+    bcrypt.hash(contraseña_u, 10, (err, hash) => {
+        if (err) {
+            console.error("Error al encriptar la contraseña: ", err);
+            res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+        } else {
+            const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u,created_at , active) VALUES (?, ?, ?,NOW() , 1)";
+            db.query(query, [nombre_u, correo_u, hash], (err, results) => {
+                if (err) {
+                    console.error("Error al registrar el usuario: ", err);
+                    res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+                } else {
                     res.send('<script>alert("Usuario registrado con éxito"); window.location="/login";</script>');
                 }
-            );
-        });
+            });
+        }
     });
 });
-
 
 // Inicio de sesión
 app.post('/login', passport.authenticate('local', {
@@ -242,93 +213,6 @@ app.post('/agregarCoche', ensureAuthenticated, (req, res) => {
     });
 });
 
-// Ruta para manejar la actualización de nombre
-app.post("/actualizar-nombre", ensureAuthenticated, (req, res) => {
-    const userId = req.user.id_usuario;
-    const { nombre_u } = req.body;
-
-    // Realiza la consulta de actualización en la base de datos
-    const query = "UPDATE usuarios SET nombre_u = ? WHERE id_usuario = ?";
-
-    db.query(query, [nombre_u, userId], (error, results) => {
-        if (error) {
-            console.error("Error al actualizar nombre:", error);
-            res.status(500).send('<script>alert("Error al actualizar nombre"); window.location="/configuracion";</script>');
-        } else {
-            // Actualización exitosa
-            res.send('<script>alert("Actualización exitosa"); window.location="/configuracion";</script>');
-        }
-    });
-});
-
-// Ruta para manejar la actualización de correo
-app.post("/actualizar-correo", ensureAuthenticated, (req, res) => {
-    const userId = req.user.id_usuario;
-    const { correo_u } = req.body;
-
-    // Realiza la consulta de actualización en la base de datos
-    const query = "UPDATE usuarios SET correo_u = ? WHERE id_usuario = ?";
-
-    db.query(query, [correo_u, userId], (error, results) => {
-        if (error) {
-            console.error("Error al actualizar correo:", error);
-            res.status(500).send('<script>alert("Error al actualizar correo"); window.location="/configuracion";</script>');
-        } else {
-            // Actualización exitosa
-            res.send('<script>alert("Actualización exitosa"); window.location="/configuracion";</script>');
-        }
-    });
-});
-
-// Ruta para eliminar coches y cuenta del usuario
-app.post('/eliminar-cuenta', ensureAuthenticated, (req, res) => {
-    const userId = req.user.id_usuario;
-
-    // Eliminar coches del usuario
-    const deleteCarsQuery = "DELETE FROM carros_usuarios WHERE id_usuario = ?";
-    db.query(deleteCarsQuery, [userId], (errorCars, resultCars) => {
-        if (errorCars) {
-            console.error('Error al eliminar coches del usuario:', errorCars.message);
-            console.error(errorCars.stack);
-            res.status(500).send('Error interno del servidor');
-        } else {
-            console.log('Coches eliminados con éxito');
-            
-            // Eliminar cuenta del usuario después de eliminar coches
-            const deleteAccountQuery = "DELETE FROM usuarios WHERE id_usuario = ?";
-            db.query(deleteAccountQuery, [userId], (errorAccount, resultAccount) => {
-                if (errorAccount) {
-                    console.error('Error al eliminar cuenta del usuario:', errorAccount.message);
-                    console.error(errorAccount.stack);
-                    res.status(500).send('Error interno del servidor');
-                } else {
-                    console.log('Cuenta de usuario eliminada con éxito');
-                    // Redirigir al usuario a una página de confirmación o a otra ubicación según tu flujo
-                    res.send('<script>alert("Cuenta eliminada con éxito"); window.location.href = "/login";</script>');
-                }
-            });
-        }
-    });
-});
-
-// Esta función debería obtener la información del coche según su ID
-function obtenerInformacionDelCocheAlgunComo(cocheId, callback) {
-    const query = "SELECT * FROM carros_usuarios WHERE id_carro_usuario = ?";
-    db.query(query, [cocheId], (err, results) => {
-        if (err) {
-            console.error("Error al obtener la información del coche:", err);
-            callback(err, null);
-        } else {
-            if (results.length > 0) {
-                const informacionDelCoche = results[0];
-                callback(null, informacionDelCoche);
-            } else {
-                // No se encontró ningún coche con el ID proporcionado
-                callback("Coche no encontrado", null);
-            }
-        }
-    });
-}
 
 // Iniciar el servidor
 app.listen(3000, () => {
