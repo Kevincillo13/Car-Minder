@@ -1,0 +1,479 @@
+body{
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+@media (max-width:768px){
+    .titulo{
+        font-size: xx-large;
+        margin: auto;
+        text-align: center;
+        background-color: #0c4a6e;
+        border-radius: 4px;
+        margin-bottom: 35px;
+        color: whitesmoke;
+        box-shadow: 2px 2px 2px black;
+    }
+    .inf{
+        background-color: #0c4a6e;
+        width: 80%;
+    }
+    .BOX{
+        background-color:rgb(220, 236, 255);
+        padding: 8px;
+        width: 100%;
+        height: auto;
+        overflow-x: hidden;
+        transition: ease 0.5s;
+        box-shadow: inset 2px 2px 2px gray;
+    }
+    .BOX:hover{
+        transition: ease 0.5s;
+        background-color: #bedce9;
+    }
+    .contbord{
+
+        border-radius: 4px;
+        border: 6px solid #0c4a6e;
+        
+
+    }
+    .box1{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 100%;
+
+        padding: 4px;
+    }
+    .contbar{
+        width: 100%;
+        background-color: gainsboro;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px gray;
+    }
+    .porcen{
+        text-align: right;
+        padding: 4px;
+        color: black;
+        font-weight: bold;
+    }
+    .CA{
+        background-color: #0ea5e9;
+        animation: CA 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes CA{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 100%;
+        }
+    }
+    .CF{
+        background-color: #0ea5e9;
+        animation: CF 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes CF{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 100%;
+        }
+    }
+    .LF{
+        background-color: #0ea5e9;
+        animation: LF 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes LF{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .AD{
+        background-color: #0ea5e9;
+        animation: AD 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes AD{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .FA{
+        background-color: #0ea5e9;
+        animation: FA 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes FA{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .BU{
+        background-color: #0ea5e9;
+        animation: BU 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes BU{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .CO{
+        background-color: #0ea5e9;
+        animation: CO 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes CO{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .FC{
+        background-color: #0ea5e9;
+        animation: FC 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes FC{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .SU{
+        background-color: #0ea5e9;
+        animation: SU 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes SU{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .LT{
+        background-color: #0ea5e9;
+        animation: LT 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes LT{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .BOX1{
+        background-color: #0369a1;
+        width: 100%;
+        height: auto;
+        overflow-x: hidden;
+        box-shadow: inset 2px 2px 2px gray;
+    }
+    .nomaut{
+        text-align: center;
+
+    }
+    .nomaut h4{
+        font-size: xx-large;
+        background-color: #082f49;
+        color: whitesmoke;
+        box-shadow: 2px 2px 2px black;
+
+    }
+    .nomaut h4:hover{
+
+        color: #bae6fd;
+        transition:  ease 0.5s;
+    }
+    .VK{
+        margin-top: 8px;
+        padding: 4px;
+    }
+}
+
+
+
+
+
+@media (min-width:769px){
+    .titulo{
+        font-size: xx-large;
+        margin: auto;
+        text-align: center;
+        background-color: #0c4a6e;
+        border-radius: 4px;
+        margin-bottom: 35px;
+        color: whitesmoke;
+        box-shadow: 2px 2px 2px black;
+    }
+
+    .BOX{
+        background-color:rgb(220, 236, 255);
+        width: 60%;
+        height: 82vh;
+        overflow-x: hidden;
+        padding: 15px;
+        transition: ease 0.5s;
+
+    }
+    .BOX:hover{
+        transition: ease 0.5s;
+        background-color: #bedce9;
+    }
+    .BOX1{
+        float: right;
+        width: 40%;
+        height: 82vh;
+        overflow-x: hidden;
+        background-color: #067fc0;
+        transition: ease 0.5s;
+
+    }
+    .BOX1:hover{
+        background-color: #0e5b88;
+        transition: ease 0.5s;
+    }
+    
+    .contbord{
+
+        border-radius: 4px;
+        border: 6px solid #0c4a6e;
+        box-shadow: 2px 2px 2px rgb(83, 83, 83);
+        
+
+    }
+    .box1{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 100%;
+
+        padding: 4px;
+    }
+    .contbar{
+        width: 100%;
+        background-color: gainsboro;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px gray;
+    }
+    .porcen{
+        text-align: right;
+        padding: 4px;
+        color:black;
+        font-weight: 500;
+    }
+    .CA{
+        background-color: #0ea5e9;
+        animation: CA 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes CA{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 100%;
+        }
+    }
+    .CF{
+        background-color: #0ea5e9;
+        animation: CF 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes CF{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 100%;
+        }
+    }
+    .LF{
+        background-color: #0ea5e9;
+        animation: LF 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes LF{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .AD{
+        background-color: #0ea5e9;
+        animation: AD 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes AD{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .FA{
+        background-color: #0ea5e9;
+        animation: FA 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes FA{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .BU{
+        background-color: #0ea5e9;
+        animation: BU 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes BU{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .CO{
+        background-color: #0ea5e9;
+        animation: CO 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes CO{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .FC{
+        background-color: #0ea5e9;
+        animation: FC 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes FC{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .SU{
+        background-color: #0ea5e9;
+        animation: SU 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes SU{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+    .LT{
+        background-color: #0ea5e9;
+        animation: LT 2s forwards;
+        border-radius: 4rem;
+        box-shadow: 2px 2px 2px #082f49;
+    }
+    @keyframes LT{
+        0%{
+            width: 30%;
+        }
+    
+        100%{
+            width: 90%;
+        }
+    }
+
+    .nomaut{
+        text-align: center;
+
+    }
+    .nomaut h4{
+        font-size: xx-large;
+        background-color: #082f49;
+        color: whitesmoke;
+        box-shadow: 2px 2px 2px black;
+        transition: ease 0.5s;
+    }
+    .nomaut h4:hover{
+
+        color: #bae6fd;
+        transition:  ease 0.5s;
+
+    }
+    .VK{
+        margin-top: 8px;
+        padding: 4px;
+    }
+}
