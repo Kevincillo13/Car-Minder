@@ -114,8 +114,17 @@ app.get("/foro", (req, res) => {
     res.render("Foro", { user: req.user });
 });
 
-app.get("/estado", ensureAuthenticated, (req, res) => {
-    res.render("Estado", { user: req.user });
+app.get("/estado/:idCarro", ensureAuthenticated, (req, res) => {
+    const cocheId = req.params.idCarro;
+
+    obtenerInformacionDelCocheAlgunComo(cocheId, (err, coche) => {
+        if (err) {
+            // Manejar el error, por ejemplo, redirigir a una página de error
+            res.status(404).send("Coche no encontrado");
+        } else {
+            res.render("Estado", { user: req.user, coche: coche });
+        }
+    });
 });
 
 app.get("/configuracion", ensureAuthenticated, (req, res) => {
@@ -167,7 +176,7 @@ app.post("/register", (req, res) => {
             }
 
             // Si el correo no está registrado, proceder con la inserción
-            db.query('INSERT INTO usuarios (nombre_u, correo_u, contraseña_u) VALUES (?, ?, ?)',
+            db.query('INSERT INTO usuarios (nombre_u, correo_u, contraseña_u, created_at, active) VALUES (?, ?, ?, NOW(), 1)',
                 [nombre_u + " " + apellido_u, correo_u, hash],
                 (insertError, results) => {
                     if (insertError) {
@@ -302,7 +311,24 @@ app.post('/eliminar-cuenta', ensureAuthenticated, (req, res) => {
     });
 });
 
-
+// Esta función debería obtener la información del coche según su ID
+function obtenerInformacionDelCocheAlgunComo(cocheId, callback) {
+    const query = "SELECT * FROM carros_usuarios WHERE id_carro_usuario = ?";
+    db.query(query, [cocheId], (err, results) => {
+        if (err) {
+            console.error("Error al obtener la información del coche:", err);
+            callback(err, null);
+        } else {
+            if (results.length > 0) {
+                const informacionDelCoche = results[0];
+                callback(null, informacionDelCoche);
+            } else {
+                // No se encontró ningún coche con el ID proporcionado
+                callback("Coche no encontrado", null);
+            }
+        }
+    });
+}
 
 // Iniciar el servidor
 app.listen(3000, () => {

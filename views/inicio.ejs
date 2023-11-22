@@ -79,7 +79,7 @@
                         <% } else { %>
                             <p>Imagen no disponible</p>
                         <% } %>
-                        <a href="#" class="block w-full bg-sky-700 hover:bg-sky-950 text-white text-center py-2 mt-4 rounded-full duration-500"><%= coche.nombre %></a>
+                        <a href="/estado?coche=<%= coche.id_carro_usuario %>" class="block w-full bg-sky-700 hover:bg-sky-950 text-white text-center py-2 mt-4 rounded-full duration-500">Estado de tu <%= coche.modelo %></a>
                     </div>
                 </div>
             <% }); %>
