@@ -21,7 +21,7 @@
 <body class="font-Gabarito  m-0 p-0 box-border">
     <!--Se declara la clase sidebar cuyas propiedades y clases internas se establecen en el archivo barra.css-->
     <!--Se utilizan div para agrupar contenidos y separarlos de otros-->
-    <div class="sidebar ">
+    <div class="sidebar">
         <div class="top">
             <div class="logo">>
                     <i class="bx bxs-car-mechanic">
@@ -42,28 +42,29 @@
         <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
         <ul>
             <li>
-                <a href="inicio">
+                <a href="/inicio?coche=<%= coche.id_carro_usuario %>">
                     <i class="bx bxs-car"></i>
                     <span class="nav-item">Inicio</span>
-            </a>
+                </a>
+                
             <span class="tooltip">Panel</span>
             </li>
             <li>
-                <a href="Foro">
+                <a href="/Foro?coche=<%= coche.id_carro_usuario %>">
                     <i class="bx bx-notepad"></i>
                     <span class="nav-item">Foro</span>
             </a>
             <span class="tooltip">Foro</span>
             </li>
             <li>
-                <a href="Configuracion">
+                <a href="/Configuracion?coche=<%= coche.id_carro_usuario %>">
                     <i class="bx bx-cog"></i>
                     <span class="nav-item">Configuracion</span>
             </a>
             <span class="tooltip">Configuracion</span>
             </li>
             <li>
-                <a href="/cerrar-sesion">
+                <a href="/cerrar-sesion?coche=<%= coche.id_carro_usuario %>">
                     <i class="bx bx-log-out"></i>
                     <span class="nav-item">Logout</span>
                 </a>
@@ -73,23 +74,21 @@
     </div>
     </div>
     <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
-    <div class="main-content"><!-- Se asigna la clase main-content que incluye propiedades en css para la misma. Se incluye la clase duration que añade una transición al contenido -->
+    <div class="main-content">
         <div class="titulo">
             <h1>Estado</h1>
         </div>
-        <div class="BOX1  contbord"><!--Display del vehículo-->
+        <div class="BOX1 contbord">
             <div>
-                <img class="img" src="/assets/imagenes/Vehiculos automotrices/Nissan Tsuru.jpg">
+                <img src="<%= coche.ruta_imagen %>" alt="Imagen del coche">
             </div>
             <div class="nomaut">
-                <h4 class="NA">Nombre del auto</h4>
+                <h4 class="NA"><%= coche.marca %> <%= coche.modelo %></h4>
             </div>
         </div>
-        <div class="BOX  contbord"><!--Lista de estado del vehículo-->
+        <div class="BOX contbord">
             <div>
-                <!--Valor del kilometraje-->
-                <h3 class="VK">Kilometraje: <span>Valor del kilometraje</span></h3>
-  
+                <h3 class="VK">Kilometraje: <span><%= coche.km_actual %></span></h3>
             </div>
             <div class="box1">
                 <h3>Cambio de aceite</h3>
@@ -97,7 +96,6 @@
                     <div class="porcen CA">
                         <h4>Estado</h4>
                     </div>
-
                 </div>
             </div>
             <div class="box1">
@@ -106,7 +104,6 @@
                     <div class="porcen CF">
                         <h4>Estado</h4>
                     </div>
-    
                 </div> 
             </div>
             <div class="box1">
@@ -115,7 +112,6 @@
                     <div class="porcen LF">
                         <h4>Estado</h4>
                     </div>
-    
                 </div> 
             </div>      
             <div class="box1">
@@ -124,7 +120,6 @@
                     <div class="porcen AD">
                         <h4>Estado</h4>
                     </div>
-    
                 </div> 
             </div>
             <div class="box1">
@@ -133,7 +128,6 @@
                     <div class="porcen FA">
                         <h4>Estado</h4>
                     </div>
-    
                 </div> 
             </div>
             <div class="box1">
@@ -142,7 +136,6 @@
                     <div class="porcen BU">
                         <h4>Estado</h4>
                     </div>
-    
                 </div>
             </div>
             <div class="box1">
@@ -151,7 +144,6 @@
                     <div class="porcen CO">
                         <h4>Estado</h4>
                     </div>
-        
                 </div> 
             </div>   
             <div class="box1">
@@ -160,7 +152,6 @@
                     <div class="porcen FC">
                         <h4>Estado</h4>
                     </div>
-        
                 </div> 
             </div>   
             <div class="box1">
@@ -169,7 +160,6 @@
                     <div class="porcen SU">
                         <h4>Estado</h4>
                     </div>
-        
                 </div> 
             </div>
             <div class="box1">
@@ -178,21 +168,10 @@
                     <div class="porcen LT">
                         <h4>Estado</h4>
                     </div>
-        
                 </div> 
             </div>
-
-                 
-
         </div>
-        
-
     </div>
-   
-    
- 
-
-    
 </body>
 <!--Se crea un script en el cual se le establecen distintas propiedades y comportamientos a la barra lateral de la página-->
 <script>
@@ -201,10 +180,6 @@
 
     btn.onclick = function (){
         sidebar.classList.toggle('active')
-        
-        
-        
     };
 </script>
-
 </html>

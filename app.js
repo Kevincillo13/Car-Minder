@@ -114,9 +114,32 @@ app.get("/foro", (req, res) => {
     res.render("Foro", { user: req.user });
 });
 
-app.get("/estado", ensureAuthenticated, (req, res) => {
-    res.render("Estado", { user: req.user });
+// Ruta para mostrar la página de estado del coche
+app.get("/estado/:id_carro_usuario", ensureAuthenticated, (req, res) => {
+    const userId = req.user.id_usuario;
+    const idCarroUsuario = req.params.id_carro_usuario;
+
+    // Obtener la información específica del coche del usuario
+    const query = "SELECT * FROM carros_usuarios WHERE id_usuario = ? AND id_carro_usuario = ?";
+    
+    db.query(query, [userId, idCarroUsuario], (err, results) => {
+        if (err) {
+            console.error("Error al obtener información del coche del usuario: ", err);
+            res.status(500).send("Error al obtener información del coche del usuario");
+        } else {
+            // Renderizar la página de estado y pasar la información del coche
+            const coche = results[0]; // Tomamos el primer resultado, asumiendo que la consulta devuelve un solo resultado
+
+            // Asegúrate de que 'coche' esté definido antes de renderizar la página
+            if (coche) {
+                res.render("Estado", { user: req.user, coche: coche });
+            } else {
+                res.status(404).send("Coche no encontrado");
+            }
+        }
+    });
 });
+
 
 app.get("/configuracion", ensureAuthenticated, (req, res) => {
     res.render("configuracion", { user: req.user });
