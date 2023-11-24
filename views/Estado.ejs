@@ -90,86 +90,43 @@
             <div>
                 <h3 class="VK">Kilometraje: <span><%= coche.km_actual %></span></h3>
             </div>
+
             <div class="box1">
-                <h3>Cambio de aceite</h3>
-                <div class="contbar">
-                    <div class="porcen CA">
-                        <h4>Estado</h4>
-                    </div>
-                </div>
+                <h2>Cambio de llantas</h2>
+                <progress value="<%= coche.uc_llantas %>" max="<%= coche.cambio_llantas %>"></progress>
+        
+                <h2>Cambio de aceite</h2>
+                <progress value="60" max="100"></progress>
+                
+                <h2>Frenos</h2>
+                <progress value="60" max="100"></progress>
+
+                <h2>Líquido de frenos</h2>
+                <progress value="30" max="100"></progress>
+        
+                <h2>Aceite de dirección</h2>
+                <progress value="60" max="100"></progress>
+                
+                <h2>Filtro de aire</h2>
+                <progress value="60" max="100"></progress>
+
+                <h2>Bujías</h2>
+                <progress value="30" max="100"></progress>
+        
+                <h2>Correas</h2>
+                <progress value="60" max="100"></progress>
+                
+                <h2>Filtro de combustible</h2>
+                <progress value="60" max="100"></progress>
+
+                <h2>Suspensión</h2>
+                <progress value="30" max="100"></progress>
+        
+                <h2>Líquido de transmisión</h2>
+                <progress value="60" max="100"></progress>
+
             </div>
-            <div class="box1">
-                <h3>Frenos</h3>
-                <div class="contbar">
-                    <div class="porcen CF">
-                        <h4>Estado</h4>
-                    </div>
-                </div> 
-            </div>
-            <div class="box1">
-                <h3>Líquido de frenos</h3>
-                <div class="contbar">
-                    <div class="porcen LF">
-                        <h4>Estado</h4>
-                    </div>
-                </div> 
-            </div>      
-            <div class="box1">
-                <h3>Aceite de dirección</h3>
-                <div class="contbar">
-                    <div class="porcen AD">
-                        <h4>Estado</h4>
-                    </div>
-                </div> 
-            </div>
-            <div class="box1">
-                <h3>Filtro de aire</h3>
-                <div class="contbar">
-                    <div class="porcen FA">
-                        <h4>Estado</h4>
-                    </div>
-                </div> 
-            </div>
-            <div class="box1">
-                <h3>Bujías</h3>
-                <div class="contbar">
-                    <div class="porcen BU">
-                        <h4>Estado</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="box1">
-                <h3>Correas</h3>
-                <div class="contbar">
-                    <div class="porcen CO">
-                        <h4>Estado</h4>
-                    </div>
-                </div> 
-            </div>   
-            <div class="box1">
-                <h3>Filtro de combustible</h3>
-                <div class="contbar">
-                    <div class="porcen FC">
-                        <h4>Estado</h4>
-                    </div>
-                </div> 
-            </div>   
-            <div class="box1">
-                <h3>Suspensión</h3>
-                <div class="contbar">
-                    <div class="porcen SU">
-                        <h4>Estado</h4>
-                    </div>
-                </div> 
-            </div>
-            <div class="box1">
-                <h3>Líquido de transmisión</h3>
-                <div class="contbar">
-                    <div class="porcen LT">
-                        <h4>Estado</h4>
-                    </div>
-                </div> 
-            </div>
+            
         </div>
     </div>
 </body>
@@ -181,5 +138,7 @@
     btn.onclick = function (){
         sidebar.classList.toggle('active')
     };
+
+    
 </script>
 </html>
