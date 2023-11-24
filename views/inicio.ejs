@@ -14,22 +14,22 @@
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body class="font-Gabarito">
-    <div class="sidebar">
-        <div class="top">
-            <div class="logo">>
+    <div class="sidebar sidebar1">
+        <div class="top top1">
+            <div class="logo logo1">
                     <i class="bx bxs-car-mechanic">
                     </i>
                     <span>CarMinder</span>
             </div>
-            <i class="bx bx-menu" id="btn"></i>
+            <i class="bx bx-menu btnD" id="btn"></i>
         </div>
-        <div class="user">
+        <div class="user user1">
             <!--Se añade una imagen para mostrarse junto a la barra lateral-->
             <!--Se utiliza la clase w para dar un ancho maximo-->
-            <img src="/assets/imagenes/kokomi.jpg" class="user-img w-14 rounded-full border-sky-950">
+            <img src="/assets/imagenes/kokomi.jpg" class="user-img ">
             <div>
                 <!--Aqui se mostrara el nombre del usuario y el usuario-->
-                <p class="bold"><%= user.nombre_u %></p>
+                <p class="bold bold1"><%= user.nombre_u %></p>
             </div>
         </div>
         <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
@@ -66,7 +66,7 @@
     </div>
     </div>
     <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
-    <div class="main-content flex-auto duration-500">
+    <div class="main-content">
         <div> <h1 class=" flex-auto container mx-10 text-3xl text-center duration-500 bg-slate-950/50 rounded- text-black bold py-2">Aquí van tus coches</h1>
             <a href="agregarCoche"> <button class="bg-sky-950 m-4 flex left-0 rounded-md text-center p-2 text-white hover:bg-sky-800">Agregar coche</button></a>
         </div>

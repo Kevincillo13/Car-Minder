@@ -14,22 +14,22 @@
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body class="font-Gabarito">
-    <div class="sidebar">
-        <div class="top">
-            <div class="logo">>
+    <div class="sidebar sidebar1">
+        <div class="top top1">
+            <div class="logo logo1">>
                     <i class="bx bxs-car-mechanic">
                     </i>
                     <span>CarMinder</span>
             </div>
-            <i class="bx bx-menu" id="btn"></i>
+            <i class="bx bx-menu btnD" id="btn"></i>
         </div>
-        <div class="user">
+        <div class="user user1">
             <!--Se añade una imagen para mostrarse junto a la barra lateral-->
             <!--Se utiliza la clase w para dar un ancho maximo-->
-            <img src="/assets/imagenes/kokomi.jpg" class="user-img w-14 rounded-full border-sky-950">
+            <img src="/assets/imagenes/kokomi.jpg" class="user-img ">
             <div>
                 <!--Aqui se mostrara el nombre del usuario y el usuario-->
-                <p class="bold"><%= user.nombre_u %></p>
+                <p class="bold bold1"><%= user.nombre_u %></p>
             </div>
         </div>
         <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
@@ -65,7 +65,7 @@
         </ul>
     </div>
 
-    <div class="main-content  flex-auto duration-500">
+    <div class="main-content">
         <h1 class="text-center pt-6 text-6xl">Noticias</h1>
         
         <section class="bg-gray-200 p-6 rounded-lg shadow-lg container mx-auto flex-auto py-5 my-4">
