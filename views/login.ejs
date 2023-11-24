@@ -13,56 +13,108 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <link rel="stylesheet" href="/assets/logster.css">
 </head>
-<!--Se incluye la clase font que indica la fuente de texto a utilizar.-->
-<!--La clase m indica el tamaño del margen-->
-<!--La clase p indica el padding -->
-<!--box-border da un limite a los elementos dentro-->
-<body class="font-Gabarito  m-0 p-0 box-border flex-auto" style="background-image: url(/assets/imagenes/logster.jpg);">
-    <!--Se declara la clase sidebar cuyas propiedades y clases internas se establecen en el archivo barra.css-->
-    <!--Se utilizan div para agrupar contenidos y separarlos de otros-->
-    <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
-    <div class="logster main-content duration-500"><!-- Se asigna la clase main-content que incluye propiedades en css para la misma. Se incluye la clase duration que añade una transición al contenido -->
-        <div>
-            <div class=" flex container  mt-6 px-5 mx-auto duration-500 bg-slate-950/50 rounded- text-slate-200 py-2">
-                <div class=" text-white">
-                     <h1 class="text-2xl">Bienvenido a CarMinder</h1>
-                     <p class="text-xl">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, quisquam labore, recusandae quae ullam laudantium, et qui ipsum omnis autem praesentium enim ducimus. Officiis harum, laborum reprehenderit mollitia recusandae facere.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla, ut, eos tempora officiis consectetur nemo maxime eum accusamus quaerat esse atque officia, sunt vel minus cumque aliquam. Id, ipsa distinctio!
-                        Quasi dignissimos quos sint non, quae autem cumque minima facere earum culpa aut reprehenderit, quas sunt sapiente dolores, expedita eum quod. Facilis, reprehenderit! Error quos modi autem.
-                     </p>
-                </div> 
+
+<body style="font-family:'Gabarito';">
+    <header>
+        <nav class="navbar">
+            <span class="hamburger-btn material-symbols-rounded">menu</span>
+            <a href="login.ejs" class="logo">
+                <i class="bx bxs-car-mechanic"></i>
+                <h2>Carminder</h2>
+            </a>
+            <ul class="links">
+                <span class="close-btn material-symbols-rounded">close</span>
+            </ul>
+            <button class="login-btn">LOG IN</button>
+        </nav>
+    </header>
+    <div class="blur-bg-overlay"></div>
+    <div class="form-popup">
+        <i class="close-btn bx bx-x"></i>
+        <div class="form-box login">
+            <div class="form-details">
+                <h2>Bienvenido de vuelta</h2>
+                <p>Inicia sesión para revisar el estado de tus autos</p>
+            </div>
+            <div class="form-content">
+                <h2>LOGIN</h2>
+                <form method="post" action="/login">
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <a href="#" class="forgot-pass-link">Forgot password?</a>
+                    <button type="submit" style="opacity: 1;">Log In</button>
+                </form>
+                <div class="bottom-link">
+                    Don't have an account?
+                    <a href="#" id="signup-link">Signup</a>
+                </div>
+            </div>
         </div>
-        <!-- Aquí comienzan las etiquetas para los formularios de login y registro-->
-        <div class="wrapper sm:w-[70%] md:w-[70%] lg:w-[70%]   text-xl bold container  mt-12 md:flex mx-auto    duration-500  rounded-md text-center ">
-            <!-- Se añaden clases para establecer un limite al area, usando las clases sm-md-lg que declaran ciertas propiedades segun el tamaño de la pantalla. Se declaran colores de fondo con la clase bg.
-            Rounded: Establece bordes redondos.     Text-"": Establece la alineación del texto.     mx-auto: Da un margen en el eje X segun el espacio disponible -->
-            <!-- Se inicia un formato de form en el que incluiremos entradas de datos por parte del usuario. Para el apartado iniciar sesión-->
-            <!-- Se utilizan las etiquetas label para asociar un elemento de formulario con un texto -->
-            <!-- Se utiliza la etiquete input para permitir una entrada de datos por parte del usuario-->
-            <div class="form-box bg-transparent backdrop-blur px-10 align-middle py-16 flex-auto">
-                <form method="POST" action="/login">
-                    <h2 class="h2 bg-transparent backdrop-blur text-4xl text-white  mb-5  py-5">Iniciar sesión</h2>
-                <div class="input-box ">
-                    <label for="correo_u" class="primer-label block text-xl mt-12 text-white">Correo electrónico</label>
-                    <span class="icon"><i class='bx bxs-envelope' style="color: #ffffff;"></i></box-icon></span>
-                    <input type="text" id="correo_u" name="correo_u" class="rounded-md shadow-lg px-4 py-2 mt-4">
+        <div class="form-box signup">
+            <div class="form-details">
+                <h2>Crear una cuenta</h2>
+                <p>Para conocer el estado de tus autos es necesario que crees una cuenta y registres tus autos.</p>
+            </div>
+            <div class="form-content">
+                <h2>SIGNUP</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" required>
+                        <label>Enter your email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Create password</label>
+                    </div>
+                    <div class="policy-text">
+                        <input type="checkbox" id="policy">
+                        <label for="policy">
+                            I agree the
+                            <a href="#" class="option">Terms & Conditions</a>
+                        </label>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <div class="bottom-link">
+                    Already have an account? 
+                    <a href="#" id="login-link">Login</a>
                 </div>
-                <div class="input-box">
-                    <label for="contraseña_u" class="primer-label block text-xl mt-12 text-white">Contraseña</label>
-                    <span class="icon"><i class='bx bxs-lock' style='color:#ffffff'  ></i></span>
-                    <input type="password" id="contraseña_u" name="contraseña_u" class="rounded-md px-4 py-2 shadow-lg mt-4">
-                </div>
-                <div class="text-white">
-                    <label for=""><input type="checkbox">Recordarme</label>
-                    <a href="#" class="text-white hover:text-sky-400">¿Olvidaste tu contraseña?</a>
-                </div>
-                    <br> <button type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
-                    <p><a class=" text-white hover:text-sky-400 duration-150" href="register">¿No tienes una cuenta? Registrate</a></p>
-                    </form>                
             </div>
         </div>
     </div>
+        <div class="box-container" style="font-family: 'Open Sans';">
+        <h3 data-text="Bienvenido a Carminder">Bienvenido a Carminder</h3>
+        <p>Imagina un lugar donde puedes obtener información precisa y oportuna sobre el estado de las partes clave de tu auto. 
+        En Carminder, hacemos eso posible. Nuestro innovador sistema de medición de componentes automotrices te proporciona 
+        actualizaciones en tiempo real sobre el estado de tu vehículo, brindándote la tranquilidad de saber exactamente cuándo es 
+        el momento adecuado para realizar mantenimiento.</p>
+    </div>
+    <section class="row">
+        <div class="col-qstns">
+            <img src="/assets/imagenes/aceite.jpg">
+            <div class="layer">
+                <h4>¿Preocupado por el cambio de aceite?</h4>
+            </div>
+        </div>
+        <div class="col-qstns">
+            <img src="/assets/imagenes/llantas.jpg">
+            <div class="layer">
+                <h4>¿Preocupado por el cambio de llantas?</h4>
+            </div>
+        </div>
+        <div class="col-qstns">
+            <img src="/assets/imagenes/frenos.jpg">
+            <div class="layer">
+                <h4>¿Preocupado por el cambio de frenos?</h4>
+            </div>
+        </div>
+    </section>
 </body>
 <!--Se crea un script en el cual se le establecen distintas propiedades y comportamientos a la barra lateral de la página-->
 <script>
@@ -76,6 +128,35 @@
             };
         }
     });
+</script>
+
+<script>
+    const navbarMenu = document.querySelector(".navbar .links");
+const hamburgerBtn = document.querySelector(".hamburger-btn");
+const hideMenuBtn = navbarMenu.querySelector(".close-btn");
+const showPopupBtn = document.querySelector(".login-btn");
+const formPopup = document.querySelector(".form-popup");
+const hidePopupBtn = formPopup.querySelector(".close-btn");
+const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
+// Show mobile menu
+hamburgerBtn.addEventListener("click", () => {
+    navbarMenu.classList.toggle("show-menu");
+});
+// Hide mobile menu
+hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
+// Show login popup
+showPopupBtn.addEventListener("click", () => {
+    document.body.classList.toggle("show-popup");
+});
+// Hide login popup
+hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
+// Show or hide signup form
+signupLoginLink.forEach(link => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        formPopup.classList[link.id === 'signup-link' ? 'add' : 'remove']("show-signup");
+    });
+});
 </script>
 
 </html> 
