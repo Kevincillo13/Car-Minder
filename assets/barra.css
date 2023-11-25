@@ -1,14 +1,16 @@
 @media(max-width:767px){
     .sidebar {
-    position:fixed;
-    top:0;
-    left:0;
-    height:100%;
-    width:80px;
-    background-color: #141b27;
-    padding: .4rem .8rem;
-    transition: all 0.3s ease;
-    box-shadow: inset 4px 0px 0px #1b2343 ;
+        position:fixed;
+        top:0;
+        left:0;
+        height:100%;
+        width:80px;
+        background-color: #141b27;
+        padding: .4rem .8rem;
+        transition: all 0.3s ease;
+        box-shadow: inset 4px 0px 0px #1b2343 ;
+
+
     }
     .sidebar.active ~ .main-content{
         left:250px;
@@ -52,6 +54,7 @@
         margin-right: 5px;
     }
     .user{
+
         display: flex;
         align-items: center;
         margin: 1rem 0;
@@ -134,7 +137,7 @@
     }
     .main-content{
         position: relative;
-        background-color: white;
+
         min-height: 100vh;
         top:0;
         left:80px;
@@ -163,10 +166,10 @@
     }
     
     .main-content{
-        margin-top: 8rem;
-        background-color: wheat;
+        margin-top: 5.7rem;
+
         min-height: 100vh;
-        
+
         transition: all 0.5s ease;
         width: 100%;
         padding: 1rem;
