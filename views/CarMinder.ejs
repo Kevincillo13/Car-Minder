@@ -23,7 +23,7 @@
             <span class="hamburger-btn material-symbols-rounded">menu</span>
             <a href="CarMinder.ejs" class="logo">
                 <i class="bx bxs-car-mechanic"></i>
-                <h2>Carminder</h2>
+                <h2>CarMinder</h2>
             </a>
             <ul class="links">
                 <span class="close-btn material-symbols-rounded">close</span>
@@ -117,6 +117,17 @@
         </div>
     </section>
 </body>
+<footer class="footer">
+    <div class="socialIcons">
+        <a href=""><i class='bx bxl-facebook-circle' ></i></a>
+        <a href=""><i class='bx bxl-instagram' ></i></a>
+        <a href=""><i class='bx bxl-twitter' ></i></a>
+        <a href=""><i class='bx bxl-github' ></i></a>
+    </div>
+    <div class="footerBottom">
+        <p>Copyright &copy;2023; Design by <span class="designer">CarMinder</span></p>
+    </div>
+</footer>
 <!--Se crea un script en el cual se le establecen distintas propiedades y comportamientos a la barra lateral de la página-->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -132,7 +143,7 @@
 </script>
 
 <script>
-    const navbarMenu = document.querySelector(".navbar .links");
+const navbarMenu = document.querySelector(".navbar .links");
 const hamburgerBtn = document.querySelector(".hamburger-btn");
 const hideMenuBtn = navbarMenu.querySelector(".close-btn");
 const showPopupBtn = document.querySelector(".login-btn");
