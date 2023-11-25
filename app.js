@@ -103,7 +103,7 @@ bcrypt.compare(contraseña_u, usuario.contraseña_u, (err, result) => {
 
 // Rutas
 app.get("/login", (req, res) => {
-    res.render("login", {})
+    res.render("CarMinder", {})
 });
 
 app.get("/register", (req, res) => {
@@ -114,29 +114,48 @@ app.get("/foro", (req, res) => {
     res.render("Foro", { user: req.user });
 });
 
-// Ruta para mostrar la página de estado del coche
+// Ruta Estado
 app.get("/estado/:id_carro_usuario", ensureAuthenticated, (req, res) => {
     const userId = req.user.id_usuario;
     const idCarroUsuario = req.params.id_carro_usuario;
 
-    // Obtener la información específica del coche del usuario
-    const query = "SELECT * FROM carros_usuarios WHERE id_usuario = ? AND id_carro_usuario = ?";
-    
-    db.query(query, [userId, idCarroUsuario], (err, results) => {
-        if (err) {
-            console.error("Error al obtener información del coche del usuario: ", err);
-            res.status(500).send("Error al obtener información del coche del usuario");
-        } else {
-            // Renderizar la página de estado y pasar la información del coche
-            const coche = results[0]; // Tomamos el primer resultado, asumiendo que la consulta devuelve un solo resultado
+    // Obtener la información específica del coche del usuario desde la tabla carros_usuarios
+    const queryCarrosUsuarios = "SELECT * FROM carros_usuarios WHERE id_usuario = ? AND id_carro_usuario = ?";
 
-            // Asegúrate de que 'coche' esté definido antes de renderizar la página
-            if (coche) {
-                res.render("Estado", { user: req.user, coche: coche });
-            } else {
-                res.status(404).send("Coche no encontrado");
-            }
+    db.query(queryCarrosUsuarios, [userId, idCarroUsuario], (err, resultsCarrosUsuarios) => {
+        if (err) {
+            console.error("Error al obtener información del coche del usuario desde carros_usuarios: ", err);
+            res.status(500).send("Error al obtener información del coche del usuario");
+            return;
         }
+
+        const coche = resultsCarrosUsuarios[0]; // Tomamos el primer resultado, asumiendo que la consulta devuelve un solo resultado
+
+        // Asegúrate de que 'coche' esté definido antes de continuar
+        if (!coche) {
+            res.status(404).send("Coche no encontrado en la tabla carros_usuarios");
+            return;
+        }
+
+        // Obtener información adicional del coche desde la tabla carros usando el modelo
+        const queryCarros = "SELECT * FROM carros WHERE modelo = ?";
+
+        db.query(queryCarros, [coche.modelo], (err, resultsCarros) => {
+            if (err) {
+                console.error("Error al obtener información adicional del coche desde carros: ", err);
+                res.status(500).send("Error al obtener información del coche del usuario");
+                return;
+            }
+
+            const cocheBase = resultsCarros[0]; // Tomamos el primer resultado, asumiendo que la consulta devuelve un solo resultado
+
+            // Asegúrate de que 'cocheBase' esté definido antes de renderizar la página
+            if (cocheBase) {
+                res.render("Estado", { user: req.user, coche: coche, cocheBase: cocheBase });
+            } else {
+                res.status(404).send("Coche no encontrado en la tabla carros");
+            }
+        });
     });
 });
 
@@ -166,19 +185,25 @@ app.get("/inicio", ensureAuthenticated, (req, res) => {
 });
 
 
+// Inicio de sesión
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/Inicio',
+    failureRedirect: '/CarMinder?error=1'
+}));
+
 // Registro de usuario
 app.post("/register", (req, res) => {
     const { nombre_u, correo_u, contraseña_u } = req.body;
     bcrypt.hash(contraseña_u, 10, (err, hash) => {
         if (err) {
             console.error("Error al encriptar la contraseña: ", err);
-            res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+            res.status(500).send('<script>alert("Error al registrar"); window.location="/login";</script>');
         } else {
             const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u,created_at , active) VALUES (?, ?, ?,NOW() , 1)";
             db.query(query, [nombre_u, correo_u, hash], (err, results) => {
                 if (err) {
                     console.error("Error al registrar el usuario: ", err);
-                    res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+                    res.status(500).send('<script>alert("Error al registrar"); window.location="/login";</script>');
                 } else {
                     res.send('<script>alert("Usuario registrado con éxito"); window.location="/login";</script>');
                 }
@@ -186,12 +211,6 @@ app.post("/register", (req, res) => {
         }
     });
 });
-
-// Inicio de sesión
-app.post('/login', passport.authenticate('local', {
-    successRedirect: '/inicio',
-    failureRedirect: '/login?error=1'
-}));
 
 // Ruta para cerrar sesión
 app.get('/cerrar-sesion', (req, res) => {
@@ -201,7 +220,7 @@ app.get('/cerrar-sesion', (req, res) => {
             return next(err);
         }
         console.log("Sesión cerrada con éxito");
-        res.redirect('/login');
+        res.redirect('/CarMinder');
     });
 });
 
@@ -209,7 +228,7 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.redirect('/login'); // Redirigir a la página de inicio de sesión si no está autenticado
+    res.redirect('/CarMinder'); // Redirigir a la página de inicio de sesión si no está autenticado
 }
 
 //AgregarCoche
