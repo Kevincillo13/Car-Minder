@@ -103,7 +103,7 @@ bcrypt.compare(contraseña_u, usuario.contraseña_u, (err, result) => {
 
 // Rutas
 app.get("/login", (req, res) => {
-    res.render("login", {})
+    res.render("CarMinder", {})
 });
 
 app.get("/register", (req, res) => {
