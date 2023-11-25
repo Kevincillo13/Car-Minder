@@ -477,4 +477,24 @@ body{
         margin-top: 8px;
         padding: 4px;
     }
+    .progbar{
+        width: 100%;
+        border-radius: 12px;
+        border: solid #ffffff ;
+        background-color: #0369a1;
+        color: #0369a1;
+
+    }
+    progress::-webkit-progress-bar {
+        background-color: #ddd; /* Color del fondo de la barra de progreso */
+        border-radius: 10px; /* Bordes redondeados */
+    }
+
+    progress::-webkit-progress-value {
+        background-color: #0ea5e9; /* Color de la barra de progreso */
+        border-radius: 10px; /* Bordes redondeados */
+    }
+    p{
+        color: #0369a1;
+    }
 }

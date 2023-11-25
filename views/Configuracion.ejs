@@ -11,7 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./assets/styles.css"/> 
     <link rel="stylesheet" href="/assets/barra.css">
-    <link rel="stylesheet" href="/assets/general.css">
+    <link rel="stylesheet" href="/assets/configuracion.css">
 </head>
 <body class="font-Gabarito">
     <div class="sidebar sidebar1"    >
@@ -39,38 +39,39 @@
                     <i class="bx bxs-car"></i>
                     <span class="nav-item">Inicio</span>
             </a>
-            <span class="tooltip">Panel</span>
+            <span class="tooltip sidbox">Panel</span>
             </li>
             <li>
                 <a href="Foro">
                     <i class="bx bx-notepad"></i>
                     <span class="nav-item">Foro</span>
             </a>
-            <span class="tooltip">Foro</span>
+            <span class="tooltip sidbox">Foro</span>
             </li>
             <li>
                 <a href="Configuracion">
                     <i class="bx bx-cog"></i>
                     <span class="nav-item">Configuracion</span>
             </a>
-            <span class="tooltip">Configuracion</span>
+            <span class="tooltip sidbox">Configuracion</span>
             </li>
             <li>
                 <a href="/cerrar-sesion">
                     <i class="bx bx-log-out"></i>
                     <span class="nav-item">Logout</span>
                 </a>
-            <span class="tooltip">Logout</span>
+            <span class="tooltip sidbox">Logout</span>
             </li>
         </ul>
     </div>
-    </div>
+
     <div  class="main-content ">
-        <div class="general">
-            <div class="box1">
+            <div class="titulo">
                 <h1 class="">Configuración</h1>
+                <h2>Cambia aspectos de tu cuenta</h2>
             </div>
-            <div class="box2">
+            
+            <div class="acbox1">
                 <h1>
                     Cuenta
                 </h1>
@@ -108,35 +109,35 @@
                     </div>
                 </div>
             </div>
-            <div class="box2">
-
+            <div class="acbox2 acbox2h">
                 <div class="">
                     <h1>Eliminar cuenta</h1>
                     <h2>Puedes eliminar tu cuenta si ya no piensas utilizar nuestros servicios</h2>
                     <p>Al eliminar tu cuenta eres consiente de lo siguiente</p>
-                    <h2 style="margin-top: 20px;">Pérdida de Datos:</h2>
+                    <h2 >Pérdida de Datos:</h2>
                     <p>
                         Todos los datos asociados con tu cuenta como tus preferencias y configuraciones, serán eliminados permanentemente. 
                         No podremos recuperar esta información.
                     </p>
-                    <h2 style="margin-top: 20px;">Acceso Denegado:</h2>
+                    <h2 >Acceso Denegado:</h2>
                     <p>No podrás acceder a tu cuenta ni a 
                         ninguna de las funcionalidades asociadas una vez que se haya eliminado.
                     </p>
                     <div>
-                        <h3 style="margin-top: 15px;">Recuerda que no hay marcha atras al </h3>
-                        <button id="delbut" class="buttonc">Eliminar cuenta</button>
-                        <div id="delcont" class="oculto">
+                        <h3 >Recuerda que no hay marcha atras al </h3>
+                        <div class="buttondiv">
+                            <button id="delbut" class="buttone">Eliminar cuenta</button>
+                        </div>
+
+                        <div id="delcont" class="oculto buttondiv">
                             <form id="eliminarCuentaForm" action="/eliminar-cuenta" method="POST">
-                                <button class="sub" style="margin-bottom: 20px; padding-left: 4px;" type="submit">Aceptar</button>
+                                <button class="buttone" type="submit">Aceptar</button>
                             </form>
                         </div>
+
                     </div>
                 </div>
-
             </div>
-        </div>
-
     </div>
     
     <script>
@@ -169,7 +170,9 @@
         function eliminarCuenta() {
         var delbut = document.getElementById('delcont');
         delbut.classList.toggle('mostrado');
+        
     }
+
     </script>
 </body>
 </html>
