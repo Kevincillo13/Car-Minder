@@ -208,8 +208,8 @@ app.post("/register", (req, res) => {
 
 // Inicio de sesión
 app.post('/login', passport.authenticate('local', {
-    successRedirect: '/inicio',
-    failureRedirect: '/login?error=1'
+    successRedirect: '/CarMinder',
+    failureRedirect: '/CarMinder?error=1'
 }));
 
 // Ruta para cerrar sesión
@@ -220,7 +220,7 @@ app.get('/cerrar-sesion', (req, res) => {
             return next(err);
         }
         console.log("Sesión cerrada con éxito");
-        res.redirect('/login');
+        res.redirect('/CarMinder');
     });
 });
 
@@ -228,7 +228,7 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.redirect('/login'); // Redirigir a la página de inicio de sesión si no está autenticado
+    res.redirect('/CarMinder'); // Redirigir a la página de inicio de sesión si no está autenticado
 }
 
 //AgregarCoche
