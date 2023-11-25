@@ -33,65 +33,64 @@
         </nav>
     </header>
     <div class="blur-bg-overlay"></div>
-    <div class="form-popup">
-        <i class="close-btn bx bx-x"></i>
-        <div class="form-box login">
-            <div class="form-details">
-                <h2>Bienvenido de vuelta</h2>
-                <p>Inicia sesión para revisar el estado de tus autos</p>
-            </div>
-
+<div class="form-popup">
+    <i class="close-btn bx bx-x"></i>
+    <div class="form-box login">
+        <div class="form-details">
+            <h2>Bienvenido de vuelta</h2>
+            <p>Inicia sesión para revisar el estado de tus autos</p>
+        </div>
         <div class="form-content">
-            <form method="POST" action="/login" id="loginForm">    
+            <form method="POST" action="/login" id="loginForm">
                 <h2>Inicia sesión</h2>
-                    <div class="input-field">
-                        <label for="correo_u">Correo electrónico</label>
-                        <input type="text" id="correo_u" name="correo_u">
-                    </div>
-                    <div class="input-field">
-                        <label for="contraseña_u">Contraseña</label>
-                        <input type="password" id="contraseña_u" name="contraseña_u">
-                    </div>
+                <div class="input-field">
+                    <input type="text" id="correo_u" name="correo_u" required>
+                    <label for="correo_u">Correo electrónico</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="contraseña_u" name="contraseña_u" required>
+                    <label for="contraseña_u">Contraseña</label>
+                </div>
                 <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
-                <br> <button type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
+                <br>
+                <button type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
             </form>
             <div class="bottom-link">¿No tienes una cuenta?<a href="#" id="signup-link">Registrate</a></div>
         </div>
-        
+    </div>
+    <div class="form-box signup">
+        <div class="form-details">
+            <h2>Crear una cuenta</h2>
+            <p>Para conocer el estado de tus autos es necesario que crees una cuenta y registres tus autos.</p>
         </div>
-        <div class="form-box signup">
-            <div class="form-details">
-                <h2>Crear una cuenta</h2>
-                <p>Para conocer el estado de tus autos es necesario que crees una cuenta y registres tus autos.</p>
-            </div>
-            <div class="form-content">
-                <form method="POST" action="/register" id="registerForm" onsubmit="return validateForm()">
-                    <h2>Regístrate</h2>
-                    <div class="input-field">
-                        <label for="nombre_u">Nombre</label>
-                        <input type="text" id="nombre_u" name="nombre_u" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="apellido_u">Apellido</label>
-                        <input type="text" id="apellido_u" name="apellido_u" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="correo_u">Correo electrónico</label>
-                        <input type="email" id="correo_u" name="correo_u" required>
-                    </div>
-                    <div class="input-field">
-                        <label for="contraseña_u">Contraseña</label>
-                        <input type="password" id="contraseña_u" name="contraseña_u" required>
-                    </div>
-                    <button type="submit">Registrarse</button>
-                </form>
-                <div class="bottom-link">
-                    ¿Ya tienes una cuenta? 
-                    <a href="#" id="login-link">Inicia sesión</a>
+        <div class="form-content">
+            <form method="POST" action="/register" id="registerForm" onsubmit="return validateForm()">
+                <h2>Regístrate</h2>
+                <div class="input-field">
+                    <input type="text" id="nombre_u" name="nombre_u" required>
+                    <label for="nombre_u">Nombre</label>
                 </div>
+                <div class="input-field">
+                    <input type="text" id="apellido_u" name="apellido_u" required>
+                    <label for="apellido_u">Apellido</label>
+                </div>
+                <div class="input-field">
+                    <input type="email" id="correo_u" name="correo_u" required>
+                    <label for="correo_u">Correo electrónico</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="contraseña_u" name="contraseña_u" required>
+                    <label for="contraseña_u">Contraseña</label>
+                </div>
+                <button type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Registrarse</button>
+            </form>
+            <div class="bottom-link">
+                ¿Ya tienes una cuenta?
+                <a href="#" id="login-link">Inicia sesión</a>
             </div>
         </div>
     </div>
+</div>
         <div class="box-container">
         <h3 data-text="Bienvenido a Carminder">Bienvenido a Carminder</h3>
         <p>Imagina un lugar donde puedes obtener información precisa y oportuna sobre el estado de las partes clave de tu auto. 
