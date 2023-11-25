@@ -114,29 +114,48 @@ app.get("/foro", (req, res) => {
     res.render("Foro", { user: req.user });
 });
 
-// Ruta para mostrar la página de estado del coche
+// Ruta Estado
 app.get("/estado/:id_carro_usuario", ensureAuthenticated, (req, res) => {
     const userId = req.user.id_usuario;
     const idCarroUsuario = req.params.id_carro_usuario;
 
-    // Obtener la información específica del coche del usuario
-    const query = "SELECT * FROM carros_usuarios WHERE id_usuario = ? AND id_carro_usuario = ?";
-    
-    db.query(query, [userId, idCarroUsuario], (err, results) => {
-        if (err) {
-            console.error("Error al obtener información del coche del usuario: ", err);
-            res.status(500).send("Error al obtener información del coche del usuario");
-        } else {
-            // Renderizar la página de estado y pasar la información del coche
-            const coche = results[0]; // Tomamos el primer resultado, asumiendo que la consulta devuelve un solo resultado
+    // Obtener la información específica del coche del usuario desde la tabla carros_usuarios
+    const queryCarrosUsuarios = "SELECT * FROM carros_usuarios WHERE id_usuario = ? AND id_carro_usuario = ?";
 
-            // Asegúrate de que 'coche' esté definido antes de renderizar la página
-            if (coche) {
-                res.render("Estado", { user: req.user, coche: coche });
-            } else {
-                res.status(404).send("Coche no encontrado");
-            }
+    db.query(queryCarrosUsuarios, [userId, idCarroUsuario], (err, resultsCarrosUsuarios) => {
+        if (err) {
+            console.error("Error al obtener información del coche del usuario desde carros_usuarios: ", err);
+            res.status(500).send("Error al obtener información del coche del usuario");
+            return;
         }
+
+        const coche = resultsCarrosUsuarios[0]; // Tomamos el primer resultado, asumiendo que la consulta devuelve un solo resultado
+
+        // Asegúrate de que 'coche' esté definido antes de continuar
+        if (!coche) {
+            res.status(404).send("Coche no encontrado en la tabla carros_usuarios");
+            return;
+        }
+
+        // Obtener información adicional del coche desde la tabla carros usando el modelo
+        const queryCarros = "SELECT * FROM carros WHERE modelo = ?";
+
+        db.query(queryCarros, [coche.modelo], (err, resultsCarros) => {
+            if (err) {
+                console.error("Error al obtener información adicional del coche desde carros: ", err);
+                res.status(500).send("Error al obtener información del coche del usuario");
+                return;
+            }
+
+            const cocheBase = resultsCarros[0]; // Tomamos el primer resultado, asumiendo que la consulta devuelve un solo resultado
+
+            // Asegúrate de que 'cocheBase' esté definido antes de renderizar la página
+            if (cocheBase) {
+                res.render("Estado", { user: req.user, coche: coche, cocheBase: cocheBase });
+            } else {
+                res.status(404).send("Coche no encontrado en la tabla carros");
+            }
+        });
     });
 });
 
