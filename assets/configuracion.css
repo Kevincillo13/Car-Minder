@@ -254,10 +254,6 @@ body{
         text-shadow: 0 0 0;
 
     }
-    
-
-
-
     .acbox1{
 
         transition: all 0.5s ease;
@@ -271,6 +267,9 @@ body{
         margin-bottom: 1.5rem;
 
 
+    }
+    .acbox1 h1{
+        font-size: xx-large;
     }
 
     .acbox1 h3{
@@ -286,50 +285,7 @@ body{
 
 
     }
-    /*Barras de progreso*/
-    .progbar{
-        width: 100%;
-        border-radius: 12px;
-        border: solid #082f49;
-        background-color: #0369a1;
-        color: #0369a1;
-        box-shadow: 2px 2px 2px #0c4a6e;
-        animation:forwards animacionLineal 0.8s linear ;
-        
 
-    }
-    /*Animación de las barras*/
-    @keyframes animacionLineal {
-        0% {
-            width: 0%;
-        }
-        50% {
-            width: 50%;
-        }
-        100% {
-            width: 100%;
-        }
-    }
-    progress::-webkit-progress-bar {
-        background-color: #ddd; /* Color del fondo de la barra de progreso */
-        border-radius: 12px; /* Bordes redondeados */
-    }
-
-    progress::-webkit-progress-value {
-        background-color: #0ea5e9; /* Color de la barra de progreso */
-        border-radius: 12px; /* Bordes redondeados */
-    }
-    /*Fin de las barras de progreso*/
-    .subtit{
-        font-weight: 500;
-        font-size: 32px;
-        text-shadow:2px 2px 4px rgba(161, 161, 161, 0.5);
-        text-align: center;
-        color: #000;
-        transition: all 0.5s ease;
-        display: flex;
-
-    }
     .subtit .a{
         width: 60%;
         margin-bottom: 2rem;
@@ -393,15 +349,14 @@ body{
     }
 
 
-
-
-
     
     
     .buttondiv{
+
         margin-left: auto;
         margin-right: auto;
         background-color: #fff;
+        width: 100%;
         border-radius: 12px;
         border:solid #345692;
         margin-top: 1rem;
@@ -412,7 +367,7 @@ body{
     .buttondiv:hover{
         background-color: #345692;
         color:#fff;
-        display: flex;
+
     }
     .buttone{
         font-size: 18px;
@@ -420,7 +375,8 @@ body{
         margin-left: auto;
         margin-right: auto;
         text-align: center;
-
+        padding-left: 27%;
+        padding-right: 27%;
         border-radius: 12px;
         transition:  ease 0.5s;
         text-shadow:2px 2px 4px rgba(0, 0, 0, 0.5);
