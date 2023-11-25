@@ -11,11 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/barra.css">
     <link rel="stylesheet" href="/assets/styles.css">
-    <link rel="stylesheet" href="/assets/configuracion.css">
+    <link rel="stylesheet" href="/assets/inicio.css">
 </head>
-<body class="font-Gabarito">
+<body style="font-family: 'Poppins';">
     <div class="sidebar sidebar1">
         <div class="top top1">
             <div class="logo logo1">
@@ -76,12 +77,12 @@
         <div> 
             <a href="agregarCoche"> <button class="bg-sky-950 m-4 flex left-0 rounded-md text-center p-2 text-white hover:bg-sky-800">Agregar coche</button></a>
         </div>
-        <div class="flex">
+        <div class="contenedorauto">
             <% coches.forEach(coche => { %>
-                <div class="flex justify-between m-4">
-                    <div class="bg-white rounded-lg shadow-lg p-4 h-50 w-72">
+                <div>
+                    <div class="autos">
                         <% if (coche.ruta_imagen) { %>
-                            <img src="<%= coche.ruta_imagen %>" alt="Imagen del coche" class="w-50 mx-auto rounded-xl">
+                            <img src="<%= coche.ruta_imagen %>" alt="Imagen del coche" class="imgauto">
                         <% } else { %>
                             <p>Imagen no disponible</p>
                         <% } %>
