@@ -20,7 +20,7 @@
 <body style="font-family:'Poppins';">
     <header>
         <nav class="navbar">
-            <span class="hamburger-btn material-symbols-rounded">menu</span>
+            <span class="hamburger-btn material-symbols-rounded">menú</span>
             <a href="CarMinder.ejs" class="logo">
                 <i class="bx bxs-car-mechanic"></i>
                 <h2>CarMinder</h2>
@@ -28,7 +28,7 @@
             <ul class="links">
                 <span class="close-btn material-symbols-rounded">close</span>
             </ul>
-            <button class="login-btn">LOG IN</button>
+            <button class="login-btn">Iniciar sesión</button>
         </nav>
     </header>
     <div class="blur-bg-overlay"></div>
@@ -39,25 +39,24 @@
                 <h2>Bienvenido de vuelta</h2>
                 <p>Inicia sesión para revisar el estado de tus autos</p>
             </div>
-            <div class="form-content">
-                <h2>LOGIN</h2>
-                <form method="post" action="/login">
+
+        <div class="form-content">
+            <form method="POST" action="/login" id="loginForm">    
+                <h2>Inicia sesión</h2>
                     <div class="input-field">
-                        <input type="text" required>
-                        <label>Email</label>
+                        <label for="correo_u">Correo electrónico</label>
+                        <input type="text" id="correo_u" name="correo_u" required>
                     </div>
                     <div class="input-field">
-                        <input type="password" required>
-                        <label>Password</label>
+                        <label for="contraseña_u">Contraseña</label>
+                        <input type="password" id="contraseña_u" name="contraseña_u" required>
                     </div>
-                    <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
-                    <button type="submit" style="opacity: 1;">Log In</button>
-                </form>
-                <div class="bottom-link">
-                    ¿No tienes una cuenta?
-                    <a href="#" id="signup-link">Registrate</a>
-                </div>
-            </div>
+                <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
+                <br> <button type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
+            </form>
+            <div class="bottom-link">¿No tienes una cuenta?<a href="#" id="signup-link">Registrate</a></div>
+        </div>
+        
         </div>
         <div class="form-box signup">
             <div class="form-details">
@@ -65,28 +64,30 @@
                 <p>Para conocer el estado de tus autos es necesario que crees una cuenta y registres tus autos.</p>
             </div>
             <div class="form-content">
-                <h2>SIGNUP</h2>
-                <form action="#">
+                <form method="POST" action="/register" id="registerForm">
+                    <h2>Regístrate</h2>
+                    
                     <div class="input-field">
-                        <input type="text" required>
-                        <label>Enter your email</label>
+                        <label for="nombre_u">Nombre</label>
+                        <input type="text" id="nombre_u" name="nombre_u">
                     </div>
                     <div class="input-field">
-                        <input type="password" required>
-                        <label>Create password</label>
+                        <label for="apellido_u">Apellido</label>
+                        <input type="text" id="apellido_u" name="apellido_u">
                     </div>
-                    <div class="policy-text">
-                        <input type="checkbox" id="policy">
-                        <label for="policy">
-                            I agree the
-                            <a href="#" class="option">Terms & Conditions</a>
-                        </label>
+                    <div class="input-field">
+                        <label for="correo_u">Correo electrónico</label>
+                        <input type="text" id="correo_u" name="correo_u">
                     </div>
-                    <button type="submit">Sign Up</button>
+                    <div class="input-field">
+                        <label for="contraseña_u">Contraseña</label>
+                        <input type="password" id="contraseña_u" name="contraseña_u">
+                    </div>
+                    <button type="submit">Registrarse</button>
                 </form>
                 <div class="bottom-link">
-                    Already have an account? 
-                    <a href="#" id="login-link">Login</a>
+                    ¿Ya tienes una cuenta? 
+                    <a href="#" id="login-link">Inicia sesión</a>
                 </div>
             </div>
         </div>
@@ -129,19 +130,6 @@
     </div>
 </footer>
 <!--Se crea un script en el cual se le establecen distintas propiedades y comportamientos a la barra lateral de la página-->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let btn = document.querySelector('#btn');
-        let sidebar = document.querySelector('.sidebar');
-
-        if (btn) {
-            btn.onclick = function() {
-                sidebar.classList.toggle('active');
-            };
-        }
-    });
-</script>
-
 <script>
 const navbarMenu = document.querySelector(".navbar .links");
 const hamburgerBtn = document.querySelector(".hamburger-btn");

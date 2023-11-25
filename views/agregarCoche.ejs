@@ -9,12 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/barra.css">
     <link rel="stylesheet" href="/assets/styles.css">
     <link rel="stylesheet" href="/assets/agregarCoche.css">
 </head>
-<body class="font-Gabarito ">
-    <div class="sidebar sidebar1">
+<body style="font-family:'Poppins'" >
+    <div class="sidebar sidebar1"style="z-index:60;">
         <div class="top top1">
             <div class="logo logo1">
                     <i class="bx bxs-car-mechanic">
@@ -29,73 +32,79 @@
             <img src="/assets/imagenes/kokomi.jpg" class="user-img ">
             <div>
                 <!--Aqui se mostrara el nombre del usuario y el usuario-->
-                <p class="bold bold1"><%= user.nombre_u %></p>
+                <p class="bold bold1 sidbox"><%= user.nombre_u %></p>
             </div>
         </div>
         <!--Se crea una lista con distintos elementos. Iconos y texto que tendran funciones especificas para navegar por las distintas secciones-->
         <ul>
             <li>
-                <a href="inicio">
+                <a href="inicio ">
                     <i class="bx bxs-car"></i>
                     <span class="nav-item">Inicio</span>
             </a>
-            <span class="tooltip">Panel</span>
+            <span class="tooltip sidbox">Panel</span>
             </li>
             <li>
                 <a href="Foro">
                     <i class="bx bx-notepad"></i>
                     <span class="nav-item">Foro</span>
             </a>
-            <span class="tooltip">Foro</span>
+            <span class="tooltip sidbox">Foro</span>
             </li>
             <li>
                 <a href="Configuracion">
                     <i class="bx bx-cog"></i>
                     <span class="nav-item">Configuracion</span>
             </a>
-            <span class="tooltip">Configuracion</span>
+            <span class="tooltip sidbox">Configuracion</span>
             </li>
             <li>
                 <a href="/cerrar-sesion">
                     <i class="bx bx-log-out"></i>
                     <span class="nav-item">Logout</span>
                 </a>
-            <span class="tooltip">Logout</span>
+            <span class="tooltip sidbox">Logout</span>
             </li>
         </ul>
     </div>
     <div class="main-content">
-        <div class="cocont">
-            <div class="actit">
-                <h1>Agregar coche</h1>
-                <h2>Completa el formulario y registra un nuevo auto a tu panel</h2>
+        <div class="titulo">
+            <h1>Agregar vehículo</h1>
+            <h2 class="t2">Añade más vehículos a tu panel</h2>
+        </div>
+        <div class="contenido">
+            <div class="subtit">                    
+                <h4 class="a">Complete el formulario para continuar</h4>
+                <h4 class="b">Tu vehículo</h4>
             </div>
             <div class="acbox1 acbox1h">
+
                 <form method="post" action="/agregarCoche" class="" id="agregar_auto">
                     <br>
-                    <label for="marca" class="aclabel"><h3>Seleccione la marca del vehículo</h3>
-                        <select name="marca" class="sel" id="marca">
+                    <h3>Seleccione la marca del vehículo</h3>
+                    <label for="marca" class="sel">
+                        <select name="marca"  id="marca">
                             <option value="Ford">Ford</option>
                             <option value="Nissan">Nissan</option>
                         </select>
                     </label><br>
-
-                    <label for="modelo"><h3>Seleccione el modelo de su vehículo</h3>
-                        <select name="modelo" class="sel" id="modelo">
+                    <h3>Seleccione el modelo de su vehículo</h3>
+                    <label for="modelo"  class="sel">
+                        <select name="modelo"  id="modelo">
                             <!-- Aquí se generarán las opciones dinámicamente con JavaScript según la marca seleccionada -->
                         </select>
                     </label><br>
-
-                    <label for="km_actual"><h3>Kilometraje actual del coche</h3>
-                        <select name="km_actual" class="sel" id="km_actual">
+                    <h3>Kilometraje actual del coche</h3>
+                    <label for="km_actual"  class="sel">
+                        <select name="km_actual"  id="km_actual">
                             <option value="10000">Menos de 10,000 km</option>
                             <option value="50000">10,000-50,000 km</option>
                             <option value="100000">Más de 100,000 km</option>
                         </select>
                     </label><br>
-
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste las llantas?</h3>
-                        <select name="uc_llantas" class="sel" id="uc_llantas">
+                    <h3>¿Cuándo fue la última vez que cambiaste las llantas?</h3>
+                    <label for="uc_llantas" class="sel"> 
+                        <select name="uc_llantas" id="uc_llantas">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -105,9 +114,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_aceite"><h3>¿Cuándo fue la última vez que cambiaste el aceite?</h3>
-                        <select name="uc_aceite" class="sel" id="uc_aceite">
+                    <h3>¿Cuándo fue la última vez que cambiaste el aceite?</h3>
+                    <label for="uc_aceite" class="sel">
+                        <select name="uc_aceite"  id="uc_aceite">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -117,9 +126,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste los frenos?</h3>
-                        <select name="uc_frenos" class="sel" id="uc_frenos">
+                    <h3>¿Cuándo fue la última vez que cambiaste los frenos?</h3>
+                    <label for="uc_llantas" class="sel">
+                        <select name="uc_frenos"  id="uc_frenos">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -129,9 +138,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste el líquido de frenos?</h3>
-                        <select name="uc_liquido_frenos" class="sel" id="uc_liquido_frenos">
+                    <h3>¿Cuándo fue la última vez que cambiaste el líquido de frenos?</h3>
+                    <label for="uc_llantas" class="sel">
+                        <select name="uc_liquido_frenos"  id="uc_liquido_frenos">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -141,9 +150,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_aceite"><h3>¿Cuándo fue la última vez que cambiaste el aceite de la dirección?</h3>
-                        <select name="uc_aceite_direccion" class="sel" id="uc_aceite_direccion">
+                    <h3>¿Cuándo fue la última vez que cambiaste el aceite de la dirección?</h3>
+                    <label for="uc_aceite" class="sel">
+                        <select name="uc_aceite_direccion"  id="uc_aceite_direccion">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -153,9 +162,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste el filtro del aire?</h3>
-                        <select name="uc_filtro_aire" class="sel" id="uc_filtro_aire">
+                    <h3>¿Cuándo fue la última vez que cambiaste el filtro del aire?</h3>
+                    <label for="uc_llantas" class="sel">
+                        <select name="uc_filtro_aire"  id="uc_filtro_aire">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -165,9 +174,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste las bujías?</h3>
-                        <select name="uc_bujias" class="sel" id="uc_bujias">
+                    <h3>¿Cuándo fue la última vez que cambiaste las bujías?</h3>
+                    <label for="uc_llantas" class="sel">
+                        <select name="uc_bujias" id="uc_bujias">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -177,9 +186,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste las correas?</h3>
-                        <select name="uc_correas" class="sel" id="uc_correas">
+                    <h3>¿Cuándo fue la última vez que cambiaste las correas?</h3>
+                    <label for="uc_llantas" class="sel">
+                        <select name="uc_correas"  id="uc_correas">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -189,9 +198,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste el filtro de combustible?</h3>
-                        <select name="uc_filtro_combustible" class="sel" id="uc_filtro_combustible">
+                    <h3>¿Cuándo fue la última vez que cambiaste el filtro de combustible?</h3>
+                    <label for="uc_llantas" class="sel">
+                        <select name="uc_filtro_combustible"  id="uc_filtro_combustible">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -201,9 +210,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste la suspensión?</h3>
-                        <select name="uc_suspension" class="sel" id="uc_suspension">
+                    <h3>¿Cuándo fue la última vez que cambiaste la suspensión?</h3>
+                    <label for="uc_llantas" class="sel">
+                        <select name="uc_suspension"  id="uc_suspension">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -213,9 +222,9 @@
                             <option value="0">No lo recuerdo</option>
                         </select>
                     </label><br>
-                    
-                    <label for="uc_llantas"><h3>¿Cuándo fue la última vez que cambiaste el líquido de transmisión?</h3>
-                        <select name="uc_liquido_transmision" class="sel" id="uc_liquido_transmision">
+                    <h3>¿Cuándo fue la última vez que cambiaste el líquido de transmisión?</h3>
+                    <label for="uc_llantas" class="sel">
+                        <select name="uc_liquido_transmision"  id="uc_liquido_transmision">
                             <option value="1">Menos de un mes</option>
                             <option value="3">Menos de 3 meses</option>
                             <option value="5">Menos de 5 meses</option>
@@ -233,7 +242,7 @@
             </div>
             <div class="acbox2 acbox2h">
                 <div>
-                    <img id="auto" style="border-radius: 4px;" src="">
+                    <img id="auto" class="imagen" src="">
                     <h1></h1>
                     <p></p>
                 </div>

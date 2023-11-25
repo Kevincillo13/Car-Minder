@@ -1,4 +1,10 @@
-@media  (min-width:800px){
+body{
+    background-color: #fff;
+}
+
+
+@media  (min-width:768px){
+
     .cocont{
         display: flex;
         color: aliceblue;
@@ -12,15 +18,15 @@
         box-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
         flex-wrap: wrap;
         transition: all 0.5s ease;
-        width: calc(80% - 80px);
+        width: 94%;
         padding: 1rem;
         transition: ease 0.5s;
         
     }
-    body{
-
-        text-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
+    .main-content{
+        box-shadow: inset  0 10px 0 #859aa9;
     }
+
     .cocont h1{
         font-size: xx-large;
         text-shadow:2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -35,6 +41,42 @@
         transition: ease 0.5s;
         background: #082f49;
     }
+    .titulo h1{
+        font-weight: 600;
+        font-size: 64px;
+        text-shadow:2px 2px 4px rgba(161, 161, 161, 0.5);
+        color: aliceblue;
+        text-align: center;
+        transition: all 0.5s ease;
+    }
+    .titulo{
+        transition: 0.5s forwards;
+        background-color: #141b27;
+        border-bottom: solid 4px #2b3545;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        box-shadow: #000 2px 2px 2px;
+    }
+    .titulo h1:hover{
+        color:#345692;
+        text-shadow: #fff 1px 0px 0px;
+        
+    }
+    .titulo h2{
+        font-weight: 500;
+        font-size: 20px;
+        text-shadow:2px 2px 4px rgba(161, 161, 161, 0.5);
+        color: aliceblue;
+        text-align: center;
+        float:initial;
+        transition: all 0.5s ease;
+    }
+    .titulo h2:hover{
+        color:#345692;
+        text-shadow: 0 0 0;
+
+    }
+    
     .actit h2{
         text-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
     }
@@ -46,73 +88,211 @@
     .acbox1{
         float: left;
         border: solid 1px;
-        border-radius: 4px;
-        width:60%;
+        border-radius: 12px;
+        width:58%;
         padding:1rem;
+        background-color: #e4e4e4;
+        color: aliceblue;
+        box-shadow: 2px 2px 4px black;
+        margin-bottom: 1.5rem;
 
 
+    }
+
+    .acbox1 h3{
+        margin-bottom: 4px;
+        font-size: x-large;
+        color: black;
+        transition: ease;
     }
     .acbox1h{
 
         transition:  ease 0.5s;
+        color: aliceblue;
 
 
     }
-    .acbox1h:hover{
-        background-color: #082f49;
+    .subtit{
+        font-weight: 500;
+        font-size: 32px;
+        text-shadow:2px 2px 4px rgba(161, 161, 161, 0.5);
+        text-align: center;
+        color: #000;
+        transition: all 0.5s ease;
+        display: flex;
+
+    }
+    .subtit .a{
+        width: 60%;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .subtit .b{
+        width: 40%;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .acbox1h h2{
+        font-size: xx-large;
         transition:  ease 0.5s;
+        color: aliceblue;
+        text-align: center;
 
 
     }
+
     .acbox2{
-        float: left;
-        border: solid 1px;
-        border-radius: 4px;
+        float:right ;
+        right: 0.6rem;
+        border-radius: 12px;
         width:40%;
-
+        background-color: #e4e4e4;
         padding:1rem;
+        box-shadow: 2px 2px 4px black;
 
+
+    }
+    .imagen{
+        border-radius:  12px; 
+        margin-bottom: 1rem; 
+        border: solid 2px #000;
+    }
+    .imagen:hover{
+        border-radius:  12px; 
+        margin-bottom: 1rem; 
+        border: solid 2px #203457;
 
     }
     .acbox2h{
-
+        color: black;
         transition:  ease 0.5s;
-
 
     }
     .acbox2h:hover{
-        background-color: #082f49;
-        transition:  ease 0.5s;
+        color:#203457
+    }
+    .acbox2h h1{
+
+        font-size: xx-large;
 
 
     }
-    .acbox1 h3{
-        margin-bottom: 4px;
-        font-size: large;
+    .acbox2h p{
+
+        font-size: larger;
+
+
+    }
+
+
+
+
+
+    
+    select{
+        align-items: center;
+        display: flex;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance:none;
+        color: black;
+        appearance: none;
+        
+        border:0!important;
+        background: #fff;
+        background-image: none;
+        font-size: x-large;
+        width: 100%;
+
+    }
+    select::-ms-expand {
+        display: none;
+        transition: all 0.5s ease;
     }
     .sel{
-        color: black;
-        margin-bottom: 12px;
-        border-radius: 5px;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        border-radius: 4px;
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 3em;
+        text-align: center;
+        line-height: 1.2;
+        background: aliceblue;
+        overflow: hidden;
+        border-radius: 1rem;
+        box-shadow: 3px 5px 5px #203457;
+        border: #000 solid 2px;
+    }
+    .sel:hover{
+        border:  #203457 solid 2px;
+    }
+    select{
+
+        padding: 0.5rem;
+
+        cursor: pointer;
+    }
+    .sel::after{
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1em;
+        color: #fff;
+        text-shadow: 1px 1px 2px black;
+        background:#203457;
+        cursor: pointer;
+        pointer-events: none;
+        transition:  .25s all ease;
+        border-left: solid 1px #203457;
+
+        
+
+    }
+    .sel:hover::after{
+
+        color: #fff;
+        background:#345692;
+
+        
+
     }
 
     .buttondiv{
         margin-left: auto;
         margin-right: auto;
+        background-color: #fff;
+        display: flex;
+        border-radius: 12px;
+        border:solid #345692;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color:cornflowerblue;
+        transition: all 0.5s ease ;
+    }
+    .buttondiv:hover{
+        background-color: #345692;
+        color:#fff;
     }
     .buttonag{
         font-size: large;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding-left: 35%;
+        padding-right: 35%;
 
-        color:cornflowerblue;
         transition:  ease 0.5s;
         text-shadow:2px 2px 4px rgba(0, 0, 0, 0.5);
         
     
     }
     .buttonag:hover{
-        color:#7dd3fc;
+        color:#fff;
         transition:  ease 0.5s;
 
         
@@ -121,9 +301,12 @@
 
 }
 
-@media  (max-width:799px){
+@media  (max-width:767px){
+body{
+    overflow-x: hidden;
+}
     .cocont{
-        
+        display: flex;
         color: aliceblue;
         border-radius: 5px;
         position: relative;
@@ -133,20 +316,22 @@
         margin-left: auto;
         margin-right: auto;
         box-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
-
-        transition: 0.5s ease;
-        width:100%;
+        flex-wrap: wrap;
+        transition: all 0.5s ease;
+        width: 94%;
         padding: 1rem;
+        transition: ease 0.5s;
         
     }
+    .main-content{
+        box-shadow: inset  0 10px 0 #859aa9;
+    }
+
     .cocont h1{
         font-size: xx-large;
         text-shadow:2px 2px 4px rgba(0, 0, 0, 0.5);
         border-bottom: 2px solid;
         border-radius: 5%;
-    }
-    .actit h2{
-        text-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
     }
     .actit{
         padding: 4px;
@@ -155,102 +340,269 @@
         margin-bottom: 1%;
         transition: ease 0.5s;
         background: #082f49;
+    }
+    .titulo h1{
+
+        font-weight: 600;
+
+         font-size: 32px;
+        text-shadow:2px 2px 4px rgba(161, 161, 161, 0.5);
+        color: aliceblue;
+        text-align: center;
+        transition: all 0.5s ease;
+    }
+    .titulo{
+        
+        transition: 0.5s forwards;
+        background-color: #141b27;
+        border-bottom: solid 4px #2b3545;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        box-shadow: #000 2px 2px 2px;
+    }
+    .titulo h1:hover{
+        color:#345692;
+        text-shadow: #fff 1px 0px 0px;
+        
+    }
+    .titulo h2{
+        font-weight: 500;
+        font-size: 14px;
+        text-shadow:2px 2px 4px rgba(161, 161, 161, 0.5);
+        color: aliceblue;
+        text-align: center;
+        float:initial;
+        transition: all 0.5s ease;
+    }
+    .titulo h2:hover{
+        color:#345692;
+        text-shadow: 0 0 0;
+
+    }
+    
+    .actit h2{
+        text-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
+    }
+    .cocont h3{
+        text-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
         
     }
 
     .acbox1{
-
+        display: flex;
         border: solid 1px;
-        border-radius: 4px;
+        border-radius: 12px;
         width:100%;
         padding:1rem;
+        background-color: #e4e4e4;
+        color: aliceblue;
+        box-shadow: 2px 2px 4px black;
+        margin-bottom: 1.5rem;
 
 
     }
+
+
     .acbox1 h3{
+
         margin-bottom: 4px;
-        font-size: large;
+        font-size: 130%;
+        color: black;
+        transition: ease;
+    }
+    .acbox1h{
+
+        transition:  ease 0.5s;
+        color: aliceblue;
+
+
+    }
+    .subtit{
+        font-weight: 500;
+        font-size: 24px;
+        text-shadow:2px 2px 4px rgba(161, 161, 161, 0.5);
+        text-align: center;
+        color: #000;
+        transition: all 0.5s ease;
+
+
+    }
+    .subtit .a{
+        transition: all ease 0.5s;
+        width: 100%;
+
+    }
+    .subtit .b{
+        visibility: hidden;
+
+    }
+
+    .acbox1h h2{
+        font-size: xx-large;
+        transition:  ease 0.5s;
+        color: aliceblue;
+        text-align: center;
+
+
+    }
+
+    .acbox2{
+
+        right: 0.6rem;
+        border-radius: 12px;
+        width:100%;
+        background-color: #e4e4e4;
+        padding:1rem;
+        box-shadow: 2px 2px 4px black;
+
+
+    }
+    .imagen{
+        border-radius:  12px; 
+        margin-bottom: 1rem; 
+        border: solid 2px #000;
+    }
+    .imagen:hover{
+        border-radius:  12px; 
+        margin-bottom: 1rem; 
+        border: solid 2px #203457;
+
+    }
+    .acbox2h{
+        color: black;
+        transition:  ease 0.5s;
+
+    }
+    .acbox2h:hover{
+        color:#203457
+    }
+    .acbox2h h1{
+
+        font-size: xx-large;
+
+
+    }
+    .acbox2h p{
+
+        font-size: larger;
+
+
+    }
+
+
+
+
+
+    
+    select{
+        align-items: center;
+        display: flex;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance:none;
+        color: black;
+        appearance: none;
+        
+        border:0!important;
+        background: aliceblue;
+        background-image: none;
+        font-size: 100%;
+        width: 100%;
+
+    }
+    select::-ms-expand {
+        display: none;
+        transition: all 0.5s ease;
     }
     .sel{
-        color: black;
-        margin-bottom: 12px;
-        border-radius: 5px;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        border-radius: 4px;
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 3em;
+        text-align: center;
+        line-height: 1.2;
+        background: aliceblue;
+        overflow: hidden;
+        border-radius: 1rem;
+        box-shadow: 3px 5px 5px #203457;
+        border: #000 solid 2px;
+    }
+    .sel:hover{
+        border:  #203457 solid 2px;
+    }
+    select{
+
+        padding: 0.5rem;
+
+        cursor: pointer;
+    }
+    .sel::after{
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1em;
+        color: #fff;
+        text-shadow: 1px 1px 2px black;
+        background:#203457;
+        cursor: pointer;
+        pointer-events: none;
+        transition:  .25s all ease;
+        border-left: solid 1px #203457;
+
+        
+
+    }
+    .sel:hover::after{
+
+        color: #fff;
+        background:#345692;
+
+        
+
     }
 
     .buttondiv{
         margin-left: auto;
         margin-right: auto;
+        background-color: #fff;
+        display: flex;
+        border-radius: 12px;
+        border:solid #345692;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color:cornflowerblue;
+        transition: all 0.5s ease ;
+    }
+    .buttondiv:hover{
+        background-color: #345692;
+        color:#fff;
     }
     .buttonag{
         font-size: large;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding-left: 35%;
+        padding-right: 35%;
 
-        color:cornflowerblue;
         transition:  ease 0.5s;
         text-shadow:2px 2px 4px rgba(0, 0, 0, 0.5);
         
     
     }
     .buttonag:hover{
-        color:#7dd3fc;
+        color:#fff;
         transition:  ease 0.5s;
 
         
     
     }
-    .acbox2{
 
-        border: solid 1px;
-        border-radius: 4px;
-        width:100%;
-
-        padding:1rem;
-
-
+    .contenido{
+        z-index:-60;
     }
-    .main-content{
-        position: relative;
-        background-color: white;
-        min-height: 100vh;
-        top:0;
-        left:80px;
-        transition: all 0.5s ease;
-
-        padding: 1rem;
+    .sidbox{ /*Ocultar elementos de la barra*/
+        visibility: hidden;
     }
-    .sidebar.active ~ .main-content{
-        left:250px;
-        width: calc(100% - 80px);
-    
-    }
-    body{
-        overflow-x: hidden;
-        text-shadow:4px 4px 4px rgba(0, 0, 0, 0.5);
-    }
-    .acbox2h{
-
-        transition:  ease 0.5s;
-
-
-    }
-    .acbox2h:hover{
-        background-color: #082f49;
-        transition:  ease 0.5s;
-
-
-    }
-    .acbox1h{
-
-        transition:  ease 0.5s;
-
-
-    }
-    .acbox1h:hover{
-        background-color: #082f49;
-        transition:  ease 0.5s;
-
-
-    }
-
 }

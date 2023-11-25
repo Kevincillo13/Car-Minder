@@ -185,19 +185,25 @@ app.get("/inicio", ensureAuthenticated, (req, res) => {
 });
 
 
+// Inicio de sesión
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/Inicio',
+    failureRedirect: '/CarMinder?error=1'
+}));
+
 // Registro de usuario
 app.post("/register", (req, res) => {
     const { nombre_u, correo_u, contraseña_u } = req.body;
     bcrypt.hash(contraseña_u, 10, (err, hash) => {
         if (err) {
             console.error("Error al encriptar la contraseña: ", err);
-            res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+            res.status(500).send('<script>alert("Error al registrar"); window.location="/login";</script>');
         } else {
             const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u,created_at , active) VALUES (?, ?, ?,NOW() , 1)";
             db.query(query, [nombre_u, correo_u, hash], (err, results) => {
                 if (err) {
                     console.error("Error al registrar el usuario: ", err);
-                    res.status(500).send('<script>alert("Error al registrar"); window.location="/register";</script>');
+                    res.status(500).send('<script>alert("Error al registrar"); window.location="/login";</script>');
                 } else {
                     res.send('<script>alert("Usuario registrado con éxito"); window.location="/login";</script>');
                 }
@@ -205,12 +211,6 @@ app.post("/register", (req, res) => {
         }
     });
 });
-
-// Inicio de sesión
-app.post('/login', passport.authenticate('local', {
-    successRedirect: '/CarMinder',
-    failureRedirect: '/CarMinder?error=1'
-}));
 
 // Ruta para cerrar sesión
 app.get('/cerrar-sesion', (req, res) => {
