@@ -5,15 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="website icon" type="png" href="/assets/imagenes/iconos/RIN.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/barra.css">
     <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/inicio.css">
 </head>
-<body class="font-Gabarito">
+<body style="font-family: 'Poppins';">
     <div class="sidebar sidebar1">
         <div class="top top1">
             <div class="logo logo1">
@@ -39,47 +42,51 @@
                     <i class="bx bxs-car"></i>
                     <span class="nav-item">Inicio</span>
             </a>
-            <span class="tooltip">Panel</span>
+            <span class="tooltip sidbox">Panel</span>
             </li>
             <li>
                 <a href="Foro">
                     <i class="bx bx-notepad"></i>
                     <span class="nav-item">Foro</span>
             </a>
-            <span class="tooltip">Foro</span>
+            <span class="tooltip sidbox">Foro</span>
             </li>
             <li>
                 <a href="Configuracion">
                     <i class="bx bx-cog"></i>
                     <span class="nav-item">Configuracion</span>
             </a>
-            <span class="tooltip">Configuracion</span>
+            <span class="tooltip sidbox">Configuracion</span>
             </li>
             <li>
                 <a href="/cerrar-sesion">
                     <i class="bx bx-log-out"></i>
                     <span class="nav-item">Logout</span>
                 </a>
-            <span class="tooltip">Logout</span>
+            <span class="tooltip sidbox">Logout</span>
             </li>
         </ul>
     </div>
     </div>
     <!-- Aquí se inicia el apartado del cuerpo del contenido de la página-->
     <div class="main-content">
-        <div> <h1 class=" flex-auto container mx-10 text-3xl text-center duration-500 bg-slate-950/50 rounded- text-black bold py-2">Aquí van tus coches</h1>
-            <a href="agregarCoche"> <button class="bg-sky-950 m-4 flex left-0 rounded-md text-center p-2 text-white hover:bg-sky-800">Agregar coche</button></a>
+        <div class="titulo">
+            <h1 class="">Tus vehiculos</h1>
+            <h2>Agrega y monitorea tus autos</h2>
         </div>
-        <div class="flex">
+        <div> 
+            <a href="agregarCoche"> <button class="agregarbut bg-sky-950 m-4 flex left-0 rounded-md text-center p-2 text-white hover:bg-sky-800">Agregar coche</button></a>
+        </div>
+        <div class="contenedorauto">
             <% coches.forEach(coche => { %>
-                <div class="flex justify-between m-4">
-                    <div class="bg-white rounded-lg shadow-lg p-4 h-50 w-72">
+                <div>
+                    <div class="autos">
                         <% if (coche.ruta_imagen) { %>
-                            <img src="<%= coche.ruta_imagen %>" alt="Imagen del coche" class="w-50 mx-auto rounded-xl">
+                            <img src="<%= coche.ruta_imagen %>" alt="Imagen del coche" class="imgauto">
                         <% } else { %>
                             <p>Imagen no disponible</p>
                         <% } %>
-                        <a href="/estado/<%= coche.id_carro_usuario %>" class="block w-full bg-sky-700 hover:bg-sky-950 text-white text-center py-2 mt-4 rounded-full duration-500">Estado de tu <%= coche.modelo %></a>
+                        <a href="/estado/<%= coche.id_carro_usuario %>" class="estadobut block w-full bg-sky-700 hover:bg-sky-950 text-white text-center py-2 mt-4 rounded-full duration-500">Estado de tu <%= coche.modelo %></a>
                     </div>
                 </div>
             <% }); %>

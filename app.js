@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 const validator = require('validator');
+const flash = require('express-flash');
 
 // Configuraciones
 app.set("view engine", "ejs"),
@@ -22,6 +23,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Conexion a base de datos
 const db = mysql.createConnection({
@@ -64,46 +66,55 @@ passport.deserializeUser((id, done) => {
     });
 });
 
-    // Configuración de Passport para la estrategia local de autenticación
+// Configuración de Passport para la estrategia local de autenticación   
 passport.use(new LocalStrategy(
-    { usernameField: 'correo_u', passwordField: 'contraseña_u' },
+    { usernameField: 'correo_u', passwordField: 'contraseña_u', failureFlash: true },
     (correo_u, contraseña_u, done) => {
         console.log(`Intento de inicio de sesión para el correo: ${correo_u}`);
-        
-    // Buscar el usuario en la base de datos por correo
-const query = "SELECT * FROM usuarios WHERE correo_u = ?";
-    db.query(query, [correo_u], (err, results) => {
-    if (err) {
-        console.error("Error al buscar el usuario: ", err);
-        return done(err);
-    }
-    if (results.length === 0) {
-        console.log("Usuario no encontrado");
-        return done(null, false, { message: 'Usuario no encontrado' });
-    }
-const usuario = results[0];
 
-    // Comparar contraseñas
-bcrypt.compare(contraseña_u, usuario.contraseña_u, (err, result) => {
-    if (err) {
-        console.error("Error al comparar contraseñas: ", err);
-        return done(err);
-    }
-    if (result) {
-        console.log("Inicio de sesión exitoso");
-        return done(null, usuario);
-    } else {
-        console.log("Contraseña incorrecta");
-        return done(null, false, { message: 'Contraseña incorrecta' });
-    }
-});
-    });
+        // Validaciones
+        if (!correo_u || !contraseña_u) {
+            return done(null, false, { message: 'Correo electrónico y contraseña son obligatorios' });
+        }
+
+        // Consulta para verificar si el correo electrónico existe
+        const query = "SELECT * FROM usuarios WHERE correo_u = ?";
+        db.query(query, [correo_u], (err, results) => {
+            if (err) {
+                console.error("Error al buscar el usuario: ", err);
+                return done(err);
+            }
+
+            if (results.length === 0) {
+                // El correo electrónico no está registrado
+                return done(null, false, { message: 'Correo electrónico no registrado' });
+            }
+
+            const usuario = results[0];
+
+            // Comparar contraseñas
+            bcrypt.compare(contraseña_u, usuario.contraseña_u, (err, result) => {
+                if (err) {
+                    console.error("Error al comparar contraseñas: ", err);
+                    return done(err);
+                }
+
+                if (result) {
+                    console.log("Inicio de sesión exitoso");
+                    return done(null, usuario);
+                } else {
+                    // Contraseña incorrecta
+                    return done(null, false, { message: 'Contraseña incorrecta' });
+                }
+            });
+        });
     }
 ));
 
 // Rutas
-app.get("/login", (req, res) => {
-    res.render("CarMinder", {})
+app.get("/CarMinder", (req, res) => {
+    const errorMessage = req.query.error === '1' ? 'Correo electrónico no registrado o contraseña incorrecta' : '';
+    res.render("CarMinder", { errorMessage });
 });
 
 app.get("/register", (req, res) => {
@@ -184,33 +195,74 @@ app.get("/inicio", ensureAuthenticated, (req, res) => {
     });
 });
 
-
 // Inicio de sesión
-app.post('/login', passport.authenticate('local', {
-    successRedirect: '/Inicio',
-    failureRedirect: '/CarMinder?error=1'
-}));
+app.post('/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            // Usuario no encontrado
+            return res.render('CarMinder', { errorMessage: 'Correo electrónico no registrado' });
+        }
+        req.logIn(user, (err) => {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect('/Inicio');
+        });
+    })(req, res, next);
+});
+
 
 // Registro de usuario
 app.post("/register", (req, res) => {
     const { nombre_u, correo_u, contraseña_u } = req.body;
-    bcrypt.hash(contraseña_u, 10, (err, hash) => {
+
+    if (!nombre_u || !correo_u || !contraseña_u) {
+        return res.status(400).send('<script>alert("Todos los campos son obligatorios"); window.location="/CarMinder";</script>');
+    }
+
+    if (!validator.isEmail(correo_u)) {
+        return res.status(400).send('<script>alert("Correo electrónico no válido"); window.location="/CarMinder";</script>');
+    }
+
+    // Verificar si el correo electrónico ya está registrado
+    const checkEmailQuery = "SELECT * FROM usuarios WHERE correo_u = ?";
+
+    db.query(checkEmailQuery, [correo_u], (err, results) => {
         if (err) {
-            console.error("Error al encriptar la contraseña: ", err);
-            res.status(500).send('<script>alert("Error al registrar"); window.location="/login";</script>');
-        } else {
-            const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u,created_at , active) VALUES (?, ?, ?,NOW() , 1)";
-            db.query(query, [nombre_u, correo_u, hash], (err, results) => {
-                if (err) {
-                    console.error("Error al registrar el usuario: ", err);
-                    res.status(500).send('<script>alert("Error al registrar"); window.location="/login";</script>');
-                } else {
-                    res.send('<script>alert("Usuario registrado con éxito"); window.location="/login";</script>');
-                }
-            });
+            console.error("Error al verificar el correo electrónico: ", err);
+            res.status(500).send('<script>alert("Error al registrar"); window.location="/CarMinder";</script>');
+            return;
         }
+
+        if (results.length > 0) {
+            // El correo electrónico ya está registrado
+            res.status(400).send('<script>alert("El correo electrónico ya está en uso"); window.location="/CarMinder";</script>');
+            return;
+        }
+
+        // Si no hay resultados, proceder con la inserción
+        bcrypt.hash(contraseña_u, 10, (err, hash) => {
+            if (err) {
+                console.error("Error al encriptar la contraseña: ", err);
+                res.status(500).send('<script>alert("Error al registrar"); window.location="/CarMinder";</script>');
+            } else {
+                const insertUserQuery = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u, created_at, active) VALUES (?, ?, ?, NOW(), 1)";
+                db.query(insertUserQuery, [nombre_u, correo_u, hash], (err, results) => {
+                    if (err) {
+                        console.error("Error al registrar el usuario: ", err);
+                        res.status(500).send('<script>alert("Error al registrar"); window.location="/CarMinder";</script>');
+                    } else {
+                        res.send('<script>alert("Usuario registrado con éxito"); window.location="/CarMinder";</script>');
+                    }
+                });
+            }
+        });
     });
 });
+
 
 // Ruta para cerrar sesión
 app.get('/cerrar-sesion', (req, res) => {
@@ -220,7 +272,7 @@ app.get('/cerrar-sesion', (req, res) => {
             return next(err);
         }
         console.log("Sesión cerrada con éxito");
-        res.redirect('/CarMinder');
+        res.redirect('CarMinder');
     });
 });
 

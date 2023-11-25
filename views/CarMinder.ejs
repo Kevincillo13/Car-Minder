@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarMinder</title>
+    <link rel="website icon" type="png" href="/assets/imagenes/iconos/RIN.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
@@ -45,11 +46,11 @@
                 <h2>Inicia sesión</h2>
                     <div class="input-field">
                         <label for="correo_u">Correo electrónico</label>
-                        <input type="text" id="correo_u" name="correo_u" required>
+                        <input type="text" id="correo_u" name="correo_u">
                     </div>
                     <div class="input-field">
                         <label for="contraseña_u">Contraseña</label>
-                        <input type="password" id="contraseña_u" name="contraseña_u" required>
+                        <input type="password" id="contraseña_u" name="contraseña_u">
                     </div>
                 <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
                 <br> <button type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
@@ -64,24 +65,23 @@
                 <p>Para conocer el estado de tus autos es necesario que crees una cuenta y registres tus autos.</p>
             </div>
             <div class="form-content">
-                <form method="POST" action="/register" id="registerForm">
+                <form method="POST" action="/register" id="registerForm" onsubmit="return validateForm()">
                     <h2>Regístrate</h2>
-                    
                     <div class="input-field">
                         <label for="nombre_u">Nombre</label>
-                        <input type="text" id="nombre_u" name="nombre_u">
+                        <input type="text" id="nombre_u" name="nombre_u" required>
                     </div>
                     <div class="input-field">
                         <label for="apellido_u">Apellido</label>
-                        <input type="text" id="apellido_u" name="apellido_u">
+                        <input type="text" id="apellido_u" name="apellido_u" required>
                     </div>
                     <div class="input-field">
                         <label for="correo_u">Correo electrónico</label>
-                        <input type="text" id="correo_u" name="correo_u">
+                        <input type="email" id="correo_u" name="correo_u" required>
                     </div>
                     <div class="input-field">
                         <label for="contraseña_u">Contraseña</label>
-                        <input type="password" id="contraseña_u" name="contraseña_u">
+                        <input type="password" id="contraseña_u" name="contraseña_u" required>
                     </div>
                     <button type="submit">Registrarse</button>
                 </form>
