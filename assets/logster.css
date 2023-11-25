@@ -409,9 +409,11 @@ form button:hover {
 }
 
 .footer {
-    background-color: #1e2734;
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    padding: 50px 30px 20px;
+    background-color: #1e2734;
+    padding: 10px 30px 10px;
 }
 
 .socialIcons {
