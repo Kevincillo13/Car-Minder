@@ -102,7 +102,7 @@ bcrypt.compare(contraseña_u, usuario.contraseña_u, (err, result) => {
 ));
 
 // Rutas
-app.get("/login", (req, res) => {
+app.get("/CarMinder", (req, res) => {
     res.render("CarMinder", {})
 });
 
@@ -197,15 +197,15 @@ app.post("/register", (req, res) => {
     bcrypt.hash(contraseña_u, 10, (err, hash) => {
         if (err) {
             console.error("Error al encriptar la contraseña: ", err);
-            res.status(500).send('<script>alert("Error al registrar"); window.location="/login";</script>');
+            res.status(500).send('<script>alert("Error al registrar"); window.location="/CarMinder";</script>');
         } else {
             const query = "INSERT INTO usuarios (nombre_u, correo_u, contraseña_u,created_at , active) VALUES (?, ?, ?,NOW() , 1)";
             db.query(query, [nombre_u, correo_u, hash], (err, results) => {
                 if (err) {
                     console.error("Error al registrar el usuario: ", err);
-                    res.status(500).send('<script>alert("Error al registrar"); window.location="/login";</script>');
+                    res.status(500).send('<script>alert("Error al registrar"); window.location="/CarMinder";</script>');
                 } else {
-                    res.send('<script>alert("Usuario registrado con éxito"); window.location="/login";</script>');
+                    res.send('<script>alert("Usuario registrado con éxito"); window.location="/CarMinder";</script>');
                 }
             });
         }
@@ -220,7 +220,7 @@ app.get('/cerrar-sesion', (req, res) => {
             return next(err);
         }
         console.log("Sesión cerrada con éxito");
-        res.redirect('/CarMinder');
+        res.redirect('CarMinder');
     });
 });
 
