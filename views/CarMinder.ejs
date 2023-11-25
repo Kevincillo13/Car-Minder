@@ -43,14 +43,14 @@
         <div class="form-content">
             <form method="POST" action="/login" id="loginForm">    
                 <h2>Inicia sesión</h2>
-                    <div class="input-field">
-                        <label for="correo_u">Correo electrónico</label>
-                        <input type="text" id="correo_u" name="correo_u">
-                    </div>
-                    <div class="input-field">
-                        <label for="contraseña_u">Contraseña</label>
-                        <input type="password" id="contraseña_u" name="contraseña_u">
-                    </div>
+                <div class="input-field">
+                    <label for="correo_u">Correo electrónico</label>
+                    <input type="text" id="correo_u" name="correo_u">
+                </div>
+                <div class="input-field">
+                    <label for="contraseña_u">Contraseña</label>
+                     <input type="password" id="contraseña_u" name="contraseña_u">
+                </div>
                 <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
                 <br> <button type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
             </form>
@@ -64,24 +64,23 @@
                 <p>Para conocer el estado de tus autos es necesario que crees una cuenta y registres tus autos.</p>
             </div>
             <div class="form-content">
-                <form method="POST" action="/register" id="registerForm">
+                <form method="POST" action="/register" id="registerForm" onsubmit="return validateForm()">
                     <h2>Regístrate</h2>
-                    
                     <div class="input-field">
                         <label for="nombre_u">Nombre</label>
-                        <input type="text" id="nombre_u" name="nombre_u">
+                        <input type="text" id="nombre_u" name="nombre_u" required>
                     </div>
                     <div class="input-field">
                         <label for="apellido_u">Apellido</label>
-                        <input type="text" id="apellido_u" name="apellido_u">
+                        <input type="text" id="apellido_u" name="apellido_u" required>
                     </div>
                     <div class="input-field">
                         <label for="correo_u">Correo electrónico</label>
-                        <input type="text" id="correo_u" name="correo_u">
+                        <input type="email" id="correo_u" name="correo_u" required>
                     </div>
                     <div class="input-field">
                         <label for="contraseña_u">Contraseña</label>
-                        <input type="password" id="contraseña_u" name="contraseña_u">
+                        <input type="password" id="contraseña_u" name="contraseña_u" required>
                     </div>
                     <button type="submit">Registrarse</button>
                 </form>
@@ -127,13 +126,6 @@ const showPopupBtn = document.querySelector(".login-btn");
 const formPopup = document.querySelector(".form-popup");
 const hidePopupBtn = formPopup.querySelector(".close-btn");
 const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
-const nombreInput = document.getElementById('nombre_u');
-const apellidoInput = document.getElementById('apellido_u');
-const correoInput = document.getElementById('correo_u');
-const contraseñaInput = document.getElementById('contraseña_u');
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-
 // Show mobile menu
 hamburgerBtn.addEventListener("click", () => {
     navbarMenu.classList.toggle("show-menu");
@@ -153,58 +145,6 @@ signupLoginLink.forEach(link => {
         formPopup.classList[link.id === 'signup-link' ? 'add' : 'remove']("show-signup");
     });
 });
-
-loginForm.addEventListener('submit', function (event) {
-        if (!validarCamposLogin()) {
-            event.preventDefault(); // Evitar el envío del formulario si la validación falla
-        }
-    });
-
-    registerForm.addEventListener('submit', function (event) {
-        if (!validarCamposRegistro()) {
-            event.preventDefault(); // Evitar el envío del formulario si la validación falla
-        }
-    });
-
-  
-    function validarCamposRegistro() {
-      // Valida que el campo de nombre no esté vacío
-      if (nombreInput.value.trim() === '') {
-        alert('Por favor, ingrese su nombre.');
-        return false;
-      }
-  
-      // Valida que el campo de apellido no esté vacío
-      if (apellidoInput.value.trim() === '') {
-        alert('Por favor, ingrese su apellido.');
-        return false;
-      }
-  
-      // Valida que el campo de correo sea un correo electrónico válido
-      if (!validarCorreo(correoInput.value)) {
-        alert('Por favor, ingrese un correo electrónico válido.');
-        return false;
-      }
-  
-      // Valida que la contraseña no esté vacía y cumpla con tus criterios (longitud máxima, etc.)
-      if (!validarContraseña(contraseñaInput.value)) {
-        alert('Por favor, ingrese una contraseña válida.');
-        return false;
-      }
-  
-      return true; // Todos los campos son válidos
-    }
-  
-    function validarCorreo(correo) {
-      // Utiliza una expresión regular para verificar si es un correo electrónico válido
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
-    }
-  
-    function validarContraseña(contraseña) {
-      // Agrega tus criterios de validación de contraseña aquí
-      // Por ejemplo, si deseas verificar una longitud máxima:
-      return contraseña.length <= 50;
-    }
 </script>
 
 </html> 
