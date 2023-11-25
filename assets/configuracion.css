@@ -69,6 +69,9 @@ body{
 
 
     }
+    .acbox1 h1{
+        font-size: xx-large;
+    }
 
     .acbox1 h3{
         margin-bottom: 4px;
@@ -164,7 +167,7 @@ body{
     
     
     .buttondiv{
-        display: flex;
+
         margin-left: auto;
         margin-right: auto;
         background-color: #fff;
@@ -399,7 +402,6 @@ body{
         margin-left: auto;
         margin-right: auto;
         background-color: #fff;
-
         border-radius: 12px;
         border:solid #345692;
         margin-top: 1rem;
@@ -418,8 +420,7 @@ body{
         margin-left: auto;
         margin-right: auto;
         text-align: center;
-        padding-left: 27%;
-        padding-right: 27%;
+
         border-radius: 12px;
         transition:  ease 0.5s;
         text-shadow:2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -457,10 +458,70 @@ body{
     transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
   }
 .inp{
-    border-radius: 4%;
+    margin-top:1rem ;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border-radius: 12px;
     color: black;
     padding: 4px;
     box-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);
+    border:solid 2px #141b27;
+}
+.sub{
+    display:block;
+    width: 80%;
+    text-shadow:2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top:1rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 12px;
+    border: solid 2px #141b27;
+    color:#0ea5e9;
+    transition:  ease 0.5s;
+    margin-bottom: 5%;
+    box-shadow:0px 2px 4px rgba(0, 0, 0, 0.5);
+
+
+
+}
+.sub:hover{
+    background: #082f49;
+    color:#fff;
+    transition:  ease 0.5s;
+
+}
+.acbox1 .buttondiv:hover .buttone{
+    background: #0369a1;
+    color:#fff;
+    transition:  ease 0.5s;
+}
+.acbox1 .buttondiv:hover .sub{
+    border: transparent 0px ;
+
+    transition:  ease 0.5s;
+}
+.acbox1 .buttondiv .sub:hover{
+    color: #fff;
+
+    transition:  ease 0.5s;
+}
+.acbox1 .buttondiv .sub{
+
+    color: #0369a1;
+    transition:  ease 0.5s;
+}
+.acbox1 .buttondiv:hover {
+
+    background-color: #0c4a6e;
+    transition:  ease 0.5s;
+}
+.acbox1 .buttondiv:hover .inp {
+
+    border: solid transparent 0px;
+    transition:  ease 0.5s;
 }
 
 

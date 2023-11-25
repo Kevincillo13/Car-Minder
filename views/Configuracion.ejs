@@ -80,26 +80,32 @@
                     <div class="">
                         <h2>Nombre:</h2>
                         <h3><%= user.nombre_u %></h3>
-                        <button id="butnom" class="buttonc">Modificar nombre</button>
-                        <div id="nomcont" class="oculto">
-                            <form id="updateNombreForm" action="/actualizar-nombre" method="POST">
-                                <input class="inp" type="text" id="nombre_u" name="nombre_u">
-                                <button class="sub" type="submit">Aceptar</button>
-                            </form>
+                        <div class="buttondiv" >
+                            <button id="butnom" class="buttone">Modificar nombre</button>
+                            <div id="nomcont" class="oculto">
+                                <form id="updateNombreForm" action="/actualizar-nombre" method="POST">
+                                    <input class="inp" type="text" id="nombre_u" name="nombre_u">
+                                        <button class="sub" type="submit">Aceptar</button>
+                                </form>
+                            </div>
                         </div>
+
                         <h2>Correo electrónico:</h2>
                         <h3><%= user.correo_u %></h3>
-                        <button id="butema" class="buttonc">Modificar correo</button>
-                        <div id="corcont" class="oculto">
-                            <form id="updateCorreoForm" action="/actualizar-correo" method="POST">
-                                <input class="inp" type="text" id="correo_u" name="correo_u">
-                                <button class="sub" type="submit">Aceptar</button>
-                            </form>
+                        <div class="buttondiv">
+                            <button id="butema" class="buttone">Modificar correo</button>
+                            <div id="corcont" class="oculto">
+                                <form id="updateCorreoForm" action="/actualizar-correo" method="POST">
+                                    <input class="inp" type="text" id="correo_u" name="correo_u">
+                                    <button class="sub" type="submit">Aceptar</button>
+                                </form>
+                            </div>
                         </div>
-                        <h2>Télefono</h2>
-                        <h3>Aqui va el telefono</h3>
-                        <button id="buttel" class="buttonc">Modificar télefono</button>
-                        <div id="telcont" style="margin-bottom: 10px;" class="oculto">
+                        
+                        <h2  style="visibility:hidden;">Télefono</h2>
+                        <h3  style="visibility:hidden;">Aqui va el telefono</h3>
+                        <button  style="visibility:hidden;" id="buttel" class="buttonc">Modificar télefono</button>
+                        <div  style="visibility:hidden;" id="telcont" style="margin-bottom: 10px;" class="oculto">
                             <form>
                                 <input class="inp" type="text" id="nombre_u" name="nombre_u">
                                 <button class="sub" style="margin-bottom: 20px;" type="submit">Aceptar</button>
@@ -134,6 +140,7 @@
                                 <button class="buttone" type="submit">Aceptar</button>
                             </form>
                         </div>
+
 
                     </div>
                 </div>
