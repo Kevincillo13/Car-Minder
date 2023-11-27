@@ -208,11 +208,7 @@ body{
         color:cornflowerblue;
         transition: all 0.5s ease ;
     }
-    .buttondiv:hover{
-        background-color: #345692;
-        color:#fff;
-        display: flex;
-    }
+
     .buttone{
         font-size: 18px;
         width: 100%;
@@ -439,11 +435,7 @@ body{
         color:cornflowerblue;
         transition: all 0.5s ease ;
     }
-    .buttondiv:hover{
-        background-color: #345692;
-        color:#fff;
-        display: flex;
-    }
+
     .buttone{
         font-size: 18px;
         width: 100%;

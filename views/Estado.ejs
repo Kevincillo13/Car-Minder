@@ -91,8 +91,12 @@
                 <h1 class="NA"><%= coche.marca %> <%= coche.modelo %></h>
             </div>
             <div class="buttondiv">
-                <button id="eliminarCocheBtn" class="buttone">Eliminar coche</button>
+                <form action="/eliminar-coche" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este coche?');">
+                    <input type="hidden" name="id_carro_usuario" value="<%= coche.id_carro_usuario %>">
+                    <button id="eliminarCocheBtn" class="buttone">Eliminar coche</button>
+                </form>
             </div>
+            
         </div>
         <div class="acbox1 BOX contbord">
             <div>

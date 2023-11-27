@@ -85,7 +85,6 @@
                         <div class="buttondiv">
                             <button id="butnom" class="buttone">Modificar nombre</button>
                             <div id="nomcont" class="oculto">
-                                <form id="updateNombreForm" action="/actualizar-nombre" method="POST">
                                     <input class="inp" type="text" id="nombre_u" name="nombre_u">
                                     <button class="sub" type="submit">Aceptar</button>
                                 </form>
@@ -96,7 +95,7 @@
                         <div class="buttondiv">
                             <button id="butema" class="buttone">Modificar correo</button>
                             <div id="corcont" class="oculto">
-                                <form id="updateCorreoForm" action="/actualizar-correo" method="POST">
+                                <form id="updateCorreoForm" action="/actualizar-correo" method="POST" >
                                     <input class="inp" type="text" id="correo_u" name="correo_u">
                                     <button class="sub" type="submit">Aceptar</button>
                                 </form>
@@ -120,20 +119,21 @@
                 <div class="">
                     <h1>Eliminar cuenta</h1>
                     <h2>Puedes eliminar tu cuenta si ya no piensas utilizar nuestros servicios</h2>
-                    <p>Al eliminar tu cuenta eres consiente de lo siguiente</p>
-                    <h2 >Pérdida de Datos:</h2>
-                    <p>
+                    <p>Al eliminar tu cuenta eres consiente de lo siguiente:</p>
+                    <p>Pérdida de Datos:</p>
+                    <h2>
                         Todos los datos asociados con tu cuenta como tus preferencias y configuraciones, serán eliminados permanentemente. 
                         No podremos recuperar esta información.
-                    </p>
-                    <h2 >Acceso Denegado:</h2>
-                    <p>No podrás acceder a tu cuenta ni a 
+                    </h2>
+                    <p>Acceso Denegado:</p>
+                    <h2>No podrás acceder a tu cuenta ni a 
                         ninguna de las funcionalidades asociadas una vez que se haya eliminado.
-                    </p>
+                    </h2>
                     <div>
-                        <h3 >Recuerda que no hay marcha atras al </h3>
                         <div class="buttondiv">
-                            <button id="delbut" class="buttone">Eliminar cuenta</button>
+                            <form id="eliminarCuentaForm" action="/eliminar-cuenta" method="POST" onsubmit="return confirm('¿Seguro que quieres eliminar tu cuenta?');">
+                                <button type="submit" class="buttone">Eliminar cuenta</button>
+                            </form>
                         </div>
 
                         <div id="delcont" class="oculto buttondiv">

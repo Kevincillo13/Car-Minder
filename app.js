@@ -363,6 +363,26 @@ app.post('/eliminar-cuenta', ensureAuthenticated, (req, res) => {
     });
 });
 
+// Ruta para eliminar un coche
+app.post('/eliminar-coche', ensureAuthenticated, (req, res) => {
+    const userId = req.user.id_usuario;
+    const cocheId = req.body.id_carro_usuario;
+
+    // Realizar la eliminación en la base de datos
+    const eliminarCocheQuery = "DELETE FROM carros_usuarios WHERE id_usuario = ? AND id_carro_usuario = ?";
+
+    db.query(eliminarCocheQuery, [userId, cocheId], (error, result) => {
+        if (error) {
+            console.error('Error al eliminar el coche:', error.message);
+            res.status(500).send('Error interno del servidor');
+        } else {
+            // Redirigir a la página de inicio u otra página después de la eliminación
+            res.redirect('/inicio'); // Cambia la ruta según sea necesario
+        }
+    });
+});
+
+
 // Iniciar el servidor
 app.listen(3000, () => {
     console.log("Corriendo en el puerto 3000");
