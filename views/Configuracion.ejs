@@ -82,16 +82,15 @@
                     <div class="">
                         <h2>Nombre:</h2>
                         <h3><%= user.nombre_u %></h3>
-                        <div class="buttondiv" >
+                        <div class="buttondiv">
                             <button id="butnom" class="buttone">Modificar nombre</button>
                             <div id="nomcont" class="oculto">
                                 <form id="updateNombreForm" action="/actualizar-nombre" method="POST">
                                     <input class="inp" type="text" id="nombre_u" name="nombre_u">
-                                        <button class="sub" type="submit">Aceptar</button>
+                                    <button class="sub" type="submit">Aceptar</button>
                                 </form>
                             </div>
-                        </div>
-
+                        </div>                        
                         <h2>Correo electrónico:</h2>
                         <h3><%= user.correo_u %></h3>
                         <div class="buttondiv">

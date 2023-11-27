@@ -307,6 +307,61 @@ app.post('/agregarCoche', ensureAuthenticated, (req, res) => {
     });
 });
 
+// Ruta para actualizar el nombre
+app.post('/actualizar-nombre', ensureAuthenticated, (req, res) => {
+    const userId = req.user.id_usuario;
+    const nuevoNombre = req.body.nombre_u;
+
+    // Actualizar el nombre en la base de datos
+    const updateNombreQuery = "UPDATE usuarios SET nombre_u = ? WHERE id_usuario = ?";
+    
+    db.query(updateNombreQuery, [nuevoNombre, userId], (error, result) => {
+        if (error) {
+            console.error('Error al actualizar el nombre:', error.message);
+            res.status(500).send('Error interno del servidor');
+        } else {
+            res.send('<script>alert("Nombre de usuario actualizado con éxito"); window.location="/Configuracion";</script>');
+ // Redirigir a la página de configuración después de la actualización
+        }
+    });
+});
+
+// Ruta para actualizar el correo
+app.post('/actualizar-correo', ensureAuthenticated, (req, res) => {
+    const userId = req.user.id_usuario;
+    const nuevoCorreo = req.body.correo_u;
+
+    // Actualizar el nombre en la base de datos
+    const updateCorreoQuery = "UPDATE usuarios SET correo_u = ? WHERE id_usuario = ?";
+    
+    db.query(updateCorreoQuery, [nuevoCorreo, userId], (error, result) => {
+        if (error) {
+            console.error('Error al actualizar el correo electrónico:', error.message);
+            res.status(500).send('Error interno del servidor');
+        } else {
+            res.send('<script>alert("Correo electrónico actualizado con éxito"); window.location="/Configuracion";</script>');
+ // Redirigir a la página de configuración después de la actualización
+        }
+    });
+});
+
+// Ruta para eliminar cuenta
+app.post('/eliminar-cuenta', ensureAuthenticated, (req, res) => {
+    const userId = req.user.id_usuario;
+
+    // Actualizar el nombre en la base de datos
+    const EliminarCuenta = "DELETE FROM usuarios WHERE id_usuario = ?";
+    
+    db.query(EliminarCuenta, [userId], (error, result) => {
+        if (error) {
+            console.error('Error al eliminar usuario', error.message);
+            res.status(500).send('Error interno del servidor');
+        } else {
+            res.send('<script>alert("Usuario eliminado con éxito"); window.location="/CarMinder";</script>');
+ // Redirigir a la página de configuración después de la actualización
+        }
+    });
+});
 
 // Iniciar el servidor
 app.listen(3000, () => {
