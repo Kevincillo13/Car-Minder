@@ -306,11 +306,14 @@ form button:hover {
 }
 
 .box-container {
+    margin-top: 10rem;
     width: 100%;
-    position: absolute;
+    height: 7rem;
+    position:relative;
     top: 25%;
     transform: translateY(-50%);
     text-align: center;
+    margin-bottom: 0rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -353,6 +356,7 @@ form button:hover {
 }
 
 .row {
+    margin-top: 2rem;
     width: 100%;
     height: 500px;
     left: 50%;
