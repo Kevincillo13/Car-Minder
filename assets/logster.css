@@ -1,256 +1,660 @@
 @import url("https://fonts.googleapis.com");
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    height: 100vh;
-    width: 100%;
-    background: url("/assets/imagenes/taller.jpg") center/cover no-repeat;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/taller.jpg);
-}
-header {
-    position: fixed;
-    width: 100%;
-    background-color: #141b27;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    padding: 13px 0;
-}
-.navbar {
-    display: flex;
-    padding: 0;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: space-between;
+@media (max-width:999px){
+    header {
+        position: fixed;
+        width: 100%;
+        background-color: #141b27;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        padding: 13px 0;
+    }
+    .navbar {
+        display: flex;
+        padding: 0;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-between;
+        
+    }
     
-}
+    .navbar .hamburger-btn {
+        display: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+    .navbar .logo {
+        gap: 15px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    .navbar .logo i {
+        width: 10px;
+        border-radius: 50%;
+        font-size: 20px;
+        color: #fff;
+    }
+    .navbar .logo h2 {
+        color: #fff;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    
+    .navbar .logo h2:hover{
+        color: #506275;
+    }
+    
+    .navbar .close-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: none;
+        color: #000;
+        cursor: pointer;
+    }
+    
+    .navbar .login-btn {
+        border: none;
+        outline: none;
+        background: #141b27;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 5px 5px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: 0.15s ease;
+    }
+    .navbar .login-btn:hover {
+        background: #fff;
+        color: #141b27;
+        font-weight: 600;
+    }
+    .form-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        max-width: 720px;
+        background: #fff;
+        border: 2px solid #fff;
+        transform: translate(-50%, -70%);
+        border-radius: 12px;
+    }
+    .show-popup .form-popup {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s ease, opacity 0.1s;
+    }
+    .form-popup .close-btn {
+        font-size: 25px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: #141b27;
+        cursor: pointer;
+    }
+    .blur-bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        transition: 0.1s ease;
+    }
+    .show-popup .blur-bg-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .form-popup .form-box {
+        display: flex;
+    }
+    .form-box .form-details {
+        width: 100%;
+        color: #fff;
+        max-width: 330px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .login .form-details {
+        padding: 0 40px;
+        background: url("/assets/imagenes/challenger-cerrado.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger-cerrado.jpg);
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
+    }
+    .signup .form-details {
+        padding: 0 20px;
+        background: url("/assets/imagenes/challenger.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger.jpg);
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
+    }
+    .form-box .form-content {
+        width: 100%;
+        padding: 35px;
+    }
+    .form-box h2 {
+        text-align: center;
+        margin-bottom: 29px;
+    }
+    form .input-field {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .input-field input {
+        height: 100%;
+        width: 100%;
+        background: none;
+        outline: none;
+        font-size: 0.95rem;
+        padding: 0 15px;
+        border: 1px solid #717171;
+        border-radius: 3px;
+    }
+    .input-field input:focus {
+        border: 1px solid #506275;
+    }
+    .input-field label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: #4a4646;
+        pointer-events: none;
+        transition: 0.2s ease;
+    }
+    .input-field input:is(:focus, :valid) {
+        padding: 16px 15px 0;
+    }
+    .input-field input:is(:focus, :valid)~label {
+        transform: translateY(-120%);
+        color: #506275;
+        font-size: 0.75rem;
+    }
+    .form-box a {
+        color: #506275;
+        text-decoration: none;
+    }
+    .form-box a:hover {
+        text-decoration: underline;
+    }
+    form :where(.forgot-pass-link, .policy-text) {
+        display: inline-flex;
+        margin-top: 13px;
+        font-size: 0.95rem;
+    }
+    form button {
+        width: 100%;
+        color: #fff;
+        border: none;
+        outline: none;
+        padding: 14px 0;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 25px 0;
+        background: #1e2734;
+        transition: 0.2s ease;
+    }
+    form button:hover {
+        background: #141b27;
+    }
+    .form-content .bottom-link {
+        text-align: center;
+    }
+    .form-popup .signup,
+    .form-popup.show-signup .login {
+        display: none;
+    }
+    .form-popup.show-signup .signup {
+        display: flex;
+    }
+    .signup .policy-text {
+        display: flex;
+        margin-top: 14px;
+        align-items: center;
+    }
+    .signup .policy-text input {
+        width: 14px;
+        height: 14px;
+        margin-right: 7px;
+    }
+    .box-container {
+        margin-top: 10rem;
+        width: 100%;
+        height: 7rem;
+        position:relative;
+        top: 25%;
+        transform: translateY(-50%);
+        text-align: center;
+        margin-bottom: -5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .box-container h3 {
+        position: relative;
+        font-size: 60px;
+        font-weight: 700;
+        width: 60%;
+        margin-top: 80px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #fff;
+    }
+    
+    .box-container p {
+        margin: 20px auto;
+        width: 80%;
+        font-weight: 300;
+        font-size: 25px;
+        line-height: 40px;
+        color: #fff;
+    }
+    
+    
+    
+    .row {
+        margin-top: 2rem;
+        width: 100%;
+        height: 200%;
+    
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 23rem;
+        display: grid;
+        background-color: #fff;
+        background-size: cover;
+    
+    }
+    
+    .col-qstns {
+        margin-top: 2%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        margin-bottom: 2%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .col-qstns img {
+        width: 100%;
+        height: 70%;
+        
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        margin-top: 15%;
+    }
+    
+    .layer {
+        background: transparent;
+        height: 70%;
+        width: 100%;
+        position: absolute;
+        top: 0;
 
-.navbar .hamburger-btn {
-    display: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1.5rem;
-}
-.navbar .logo {
-    gap: 15px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-.navbar .logo i {
-    width: 10px;
-    border-radius: 50%;
-    font-size: 20px;
-    color: #fff;
-}
-.navbar .logo h2 {
-    color: #fff;
-    font-weight: 600;
-    font-size: 20px;
-}
+        margin-left: auto;
+        margin-right: auto;
+        transition: 0.5s;
 
-.navbar .logo h2:hover{
-    color: #506275;
-}
+        border-radius: 10px;
+        margin-top: 15%;
+    }
+    
+    .layer:hover {
+        background: rgba(0,0,0,0.75);   
+    }
+    
+    .layer h4 {
+        width: 100%;
+        font-weight: 90;
+        color: #fff;
+        font-size: 20px;
+        bottom: 0;
 
-.navbar .close-btn {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    display: none;
-    color: #000;
-    cursor: pointer;
-}
 
-.navbar .login-btn {
-    border: none;
-    outline: none;
-    background: #141b27;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 5px 5px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: 0.15s ease;
-}
-.navbar .login-btn:hover {
-    background: #fff;
-    color: #141b27;
-    font-weight: 600;
-}
-.form-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 10;
-    width: 100%;
-    opacity: 0;
-    pointer-events: none;
-    max-width: 720px;
-    background: #fff;
-    border: 2px solid #fff;
-    transform: translate(-50%, -70%);
-    border-radius: 12px;
-}
-.show-popup .form-popup {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%);
-    transition: transform 0.3s ease, opacity 0.1s;
-}
-.form-popup .close-btn {
-    font-size: 25px;
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    color: #141b27;
-    cursor: pointer;
-}
-.blur-bg-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    pointer-events: none;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    transition: 0.1s ease;
-}
-.show-popup .blur-bg-overlay {
-    opacity: 1;
-    pointer-events: auto;
-}
-.form-popup .form-box {
-    display: flex;
-}
-.form-box .form-details {
-    width: 100%;
-    color: #fff;
-    max-width: 330px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.login .form-details {
-    padding: 0 40px;
-    background: url("/assets/imagenes/challenger-cerrado.jpg");
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger-cerrado.jpg);
-    background-position: center;
-    background-size: cover;
-    border-radius: 12px;
-}
-.signup .form-details {
-    padding: 0 20px;
-    background: url("/assets/imagenes/challenger.jpg");
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger.jpg);
-    background-position: center;
-    background-size: cover;
-    border-radius: 12px;
-}
-.form-box .form-content {
-    width: 100%;
-    padding: 35px;
-}
-.form-box h2 {
-    text-align: center;
-    margin-bottom: 29px;
-}
-form .input-field {
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin-top: 20px;
-}
-.input-field input {
-    height: 100%;
-    width: 100%;
-    background: none;
-    outline: none;
-    font-size: 0.95rem;
-    padding: 0 15px;
-    border: 1px solid #717171;
-    border-radius: 3px;
-}
-.input-field input:focus {
-    border: 1px solid #506275;
-}
-.input-field label {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #4a4646;
-    pointer-events: none;
-    transition: 0.2s ease;
-}
-.input-field input:is(:focus, :valid) {
-    padding: 16px 15px 0;
-}
-.input-field input:is(:focus, :valid)~label {
-    transform: translateY(-120%);
-    color: #506275;
-    font-size: 0.75rem;
-}
-.form-box a {
-    color: #506275;
-    text-decoration: none;
-}
-.form-box a:hover {
-    text-decoration: underline;
-}
-form :where(.forgot-pass-link, .policy-text) {
-    display: inline-flex;
-    margin-top: 13px;
-    font-size: 0.95rem;
-}
-form button {
-    width: 100%;
-    color: #fff;
-    border: none;
-    outline: none;
-    padding: 14px 0;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 3px;
-    cursor: pointer;
-    margin: 25px 0;
-    background: #1e2734;
-    transition: 0.2s ease;
-}
-form button:hover {
-    background: #141b27;
-}
-.form-content .bottom-link {
-    text-align: center;
-}
-.form-popup .signup,
-.form-popup.show-signup .login {
-    display: none;
-}
-.form-popup.show-signup .signup {
-    display: flex;
-}
-.signup .policy-text {
-    display: flex;
-    margin-top: 14px;
-    align-items: center;
-}
-.signup .policy-text input {
-    width: 14px;
-    height: 14px;
-    margin-right: 7px;
-}
-@media (max-width: 950px) {
+
+        position: absolute;
+        opacity: 0;
+        transition: 0.5s;
+        margin-top: 15%;
+    }
+    
+    .layer:hover h4{
+        bottom: 49%;
+        opacity: 1;
+        margin-top: 15%;
+    }
+    
+    .footer {
+        width: 100%;
+        background-color: #1e2734;
+        padding: 10px 30px 10px;
+        display: block;
+    }
+    
+    .socialIcons {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .socialIcons a{
+        text-decoration: none;
+        width: 40px;
+        height: 40px;
+        padding: 5px;
+        background-color: #fff;
+        margin: 15px;
+        border-radius: 50%;
+    }
+    
+    .socialIcons a i {
+        font-size: 30px;
+        color: #1e2734;
+        opacity: 0.9;
+    }
+    
+    .socialIcons a:hover {
+        background-color: #1e2734;
+        transition: 0.5s;
+    }
+    
+    .socialIcons a:hover i {
+        color: #fff;
+        transition: 0.5s;
+    }
+    
+    .footerBottom {
+        background-color: #141b27;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .footerBottom p{
+        color: #fff;
+    }
+    
+    .designer {
+        opacity: 0.7;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 400;
+        margin: 0px 5px;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        height: 100vh;
+        width: 100%;
+        background: url("/assets/imagenes/taller.jpg") center/cover no-repeat;
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/taller.jpg);
+    }
+    header {
+        position: fixed;
+        width: 100%;
+        background-color: #141b27;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        padding: 13px 0;
+    }
+    .navbar {
+        display: flex;
+        padding: 0;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-between;
+        
+    }
+    
+    .navbar .hamburger-btn {
+        display: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+    .navbar .logo {
+        gap: 15px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    .navbar .logo i {
+        width: 10px;
+        border-radius: 50%;
+        font-size: 20px;
+        color: #fff;
+    }
+    .navbar .logo h2 {
+        color: #fff;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    
+    .navbar .logo h2:hover{
+        color: #506275;
+    }
+    
+    .navbar .close-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: none;
+        color: #000;
+        cursor: pointer;
+    }
+    
+    .navbar .login-btn {
+        border: none;
+        outline: none;
+        background: #141b27;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 5px 5px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: 0.15s ease;
+    }
+    .navbar .login-btn:hover {
+        background: #fff;
+        color: #141b27;
+        font-weight: 600;
+    }
+    .form-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        max-width: 720px;
+        background: #fff;
+        border: 2px solid #fff;
+        transform: translate(-50%, -70%);
+        border-radius: 12px;
+    }
+    .show-popup .form-popup {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s ease, opacity 0.1s;
+    }
+    .form-popup .close-btn {
+        font-size: 25px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: #141b27;
+        cursor: pointer;
+    }
+    .blur-bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        transition: 0.1s ease;
+    }
+    .show-popup .blur-bg-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .form-popup .form-box {
+        display: flex;
+    }
+    .form-box .form-details {
+        width: 100%;
+        color: #fff;
+        max-width: 330px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .login .form-details {
+        padding: 0 40px;
+        background: url("/assets/imagenes/challenger-cerrado.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger-cerrado.jpg);
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
+    }
+    .signup .form-details {
+        padding: 0 20px;
+        background: url("/assets/imagenes/challenger.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger.jpg);
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
+    }
+    .form-box .form-content {
+        width: 100%;
+        padding: 35px;
+    }
+    .form-box h2 {
+        text-align: center;
+        margin-bottom: 29px;
+    }
+    form .input-field {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .input-field input {
+        height: 100%;
+        width: 100%;
+        background: none;
+        outline: none;
+        font-size: 0.95rem;
+        padding: 0 15px;
+        border: 1px solid #717171;
+        border-radius: 3px;
+    }
+    .input-field input:focus {
+        border: 1px solid #506275;
+    }
+    .input-field label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: #4a4646;
+        pointer-events: none;
+        transition: 0.2s ease;
+    }
+    .input-field input:is(:focus, :valid) {
+        padding: 16px 15px 0;
+    }
+    .input-field input:is(:focus, :valid)~label {
+        transform: translateY(-120%);
+        color: #506275;
+        font-size: 0.75rem;
+    }
+    .form-box a {
+        color: #506275;
+        text-decoration: none;
+    }
+    .form-box a:hover {
+        text-decoration: underline;
+    }
+    form :where(.forgot-pass-link, .policy-text) {
+        display: inline-flex;
+        margin-top: 13px;
+        font-size: 0.95rem;
+    }
+    form button {
+        width: 100%;
+        color: #fff;
+        border: none;
+        outline: none;
+        padding: 14px 0;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 25px 0;
+        background: #1e2734;
+        transition: 0.2s ease;
+    }
+    form button:hover {
+        background: #141b27;
+    }
+    .form-content .bottom-link {
+        text-align: center;
+    }
+    .form-popup .signup,
+    .form-popup.show-signup .login {
+        display: none;
+    }
+    .form-popup.show-signup .signup {
+        display: flex;
+    }
+    .signup .policy-text {
+        display: flex;
+        margin-top: 14px;
+        align-items: center;
+    }
+    .signup .policy-text input {
+        width: 14px;
+        height: 14px;
+        margin-right: 7px;
+    }
     .navbar :is(.hamburger-btn, .close-btn) {
         display: none;
     }
@@ -292,189 +696,719 @@ form button:hover {
         font-size: 0.9rem;
         padding: 7px 10px;
     }
+    
+
+
+
+
+
+
 }
-@media (max-width: 760px) {
+
+
+
+@media (min-width:1000px){
+    header {
+        position: fixed;
+        width: 100%;
+        background-color: #141b27;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        padding: 13px 0;
+    }
+    .navbar {
+        display: flex;
+        padding: 0;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-between;
+        
+    }
+    
+    .navbar .hamburger-btn {
+        display: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+    .navbar .logo {
+        gap: 15px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    .navbar .logo i {
+        width: 10px;
+        border-radius: 50%;
+        font-size: 20px;
+        color: #fff;
+    }
+    .navbar .logo h2 {
+        color: #fff;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    
+    .navbar .logo h2:hover{
+        color: #506275;
+    }
+    
+    .navbar .close-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: none;
+        color: #000;
+        cursor: pointer;
+    }
+    
+    .navbar .login-btn {
+        border: none;
+        outline: none;
+        background: #141b27;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 5px 5px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: 0.15s ease;
+    }
+    .navbar .login-btn:hover {
+        background: #fff;
+        color: #141b27;
+        font-weight: 600;
+    }
     .form-popup {
-        width: 95%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        max-width: 720px;
+        background: #fff;
+        border: 2px solid #fff;
+        transform: translate(-50%, -70%);
+        border-radius: 12px;
+    }
+    .show-popup .form-popup {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s ease, opacity 0.1s;
+    }
+    .form-popup .close-btn {
+        font-size: 25px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: #141b27;
+        cursor: pointer;
+    }
+    .blur-bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        transition: 0.1s ease;
+    }
+    .show-popup .blur-bg-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .form-popup .form-box {
+        display: flex;
     }
     .form-box .form-details {
-        display: none;
+        width: 100%;
+        color: #fff;
+        max-width: 330px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .login .form-details {
+        padding: 0 40px;
+        background: url("/assets/imagenes/challenger-cerrado.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger-cerrado.jpg);
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
+    }
+    .signup .form-details {
+        padding: 0 20px;
+        background: url("/assets/imagenes/challenger.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger.jpg);
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
     }
     .form-box .form-content {
-        padding: 30px 20px;
+        width: 100%;
+        padding: 35px;
     }
-}
-
-.box-container {
-    margin-top: 10rem;
-    width: 100%;
-    height: 7rem;
-    position:relative;
-    top: 25%;
-    transform: translateY(-50%);
-    text-align: center;
-    margin-bottom: 0rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.box-container h3 {
-    position: relative;
-    font-size: 60px;
-    font-weight: 700;
-    width: 60%;
-    margin-top: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    color: #fff;
-}
-
-.box-container p {
-    margin: 20px auto;
-    width: 80%;
-    font-weight: 300;
-    font-size: 25px;
-    line-height: 40px;
-    color: #fff;
-}
-
-@media(max-width: 700px) {
-    .box-container h3 {
-        font-size: 30px;
-        margin-top: 120px;
-        -webkit-text-stroke: 0.5px #fff;
-    }
-
-    .box-container p {
-        font-size: 16px;
+    .form-box h2 {
         text-align: center;
-        line-height: 25px;
+        margin-bottom: 29px;
+    }
+    form .input-field {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .input-field input {
+        height: 100%;
+        width: 100%;
+        background: none;
+        outline: none;
+        font-size: 0.95rem;
+        padding: 0 15px;
+        border: 1px solid #717171;
+        border-radius: 3px;
+    }
+    .input-field input:focus {
+        border: 1px solid #506275;
+    }
+    .input-field label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: #4a4646;
+        pointer-events: none;
+        transition: 0.2s ease;
+    }
+    .input-field input:is(:focus, :valid) {
+        padding: 16px 15px 0;
+    }
+    .input-field input:is(:focus, :valid)~label {
+        transform: translateY(-120%);
+        color: #506275;
+        font-size: 0.75rem;
+    }
+    .form-box a {
+        color: #506275;
+        text-decoration: none;
+    }
+    .form-box a:hover {
+        text-decoration: underline;
+    }
+    form :where(.forgot-pass-link, .policy-text) {
+        display: inline-flex;
+        margin-top: 13px;
+        font-size: 0.95rem;
+    }
+    form button {
+        width: 100%;
+        color: #fff;
+        border: none;
+        outline: none;
+        padding: 14px 0;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 25px 0;
+        background: #1e2734;
+        transition: 0.2s ease;
+    }
+    form button:hover {
+        background: #141b27;
+    }
+    .form-content .bottom-link {
+        text-align: center;
+    }
+    .form-popup .signup,
+    .form-popup.show-signup .login {
+        display: none;
+    }
+    .form-popup.show-signup .signup {
+        display: flex;
+    }
+    .signup .policy-text {
+        display: flex;
+        margin-top: 14px;
+        align-items: center;
+    }
+    .signup .policy-text input {
+        width: 14px;
+        height: 14px;
+        margin-right: 7px;
+    }
+    .box-container {
+        margin-top: 10rem;
+        width: 100%;
+        height: 7rem;
+        position:relative;
+        top: 25%;
+        transform: translateY(-50%);
+        text-align: center;
+        margin-bottom: -5rem;
         margin-left: auto;
         margin-right: auto;
-
     }
+    
+    .box-container h3 {
+        position: relative;
+        font-size: 60px;
+        font-weight: 700;
+        width: 60%;
+        margin-top: 80px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #fff;
+    }
+    
+    .box-container p {
+        margin: 20px auto;
+        width: 80%;
+        font-weight: 300;
+        font-size: 25px;
+        line-height: 40px;
+        color: #fff;
+    }
+    
+    
+    
+    .row {
+        margin-top: 2rem;
+        width: 100%;
+        height: 50%;
+    
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 23rem;
+        display: flex;
+        background-color: #fff;
+        background-size: cover;
+    
+    }
+    
+    .col-qstns {
+        margin-top: 2%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        margin-bottom: 2%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .col-qstns img {
+        height: 70%;
+
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        margin-top: 25%;
+    }
+    
+    .layer {
+        background: transparent;
+        height: 70%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+
+        margin-left: auto;
+        margin-right: auto;
+        transition: 0.5s;
+
+        border-radius: 10px;
+        margin-top: 25%;
+    }
+    
+    .layer:hover {
+        background: rgba(0,0,0,0.75);   
+    }
+    
+    .layer h4 {
+        width: 100%;
+        font-weight: 90;
+        color: #fff;
+        font-size: 20px;
+        bottom: 0;
+
+
+
+        position: absolute;
+        opacity: 0;
+        transition: 0.5s;
+        margin-top: 25%;
+    }
+    
+    .layer:hover h4{
+        bottom: 49%;
+        opacity: 1;
+        margin-top: 25%;
+    }
+    
+    .footer {
+        width: 100%;
+        background-color: #1e2734;
+        padding: 10px 30px 10px;
+        display: block;
+    }
+    
+    .socialIcons {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .socialIcons a{
+        text-decoration: none;
+        width: 40px;
+        height: 40px;
+        padding: 5px;
+        background-color: #fff;
+        margin: 15px;
+        border-radius: 50%;
+    }
+    
+    .socialIcons a i {
+        font-size: 30px;
+        color: #1e2734;
+        opacity: 0.9;
+    }
+    
+    .socialIcons a:hover {
+        background-color: #1e2734;
+        transition: 0.5s;
+    }
+    
+    .socialIcons a:hover i {
+        color: #fff;
+        transition: 0.5s;
+    }
+    
+    .footerBottom {
+        background-color: #141b27;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .footerBottom p{
+        color: #fff;
+    }
+    
+    .designer {
+        opacity: 0.7;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 400;
+        margin: 0px 5px;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        height: 100vh;
+        width: 100%;
+        background: url("/assets/imagenes/taller.jpg") center/cover no-repeat;
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/taller.jpg);
+    }
+    header {
+        position: fixed;
+        width: 100%;
+        background-color: #141b27;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        padding: 13px 0;
+    }
+    .navbar {
+        display: flex;
+        padding: 0;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-between;
+        
+    }
+    
+    .navbar .hamburger-btn {
+        display: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+    .navbar .logo {
+        gap: 15px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    .navbar .logo i {
+        width: 10px;
+        border-radius: 50%;
+        font-size: 20px;
+        color: #fff;
+    }
+    .navbar .logo h2 {
+        color: #fff;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    
+    .navbar .logo h2:hover{
+        color: #506275;
+    }
+    
+    .navbar .close-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: none;
+        color: #000;
+        cursor: pointer;
+    }
+    
+    .navbar .login-btn {
+        border: none;
+        outline: none;
+        background: #141b27;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 5px 5px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: 0.15s ease;
+    }
+    .navbar .login-btn:hover {
+        background: #fff;
+        color: #141b27;
+        font-weight: 600;
+    }
+    .form-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        max-width: 720px;
+        background: #fff;
+        border: 2px solid #fff;
+        transform: translate(-50%, -70%);
+        border-radius: 12px;
+    }
+    .show-popup .form-popup {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%);
+        transition: transform 0.3s ease, opacity 0.1s;
+    }
+    .form-popup .close-btn {
+        font-size: 25px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        color: #141b27;
+        cursor: pointer;
+    }
+    .blur-bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        transition: 0.1s ease;
+    }
+    .show-popup .blur-bg-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .form-popup .form-box {
+        display: flex;
+    }
+    .form-box .form-details {
+        width: 100%;
+        color: #fff;
+        max-width: 330px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .login .form-details {
+        padding: 0 40px;
+        background: url("/assets/imagenes/challenger-cerrado.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger-cerrado.jpg);
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
+    }
+    .signup .form-details {
+        padding: 0 20px;
+        background: url("/assets/imagenes/challenger.jpg");
+        background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(/assets/imagenes/challenger.jpg);
+        background-position: center;
+        background-size: cover;
+        border-radius: 12px;
+    }
+    .form-box .form-content {
+        width: 100%;
+        padding: 35px;
+    }
+    .form-box h2 {
+        text-align: center;
+        margin-bottom: 29px;
+    }
+    form .input-field {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .input-field input {
+        height: 100%;
+        width: 100%;
+        background: none;
+        outline: none;
+        font-size: 0.95rem;
+        padding: 0 15px;
+        border: 1px solid #717171;
+        border-radius: 3px;
+    }
+    .input-field input:focus {
+        border: 1px solid #506275;
+    }
+    .input-field label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: #4a4646;
+        pointer-events: none;
+        transition: 0.2s ease;
+    }
+    .input-field input:is(:focus, :valid) {
+        padding: 16px 15px 0;
+    }
+    .input-field input:is(:focus, :valid)~label {
+        transform: translateY(-120%);
+        color: #506275;
+        font-size: 0.75rem;
+    }
+    .form-box a {
+        color: #506275;
+        text-decoration: none;
+    }
+    .form-box a:hover {
+        text-decoration: underline;
+    }
+    form :where(.forgot-pass-link, .policy-text) {
+        display: inline-flex;
+        margin-top: 13px;
+        font-size: 0.95rem;
+    }
+    form button {
+        width: 100%;
+        color: #fff;
+        border: none;
+        outline: none;
+        padding: 14px 0;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 25px 0;
+        background: #1e2734;
+        transition: 0.2s ease;
+    }
+    form button:hover {
+        background: #141b27;
+    }
+    .form-content .bottom-link {
+        text-align: center;
+    }
+    .form-popup .signup,
+    .form-popup.show-signup .login {
+        display: none;
+    }
+    .form-popup.show-signup .signup {
+        display: flex;
+    }
+    .signup .policy-text {
+        display: flex;
+        margin-top: 14px;
+        align-items: center;
+    }
+    .signup .policy-text input {
+        width: 14px;
+        height: 14px;
+        margin-right: 7px;
+    }
+    .navbar :is(.hamburger-btn, .close-btn) {
+        display: none;
+    }
+    .navbar {
+        padding: 0px 0;
+    }
+    .navbar .logo img {
+        display: none;
+    }
+    .navbar .logo h2 {
+        font-size: 1.4rem;
+    }
+    .navbar .links {
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        left: -100%;
+        display: block;
+        height: 100vh;
+        width: 100%;
+        padding-top: 60px;
+        text-align: center;
+        background: #fff;
+        transition: 0.2s ease;
+    }
+    .navbar .links.show-menu {
+        left: 0;
+    }
+    .navbar .links a {
+        display: inline-flex;
+        margin: 20px 0;
+        font-size: 1.2rem;
+        color: #000;
+    }
+    .navbar .links a:hover {
+        color: #00BCD4;
+    }
+    .navbar .login-btn {
+        font-size: 0.9rem;
+        padding: 7px 10px;
+    }
+    
+
+
+
+
+
+
 }
 
-.row {
-    margin-top: 2rem;
-    width: 100%;
-    height: 500px;
-    left: 50%;
-    text-align: center;
-    margin-bottom: 10px;
-    margin-top: 23rem;
-    display: inline-flex;
-    background-color: #fff;
-    background-size: cover;
-
-}
-
-.col-qstns {
-    flex-basis: 32%;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    position: relative;
-    overflow: hidden;
-}
-
-.col-qstns img {
-    width: 60%;
-    display: block;
-    margin-left: auto;
-    border-radius: 10px;
-    margin-top: 25%;
-}
-
-.layer {
-    background: transparent;
-    height: 51%;
-    width: 60%;
-    position: absolute;
-    top: 0;
-    left: 40%;
-    margin-left: auto;
-    transition: 0.5s;
-    display: inline-flex;
-    border-radius: 10px;
-    margin-top: 25%;
-}
-
-.layer:hover {
-    background: rgba(0,0,0,0.75);   
-}
-
-.layer h4 {
-    width: 100%;
-    font-weight: 90;
-    color: #fff;
-    font-size: 20px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    opacity: 0;
-    transition: 0.5s;
-    margin-top: 25%;
-}
-
-.layer:hover h4{
-    bottom: 49%;
-    opacity: 1;
-    margin-top: 25%;
-}
-
-.footer {
-    width: 100%;
-    background-color: #1e2734;
-    padding: 10px 30px 10px;
-    display: block;
-}
-
-.socialIcons {
-    display: flex;
-    justify-content: center;
-}
-
-.socialIcons a{
-    text-decoration: none;
-    width: 40px;
-    height: 40px;
-    padding: 5px;
-    background-color: #fff;
-    margin: 15px;
-    border-radius: 50%;
-}
-
-.socialIcons a i {
-    font-size: 30px;
-    color: #1e2734;
-    opacity: 0.9;
-}
-
-.socialIcons a:hover {
-    background-color: #1e2734;
-    transition: 0.5s;
-}
-
-.socialIcons a:hover i {
-    color: #fff;
-    transition: 0.5s;
-}
-
-.footerBottom {
-    background-color: #141b27;
-    padding: 10px;
-    text-align: center;
-}
-
-.footerBottom p{
-    color: #fff;
-}
-
-.designer {
-    opacity: 0.7;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 400;
-    margin: 0px 5px;
-}
