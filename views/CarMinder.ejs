@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="google-signin-client_id" content="823356872551-9erkje3ta43i09laa77r3f63h3ulnvep.apps.googleusercontent.com">
         <title>CarMinder</title>
         <link rel="website icon" type="png" href="/assets/imagenes/iconos/RIN.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,19 +16,6 @@
         <link rel="stylesheet" href="/assets/styles.css">
         <link rel="stylesheet" href="/assets/logster.css">
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script>
-            function onSignIn(googleUser) {
-                // Recuperar los datos del usuario autenticado
-                var profile = googleUser.getBasicProfile();
-                console.log('ID: ' + profile.getId()); // ID del usuario
-                console.log('Nombre: ' + profile.getName()); // Nombre del usuario
-                console.log('Imagen URL: ' + profile.getImageUrl()); // URL de la imagen del usuario
-                console.log('Email: ' + profile.getEmail()); // Email del usuario
-    
-                // Redirigir al usuario a otra página
-                window.location.href = '/inicio.ejs'; // Cambia '/perfil' por la ruta deseada
-            }
-        </script>
     </head>    
 
 <body style="font-family:'Poppins';">
@@ -70,7 +56,6 @@
                     </div>
                 <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
                 <br> <button style="color:black" type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
             </form>
             <div class="bottom-link">¿No tienes una cuenta? <a href="#" id="signup-link">Registrate</a></div>
         </div>
@@ -101,7 +86,6 @@
                         <label for="contraseña_u">Contraseña</label>
                     </div>
                     <button style="color:black" type="submit">Registrarse</button>
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 </form>
                 <div class="bottom-link">
                     ¿Ya tienes una cuenta? 
@@ -182,5 +166,5 @@ signupLoginLink.forEach(link => {
     });
 });
 </script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>       
+     
 </html> 
