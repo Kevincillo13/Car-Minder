@@ -11,6 +11,15 @@ const app = express();
 const validator = require('validator');
 const flash = require('express-flash');
 
+const { OAuth2Client } = require('google-auth-library');
+
+const client = new OAuth2Client({
+  clientId: '823356872551-9erkje3ta43i09laa77r3f63h3ulnvep.apps.googleusercontent.com',
+  clientSecret: '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',
+  redirectUri: 'http://localhost:3000/carminder/auth/google/callback' // URI de redireccionamiento autorizado
+});
+
+
 // Configuraciones
 app.set("view engine", "ejs"),
 app.set("views", path.join(__dirname, "views"));

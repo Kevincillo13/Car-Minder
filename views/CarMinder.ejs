@@ -4,6 +4,7 @@
 <!--en head se incluyen dependencias del archivo. Como lo son los archivos de estilos, fuentes de texto u otros.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="823356872551-9erkje3ta43i09laa77r3f63h3ulnvep.apps.googleusercontent.com">
     <title>CarMinder</title>
     <link rel="website icon" type="png" href="/assets/imagenes/iconos/RIN.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,6 +57,8 @@
                     </div>
                 <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
                 <br> <button style="color:black" type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <button id="btn-login-google">Iniciar sesión con Google</button>
             </form>
             <div class="bottom-link">¿No tienes una cuenta? <a href="#" id="signup-link">Registrate</a></div>
         </div>
@@ -86,6 +89,8 @@
                         <label for="contraseña_u">Contraseña</label>
                     </div>
                     <button style="color:black" type="submit">Registrarse</button>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <button id="btn-register-google">Registrarse con Google</button>
                 </form>
                 <div class="bottom-link">
                     ¿Ya tienes una cuenta? 
@@ -166,5 +171,5 @@ signupLoginLink.forEach(link => {
     });
 });
 </script>
-
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </html> 
