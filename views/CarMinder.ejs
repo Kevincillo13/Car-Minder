@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
- <head>
-<!--en head se incluyen dependencias del archivo. Como lo son los archivos de estilos, fuentes de texto u otros.-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="823356872551-9erkje3ta43i09laa77r3f63h3ulnvep.apps.googleusercontent.com">
-    <title>CarMinder</title>
-    <link rel="website icon" type="png" href="/assets/imagenes/iconos/RIN.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="/assets/styles.css">
-    <link rel="stylesheet" href="/assets/logster.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="google-signin-client_id" content="823356872551-9erkje3ta43i09laa77r3f63h3ulnvep.apps.googleusercontent.com">
+        <title>CarMinder</title>
+        <link rel="website icon" type="png" href="/assets/imagenes/iconos/RIN.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="/assets/styles.css">
+        <link rel="stylesheet" href="/assets/logster.css">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script>
+            function onSignIn(googleUser) {
+                // Recuperar los datos del usuario autenticado
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // ID del usuario
+                console.log('Nombre: ' + profile.getName()); // Nombre del usuario
+                console.log('Imagen URL: ' + profile.getImageUrl()); // URL de la imagen del usuario
+                console.log('Email: ' + profile.getEmail()); // Email del usuario
+    
+                // Redirigir al usuario a otra página
+                window.location.href = '/inicio.ejs'; // Cambia '/perfil' por la ruta deseada
+            }
+        </script>
+    </head>    
 
 <body style="font-family:'Poppins';">
     <section>
@@ -58,7 +71,6 @@
                 <a href="#" class="forgot-pass-link">¿Olvidaste tu contraseña?</a>
                 <br> <button style="color:black" type="submit" class="button rounded-md mb-5 px-10 py-3 duration-700 hover:bg-slate-400 shadow-lg mt-4">Iniciar sesión</button>
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                <button id="btn-login-google">Iniciar sesión con Google</button>
             </form>
             <div class="bottom-link">¿No tienes una cuenta? <a href="#" id="signup-link">Registrate</a></div>
         </div>
@@ -90,7 +102,6 @@
                     </div>
                     <button style="color:black" type="submit">Registrarse</button>
                     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                    <button id="btn-register-google">Registrarse con Google</button>
                 </form>
                 <div class="bottom-link">
                     ¿Ya tienes una cuenta? 
@@ -171,5 +182,5 @@ signupLoginLink.forEach(link => {
     });
 });
 </script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>       
 </html> 
