@@ -89,8 +89,7 @@
             </article>
             <article class="bg-gray-200 p-6 rounded-lg shadow-lg container mx-auto flex-auto pt-2 my-12">
                 <h2 class="text-2xl">Video vergas</h2>
-                <p class="mt-6">Grande, cúbito</p>
-                <img src="/assets/imagenes/thumb1544502727-276x155.jpg" class=" forimg">
+                <vid></vid>
             </article>
         </section>
     </div>
@@ -101,6 +100,20 @@
         btn.onclick = function (){
             sidebar.classList.toggle('active')
         };
+        fetch("https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=9&playlistId=UU76hs2bdrebFYvdR-I8bwyw&key=AIzaSyDUrgWxUZLn5_Rpd1k7v2h8yPTm5j6LH0I")
+        .then(res =>{
+            return res.json();
+        })
+        .then(data=>{
+            data.items.forEach((curr)=>{
+                vidTitle = curr.snippet.title
+                vidURL = "https://www.youtube.com/watch?v="+curr.snippet.resourceId.videoId;
+                
+                markup = `<a href="${vidURL}" target="_blank">"${vidTitle}"</a><p>`;
+                
+                    document.querySelector("vid").insertAdjacentHTML("beforeend",markup);
+            })
+        })
     </script>
 </body>
 </html> 
