@@ -87,15 +87,34 @@
                     
                     Otras teorías apuntan que el nombre Vocho se deriva de la palabra “Boche”, que utilizaban los franceses durante la primera y segunda guerra mundial. Esta palabra se usaba para referirse a los alemanes, y tenía la connotación de asno, por lo que era un término despectivo que se dio a conocer entre los aliados que en ese momento eran la URSS, Francia, Inglaterra y por supuesto Estados Unidos.</p>
             </article>
+            <article class="bg-gray-200 p-6 rounded-lg shadow-lg container mx-auto flex-auto pt-2 my-12">
+                <h2 class="text-2xl">Video vergas</h2>
+                <vid></vid>
+            </article>
         </section>
     </div>
     <script>
-        let btn = document.querySelector('#btn')
-        let sidebar = document.querySelector('.sidebar')
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
     
-        btn.onclick = function (){
-            sidebar.classList.toggle('active')
+        btn.onclick = function () {
+            sidebar.classList.toggle('active');
         };
+    
+        fetch("https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=9&playlistId=UU76hs2bdrebFYvdR-I8bwyw&key=AIzaSyDUrgWxUZLn5_Rpd1k7v2h8yPTm5j6LH0I")
+        .then(res => res.json())
+        .then(data => {
+            data.items.forEach(curr => {
+                let vidTitle = curr.snippet.title;
+                let vidURL = "https://www.youtube.com/watch?v=" + curr.snippet.resourceId.videoId;
+                let thumbnailURL = curr.snippet.thumbnails.default.url;
+    
+                let markup = `<a href="${vidURL}" target="_blank"><img src="${thumbnailURL}" /><h3>${vidTitle}</h3></a>`;
+    
+                document.querySelector("vid").insertAdjacentHTML("beforeend", markup);
+            });
+        });
     </script>
+    
 </body>
 </html> 
