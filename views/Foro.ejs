@@ -94,26 +94,27 @@
         </section>
     </div>
     <script>
-        let btn = document.querySelector('#btn')
-        let sidebar = document.querySelector('.sidebar')
+        let btn = document.querySelector('#btn');
+        let sidebar = document.querySelector('.sidebar');
     
-        btn.onclick = function (){
-            sidebar.classList.toggle('active')
+        btn.onclick = function () {
+            sidebar.classList.toggle('active');
         };
+    
         fetch("https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=9&playlistId=UU76hs2bdrebFYvdR-I8bwyw&key=AIzaSyDUrgWxUZLn5_Rpd1k7v2h8yPTm5j6LH0I")
-        .then(res =>{
-            return res.json();
-        })
-        .then(data=>{
-            data.items.forEach((curr)=>{
-                vidTitle = curr.snippet.title
-                vidURL = "https://www.youtube.com/watch?v="+curr.snippet.resourceId.videoId;
-                
-                markup = `<a href="${vidURL}" target="_blank">"${vidTitle}"</a><p>`;
-                
-                    document.querySelector("vid").insertAdjacentHTML("beforeend",markup);
-            })
-        })
+        .then(res => res.json())
+        .then(data => {
+            data.items.forEach(curr => {
+                let vidTitle = curr.snippet.title;
+                let vidURL = "https://www.youtube.com/watch?v=" + curr.snippet.resourceId.videoId;
+                let thumbnailURL = curr.snippet.thumbnails.default.url;
+    
+                let markup = `<a href="${vidURL}" target="_blank"><img src="${thumbnailURL}" /><h3>${vidTitle}</h3></a>`;
+    
+                document.querySelector("vid").insertAdjacentHTML("beforeend", markup);
+            });
+        });
     </script>
+    
 </body>
 </html> 
