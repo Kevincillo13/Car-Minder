@@ -321,16 +321,21 @@ app.post('/actualizar-nombre', ensureAuthenticated, (req, res) => {
     const userId = req.user.id_usuario;
     const nuevoNombre = req.body.nombre_u;
 
+    // Validación del nuevo nombre
+    if (!validator.isAlphanumeric(nuevoNombre, 'es-ES')) {
+        res.status(400).send('<script>alert("El nombre de usuario no puede contener letras ni números."); window.location="/Configuracion";</script>');
+        return;
+    }
+    
     // Actualizar el nombre en la base de datos
     const updateNombreQuery = "UPDATE usuarios SET nombre_u = ? WHERE id_usuario = ?";
     
     db.query(updateNombreQuery, [nuevoNombre, userId], (error, result) => {
         if (error) {
             console.error('Error al actualizar el nombre:', error.message);
-            res.status(500).send('Error interno del servidor');
+            res.status(500).send('<script>alert("Error interno del servidor."); window.location="/Configuracion";</script>');
         } else {
-            res.send('<script>alert("Nombre de usuario actualizado con éxito"); window.location="/Configuracion";</script>');
- // Redirigir a la página de configuración después de la actualización
+            res.send('<script>alert("Nombre de usuario actualizado con éxito."); window.location="/Configuracion";</script>');
         }
     });
 });
@@ -340,16 +345,26 @@ app.post('/actualizar-correo', ensureAuthenticated, (req, res) => {
     const userId = req.user.id_usuario;
     const nuevoCorreo = req.body.correo_u;
 
-    // Actualizar el nombre en la base de datos
+    // Validación del nuevo correo
+    if (!validator.isEmail(nuevoCorreo)) {
+        res.status(400).send('<script>alert("Ingrese un correo electrónico válido."); window.location="/Configuracion";</script>');
+        return;
+    }
+    
+    if (nuevoCorreo.length > 50) {
+        res.status(400).send('<script>alert("Número máximo de caracteres alcanzado para el correo electrónico."); window.location="/Configuracion";</script>');
+        return;
+    }
+
+    // Actualizar el correo en la base de datos
     const updateCorreoQuery = "UPDATE usuarios SET correo_u = ? WHERE id_usuario = ?";
     
     db.query(updateCorreoQuery, [nuevoCorreo, userId], (error, result) => {
         if (error) {
             console.error('Error al actualizar el correo electrónico:', error.message);
-            res.status(500).send('Error interno del servidor');
+            res.status(500).send('<script>alert("Error interno del servidor."); window.location="/Configuracion";</script>');
         } else {
-            res.send('<script>alert("Correo electrónico actualizado con éxito"); window.location="/Configuracion";</script>');
- // Redirigir a la página de configuración después de la actualización
+            res.send('<script>alert("Correo electrónico actualizado con éxito."); window.location="/Configuracion";</script>');
         }
     });
 });
