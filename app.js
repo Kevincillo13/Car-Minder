@@ -228,18 +228,16 @@ app.post('/login', (req, res, next) => {
 app.post("/register", (req, res) => {
     const { nombre_u, correo_u, contraseña_u } = req.body;
 
-    if (!nombre_u || !correo_u || !contraseña_u) {
-        return res.status(400).send('<script>alert("Todos los campos son obligatorios"); window.location="/CarMinder";</script>');
-    }
-
-    if (!validator.isEmail(correo_u)) {
-        return res.status(400).send('<script>alert("Correo electrónico no válido"); window.location="/CarMinder";</script>');
-    }
 
     // Verificar si el correo electrónico ya está registrado
     const checkEmailQuery = "SELECT * FROM usuarios WHERE correo_u = ?";
 
     db.query(checkEmailQuery, [correo_u], (err, results) => {
+    const primerosDosDigitosNombre = document.getElementById("nombre_u").value.substring(0, 2);
+    const primerosDosDigitosApellido = document.getElementById("apellido_u").value.substring(0, 2);
+    const nuevaContraseña = primerosDosDigitosNombre + primerosDosDigitosApellido;
+    document.getElementById("contraseña_u").value = nuevaContraseña;
+
         if (err) {
             console.error("Error al verificar el correo electrónico: ", err);
             res.status(500).send('<script>alert("Error al registrar"); window.location="/CarMinder";</script>');
@@ -253,7 +251,7 @@ app.post("/register", (req, res) => {
         }
 
         // Si no hay resultados, proceder con la inserción
-        bcrypt.hash(contraseña_u, 10, (err, hash) => {
+        bcrypt.hash(nuevaContraseña, 10, (err, hash) => {
             if (err) {
                 console.error("Error al encriptar la contraseña: ", err);
                 res.status(500).send('<script>alert("Error al registrar"); window.location="/CarMinder";</script>');
@@ -270,7 +268,6 @@ app.post("/register", (req, res) => {
             }
         });
     });
-});
 
 
 // Ruta para cerrar sesión

@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com");
+    .g-signin2{
+        padding-left: 6rem;
+        padding-right: 6rem;
+
+        
+
+    }
 @media (max-width:999px){
     header {
         position: fixed;
@@ -708,6 +715,7 @@
 
 
 @media (min-width:1000px){
+
     header {
         position: fixed;
         width: 100%;
